@@ -53,7 +53,9 @@ class Kernel implements KernelInterface
 
     public function handleClosureAction(Route $route)
     {
-        return $this->normalizeReponse($route->action());
+        $action = $route->action;
+
+        return $this->normalizeReponse($action($this->request));
     }
 
     public function handleControllerAction(Route $route)

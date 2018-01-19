@@ -18,9 +18,8 @@ class TemplatingServiceProvider extends Provider
             return new BladeEngine(new Blade(config('templating.views_dir'), config('templating.view_cache_dir')));
         });
 
-        $this->app->container->singleton(
-            \Lib\Contracts\Templating\Engine::class,
-            app('templating.'.config('templating.engine'))
-        );
+        $this->app->container->singleton(\Lib\Contracts\Templating\Engine::class, function () {
+            return app('templating.'.config('templating.engine'));
+        });
     }
 }

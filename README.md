@@ -1,2 +1,2 @@
-# Vue Frontend Skeleton
-> Pavel Koch
+# The second web development project
+> Pavel Koch & Hussein Bahdon

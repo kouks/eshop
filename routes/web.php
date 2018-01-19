@@ -1,10 +1,11 @@
 <?php
 
+use Lib\Http\Request;
+
 /**
  * All the web routes are defined here.
  */
 
-route()->get('test/{user}', 'TestController@asd');
-
-
-route()->get('/', 'TestController@asd');
+route()->get('/', function (Request $request) {
+    return view('index');
+});

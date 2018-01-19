@@ -1,8 +1,8 @@
 {
-  "name": "vue-skeleton",
-  "version": "1.0.0",
-  "description": "Vue frontend skeleton.",
-  "main": "src/main.js",
+  "name": "eshop",
+  "version": "0.0.1",
+  "description": "The second we development project",
+  "main": "public/js/main.js",
   "scripts": {
     "watch": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"

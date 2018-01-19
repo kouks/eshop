@@ -5,6 +5,7 @@
     <title>asd</title>
 </head>
 <body>
-    @yield('main')
+    asd
+    <?php echo $__env->yieldContent('main'); ?>
 </body>
 </html>
