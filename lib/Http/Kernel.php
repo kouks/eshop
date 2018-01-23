@@ -3,6 +3,7 @@
 namespace Lib\Http;
 
 use Closure;
+use Exception;
 use Lib\Routing\Route;
 use Lib\Contracts\Http\Kernel as KernelInterface;
 
@@ -32,7 +33,13 @@ class Kernel implements KernelInterface
     {
         $this->request = $request;
 
-        return $this->generateResponse();
+        try {
+            $response = $this->generateResponse();
+        } catch (Exception $e) {
+            app('handler')->render($e);
+        }
+
+        return $response;
     }
 
     public function generateResponse()

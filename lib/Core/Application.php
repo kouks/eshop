@@ -2,7 +2,9 @@
 
 namespace Lib\Core;
 
+use Whoops;
 use Illuminate\Container\Container;
+use Symfony\Component\Dotenv\Dotenv;
 
 class Application
 {
@@ -32,8 +34,12 @@ class Application
         $this->container = Container::getInstance();
 
         $this->setBasePath();
+
+        $this->registerExceptionHandlers();
         $this->registerBaseBindings();
         $this->registerProviders();
+
+        $this->loadEnvironmentVariables();
     }
 
     /**
@@ -41,17 +47,35 @@ class Application
      *
      * @return void
      */
-    public function setBasePath()
+    private function setBasePath()
     {
         $this->container->instance('path.base', $this->basePath);
     }
 
     /**
+     * Registers the application exception handlers.
+     *
+     * @return void
+     */
+    protected function registerExceptionHandlers()
+    {
+        // We register the framework exception handler...
+        $this->container->bind(
+            'handler',
+            \App\Exceptions\Handler::class
+        );
+
+        // As well as the Whoops library for handling exceptions.
+        $whoops = new Whoops\Run;
+        $whoops->pushHandler(new Whoops\Handler\PrettyPageHandler);
+        $whoops->register();
+    }
+    /**
      * Registers the basic application bindings.
      *
      * @return void
      */
-    public function registerBaseBindings()
+    private function registerBaseBindings()
     {
         $this->container->bind(
             \Lib\Contracts\Http\Kernel::class,
@@ -69,10 +93,20 @@ class Application
      *
      * @return void
      */
-    public function registerProviders()
+    private function registerProviders()
     {
         foreach (config('app.providers') as $provider) {
             (new $provider($this))->register();
         }
+    }
+
+    /**
+     * Loads all the variables from the .env file.
+     *
+     * @return void
+     */
+    private function loadEnvironmentVariables()
+    {
+        (new Dotenv())->load($this->basePath.'/.env');
     }
 }

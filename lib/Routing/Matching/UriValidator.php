@@ -16,6 +16,6 @@ class UriValidator implements Validator
      */
     public function matches(Route $route, Request $request)
     {
-        return true;
+        return $request->server->get('REQUEST_URI') === $route->uri;
     }
 }

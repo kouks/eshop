@@ -16,7 +16,7 @@ class Route
         $this->setValidators();
     }
 
-    protected function setValidators()
+    private function setValidators()
     {
         $this->validators = collect([
             new Matching\UriValidator,

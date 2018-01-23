@@ -18,17 +18,27 @@ class RoutingServiceProvider extends Provider
         $this->mapRoutes();
     }
 
-    public function registerRouter()
+    /**
+     * Registers the router instance to the service container.
+     *
+     * @return void
+     */
+    private function registerRouter()
     {
         $this->app->container->singleton('router', function () {
             return new Router();
         });
     }
 
-    public function mapRoutes()
+    /**
+     * Mapping the web and API routes from route files.
+     *
+     * @return void
+     */
+    private function mapRoutes()
     {
         require config('routing.routes_dir').'/web.php';
 
-        require config('routing.routes_dir').'/api.php';
+        // require config('routing.routes_dir').'/api.php';
     }
 }
