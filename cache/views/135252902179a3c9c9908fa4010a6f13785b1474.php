@@ -1,40 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Eshop</title>
+<?php $__env->startSection('content'); ?>
 
-    <link rel="stylesheet" type="text/css" href="css/main2.css">
+asd
 
+<?php $__env->stopSection(); ?>
 
-</head>
-<body>
- 	<div class="topbanner">
-
- 		<a class="logo" href="">
- 			<h1>eshop</h1>
- 		</a>
-
- 		<ul class="navlist" role="a list of nav for guiding the website">
- 			
-  				<li><a href="#">home</a></li>
-  				<li><a href="#">about us</a></li>
-  				<li><a href="/about">shop</a></li>
-			
- 		</ul>
-
-
- 		<ul class="login" role="button for login">
- 			 <li<a href="">login</a></li>
- 			 <a id=""><i class=""></i> Search</a>
-
-
- 		</ul>
-
- 	</div>
-
-
- 		
-
-
-</body>
-</html>
+<?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

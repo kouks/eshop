@@ -7,7 +7,6 @@ about
 cart
 category-shop
 contact
-
 login- logout-registered
 order
 orders
@@ -16,3 +15,10 @@ profile
 receipt
 search
 
+
+auth/login
+    /register
+
+profile/settings
+       /orders
+       /orders/{order}/receipt
