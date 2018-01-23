@@ -9,6 +9,7 @@
 </head>
 <body>
  	<div class="topbanner">
+
  		<a class="logo" href="">
  			<h1>eshop</h1>
  		</a>
@@ -30,5 +31,10 @@
  		</ul>
 
  	</div>
+
+
+ 		
+
+
 </body>
 </html>

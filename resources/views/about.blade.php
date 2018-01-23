@@ -9,15 +9,16 @@
 </head>
 <body>
  	<div class="topbanner">
+
  		<a class="logo" href="">
- 			<h1>eshop</h1>
+ 			<h1>about</h1>
  		</a>
 
  		<ul class="navlist" role="a list of nav for guiding the website">
  			
-  				<li><a href="#">home</a></li>
-  				<li><a href="#">about us</a></li>
-  				<li><a href="/about">shop</a></li>
+  				<li<a href="#">home</a></li>
+  				<li<a href="#">about us</a></li>
+  				<li<a href="">shop</a></li>
 			
  		</ul>
 
@@ -30,5 +31,10 @@
  		</ul>
 
  	</div>
+
+
+ 		
+
+
 </body>
 </html>
