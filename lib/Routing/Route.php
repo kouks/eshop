@@ -37,6 +37,13 @@ class Route
     protected $action;
 
     /**
+     * The route parameters matched from the route.
+     *
+     * @var array
+     */
+    public $params = [];
+
+    /**
      * Class constructor.
      *
      * @param  string  $method
@@ -84,16 +91,28 @@ class Route
     }
 
     /**
+     * Assigns a matched parameter from the request.
+     *
+     * @param  string  $key
+     * @param  string  $value
+     * @return void
+     */
+    public function assignParam($key, $value)
+    {
+        $this->params[$key] = $value;
+    }
+
+    /**
      * Sets the validators required to match the route.
      *
      * @return void
      */
     protected function setValidators()
     {
-        $this->validators = collect([
+        $this->validators = [
             new Matching\UriValidator,
             new Matching\MethodValidator,
-        ]);
+        ];
     }
 
     /**

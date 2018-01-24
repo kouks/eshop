@@ -21,7 +21,7 @@ class Kernel implements KernelInterface
      * Handles the incoming request and generates a reponse.
      *
      * @param  \Lib\Http\Request  $request
-     * @return \Lib\Http\Response
+     * @return \Lib\Http\Response|void
      */
     public function handle(Request $request)
     {
@@ -30,7 +30,7 @@ class Kernel implements KernelInterface
         try {
             $response = $this->sendRequestThroughRouter();
         } catch (Exception $e) {
-            app(Handler::class)->render($e);
+            return app(Handler::class)->render($e);
         }
 
         return $response;

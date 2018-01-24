@@ -22,13 +22,6 @@ class MatchedRoute
     protected $request;
 
     /**
-     * The route parameters matched from the route.
-     *
-     * @var array
-     */
-    public $params = [];
-
-    /**
      * Class constructor.
      *
      * @param  \Lib\Routing\Route  $route
@@ -39,8 +32,6 @@ class MatchedRoute
     {
         $this->route = $route;
         $this->request = $request;
-
-        $this->assignRequestParams();
     }
 
     /**
@@ -56,9 +47,7 @@ class MatchedRoute
             return $action;
         }
 
-        [$controller, $method] = $this->parseControllerReference($action);
-
-        return $controller->$method;
+        return $this->parseControllerReference($action);
     }
 
     /**
@@ -71,18 +60,19 @@ class MatchedRoute
     protected function parseControllerReference($action)
     {
         [$controller, $method] = explode('@', $action);
-        $controller = config('app.controllers').'\\'.$controller;
+        $controller = config('http.controllers').'\\'.$controller;
 
-        return [new $controller, $method];
+        return (new $controller)->$method;
     }
 
     /**
-     * Assigns parameters from the request to the route.
+     * Retrieves a route parameter by key.
      *
-     * @return void
+     * @param  string  $key
+     * @return string
      */
-    protected function assignRequestParams()
+    public function param($key)
     {
-        //
+        return $this->route->params[$key] ?? null;
     }
 }
