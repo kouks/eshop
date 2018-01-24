@@ -47,7 +47,7 @@ class Application
      *
      * @return void
      */
-    private function setBasePath()
+    protected function setBasePath()
     {
         $this->container->instance('path.base', $this->basePath);
     }
@@ -75,7 +75,7 @@ class Application
      *
      * @return void
      */
-    private function registerBaseBindings()
+    protected function registerBaseBindings()
     {
         $this->container->bind(
             \Lib\Contracts\Http\Kernel::class,
@@ -93,7 +93,7 @@ class Application
      *
      * @return void
      */
-    private function registerProviders()
+    protected function registerProviders()
     {
         foreach (config('app.providers') as $provider) {
             (new $provider($this))->register();
@@ -105,7 +105,7 @@ class Application
      *
      * @return void
      */
-    private function loadEnvironmentVariables()
+    protected function loadEnvironmentVariables()
     {
         (new Dotenv())->load($this->basePath.'/.env');
     }

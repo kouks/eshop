@@ -42,7 +42,7 @@ class Kernel implements KernelInterface
      *
      * @return \Lib\Http\Response
      */
-    private function sendRequestThroughRouter()
+    protected function sendRequestThroughRouter()
     {
         $this->request->assignMatchedRoute(
             $route = app('router')->matchRoute($this->request)

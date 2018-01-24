@@ -88,7 +88,7 @@ class Route
      *
      * @return void
      */
-    private function setValidators()
+    protected function setValidators()
     {
         $this->validators = collect([
             new Matching\UriValidator,
