@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Container\Container;
+use Lib\Http\Responses\TemplateResponse;
 
 if (! function_exists('app')) {
     /**
@@ -61,10 +62,12 @@ if (! function_exists('view')) {
      *
      * @param  string  $view
      * @param  array  $attributes
-     * @return string
+     * @return \TemplateResponse
      */
     function view($view, array $attributes = [])
     {
-        return app(Lib\Contracts\Templating\Engine::class)->render($view, $attributes);
+        return new TemplateResponse(
+            app(Lib\Contracts\Templating\Engine::class)->render($view, $attributes)
+        );
     }
 }

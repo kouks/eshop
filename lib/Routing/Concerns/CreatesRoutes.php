@@ -9,11 +9,11 @@ trait CreatesRoutes
      *
      * @param  string  $uri
      * @param  string|Closure  $action
-     * @return void
+     * @return \Lib\Routing\Route
      */
     public function get($uri, $action)
     {
-        $this->addRoute('GET', $uri, $action);
+        return $this->addRoute('GET', $uri, $action);
     }
 
     /**
@@ -21,10 +21,10 @@ trait CreatesRoutes
      *
      * @param  string  $uri
      * @param  string|Closure  $action
-     * @return void
+     * @return \Lib\Routing\Route
      */
     public function post($uri, $action)
     {
-        $this->addRoute('POST', $uri, $action);
+        return $this->addRoute('POST', $uri, $action);
     }
 }

@@ -37,6 +37,13 @@ class Route
     protected $action;
 
     /**
+     * The middleware assigned to the route.
+     *
+     * @var array
+     */
+    protected $middleware = [];
+
+    /**
      * The route parameters matched from the route.
      *
      * @var array
@@ -88,6 +95,23 @@ class Route
     public function action()
     {
         return $this->action;
+    }
+
+    /**
+     * Either adds a middleware or returns all of them.
+     *
+     * @param  string  $middleware
+     * @return static|array
+     */
+    public function middleware($middleware = false)
+    {
+        if (! $middleware) {
+            return $this->middleware;
+        }
+
+        $this->middleware[] = $middleware;
+
+        return $this;
     }
 
     /**

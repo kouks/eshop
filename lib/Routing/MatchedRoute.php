@@ -66,6 +66,16 @@ class MatchedRoute
     }
 
     /**
+     * Retrieves all middleware assigned to the route.
+     *
+     * @return array
+     */
+    public function middleware()
+    {
+        return $this->route->middleware();
+    }
+
+    /**
      * Retrieves a route parameter by key.
      *
      * @param  string  $key

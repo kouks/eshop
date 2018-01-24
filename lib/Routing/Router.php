@@ -62,5 +62,7 @@ class Router
         $route = new Route($method, $uri, $action);
 
         $this->routeCollection->push($route);
+
+        return $route;
     }
 }

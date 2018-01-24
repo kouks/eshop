@@ -4,6 +4,7 @@ namespace Lib\Http;
 
 use Closure;
 use Exception;
+use Lib\Core\Pipe;
 use Lib\Routing\Route;
 use Lib\Contracts\Exceptions\Handler;
 use Lib\Contracts\Http\Kernel as KernelInterface;
@@ -48,8 +49,19 @@ class Kernel implements KernelInterface
             $route = app('router')->matchRoute($this->request)
         );
 
-        $parsedAction = $route->parsedAction();
+        $action = $route->parsedAction();
 
-        return new Response($parsedAction($this->request));
+        $middleware = collect(config('http.global_middleware'))->merge($route->middleware())->map(function ($item) {
+            $middleware = config('http.middleware_names')[$item];
+
+            return new $middleware;
+        });
+
+        return (new Pipe())
+            ->pass($this->request)
+            ->through($middleware)
+            ->finally(function () use ($action) {
+                return $action($this->request);
+            });
     }
 }
