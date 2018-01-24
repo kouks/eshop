@@ -16,6 +16,6 @@ class MethodValidator implements Validator
      */
     public function matches(Route $route, Request $request)
     {
-        return $request->server->get('REQUEST_METHOD') === $route->method;
+        return $request->server->get('REQUEST_METHOD') === $route->method();
     }
 }

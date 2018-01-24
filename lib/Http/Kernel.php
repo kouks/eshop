@@ -5,17 +5,11 @@ namespace Lib\Http;
 use Closure;
 use Exception;
 use Lib\Routing\Route;
+use Lib\Contracts\Exceptions\Handler;
 use Lib\Contracts\Http\Kernel as KernelInterface;
 
 class Kernel implements KernelInterface
 {
-    /**
-     * The web controllers namespace.
-     *
-     * @var string
-     */
-    protected $controllersNamespace = '\\App\\Http\\Controllers';
-
     /**
      * The request instance.
      *
@@ -34,49 +28,28 @@ class Kernel implements KernelInterface
         $this->request = $request;
 
         try {
-            $response = $this->generateResponse();
+            $response = $this->sendRequestThroughRouter();
         } catch (Exception $e) {
-            app('handler')->render($e);
+            app(Handler::class)->render($e);
         }
 
         return $response;
     }
 
-    public function generateResponse()
+    /**
+     * Sends the incoming request through router, matching a route and then
+     * resolving it.
+     *
+     * @return \Lib\Http\Response
+     */
+    private function sendRequestThroughRouter()
     {
-        $route = $this->findMatchingRoute();
+        $this->request->assignMatchedRoute(
+            $route = app('router')->matchRoute($this->request)
+        );
 
-        if ($route->action instanceof Closure) {
-            return $this->handleClosureAction($route);
-        }
+        $parsedAction = $route->parsedAction();
 
-        return $this->handleControllerAction($route);
-    }
-
-    public function findMatchingRoute()
-    {
-        return app('router')->matchRoute($this->request);
-    }
-
-    public function handleClosureAction(Route $route)
-    {
-        $action = $route->action;
-
-        return $this->normalizeReponse($action($this->request));
-    }
-
-    public function handleControllerAction(Route $route)
-    {
-        [$controller, $action] = explode('@', $route->action);
-
-        $controller = $this->controllersNamespace.'\\'.$controller;
-        $controller = new $controller;
-
-        return $this->normalizeReponse($controller->$action($this->request));
-    }
-
-    public function normalizeReponse($response)
-    {
-        return new Response($response);
+        return new Response($parsedAction($this->request));
     }
 }

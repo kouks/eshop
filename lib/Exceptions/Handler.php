@@ -3,8 +3,9 @@
 namespace Lib\Exceptions;
 
 use Exception;
+use Lib\Contracts\Exceptions\Handler as HandlerContract;
 
-class Handler
+class Handler implements HandlerContract
 {
     /**
      * Renders the exception on the screen.

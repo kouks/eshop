@@ -23,7 +23,7 @@ class RoutingServiceProvider extends Provider
      *
      * @return void
      */
-    private function registerRouter()
+    protected function registerRouter()
     {
         $this->app->container->singleton('router', function () {
             return new Router();
@@ -35,7 +35,7 @@ class RoutingServiceProvider extends Provider
      *
      * @return void
      */
-    private function mapRoutes()
+    protected function mapRoutes()
     {
         require config('routing.routes_dir').'/web.php';
 

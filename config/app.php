@@ -3,6 +3,8 @@
 return [
     'name' => 'Eshop',
 
+    'controllers' => '\\App\\Http\\Controllers',
+
     'providers' => [
         /**
          * Framework service providers.
@@ -11,7 +13,7 @@ return [
         Lib\Templating\TemplatingServiceProvider::class,
 
         /**
-         * App service providers.
+         * Application service providers.
          */
         \App\Providers\AppServiceProvider::class,
 

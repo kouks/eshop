@@ -61,7 +61,7 @@ class Application
     {
         // We register the framework exception handler...
         $this->container->bind(
-            'handler',
+            \Lib\Contracts\Exceptions\Handler::class,
             \App\Exceptions\Handler::class
         );
 

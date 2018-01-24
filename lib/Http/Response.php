@@ -11,7 +11,6 @@ class Response extends \Symfony\Component\HttpFoundation\Response
         $this->response = $response;
     }
 
-
     public function send()
     {
         echo $this->response;
