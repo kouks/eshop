@@ -1,3 +1,11 @@
 .navbar-item.is-red {
   color: red;
 }
+
+.backgroundimage1{
+  background-image: url(http://www3.pictures.zimbio.com/pc/Lindsay+Lohan+Lindsay+Lohan+models+Italian+N5iRt_sGC1Tl.jpg);
+}
+
+.body{
+  color: blue;
+}

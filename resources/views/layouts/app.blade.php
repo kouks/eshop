@@ -31,7 +31,7 @@
         </div>
         <div id="navbarMenuHeroB" class="navbar-menu">
           <div class="navbar-end">
-            <a class="navbar-item is-active">
+            <a class="navbar-item is-active" href="/ ">
               Home
             </a>
             <a class="navbar-item" href="/about">
@@ -69,9 +69,12 @@
             </span>
           </div>
         </div>
+    </div>
       </div>
     </nav>
   </div>
+
+    </section>
 
 
 
@@ -84,6 +87,20 @@
 
 
 
+
+
+<br><br><br><br><br><br>
+
+<footer class="footer is- small">
+  <div class="container">
+    <div class="content has-text-centered">
+      <p>
+        <strong>Eshop</strong> by Pavel Koch & Hussein bahdon</a>.
+
+      </p>
+    </div>
+  </div>
+</footer>
 
 
 </body>
