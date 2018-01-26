@@ -7,11 +7,3 @@ export default {
   //
 }
 </script>
-
-<style lang="scss">
-  $color: grey;
-
-  p {
-    color: $color;
-  }
-</style>

@@ -1,20 +1,25 @@
-
-function basePath (dir) {
-  return require('path').join(__dirname, dir)
-}
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const basePath = require('./resources/assets/build/helpers').basePath
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 
 module.exports = {
-  entry: './resources/assets/js/main.js',
+  entry: [
+    './resources/assets/js/app.js',
+    './resources/assets/sass/app.sass'
+  ],
+  plugins: [
+    new FriendlyErrorsWebpackPlugin(),
+    new ExtractTextPlugin('css/app.css') // points to the output.publicPath path
+  ],
   output: {
-    path: basePath('public/js'),
-    publicPath: '/public/js/',
-    filename: 'build.js'
+    path: basePath('public'),
+    publicPath: '/public/',
+    filename: 'js/app.js'
   },
   resolve: {
     extensions: ['.js', '.vue'],
     alias: {
       '@': basePath('resources/assets/js'),
-      'config': basePath('config'),
       'vue$': 'vue/dist/vue.esm.js'
     }
   },
@@ -29,18 +34,21 @@ module.exports = {
       {
         test: /\.vue$/,
         loader: 'vue-loader',
-        include: [basePath('resources/assets/js')],
-        options: {
-          loaders: {
-            scss: 'vue-style-loader!css-loader!sass-loader',
-          }
-        }
+        include: [basePath('resources/assets/js')]
       },
       {
         test: /\.js$/,
         loader: 'babel-loader',
         include: [basePath('resources/assets/js')]
       },
+      {
+        test: /\.sass$/,
+        loader: ExtractTextPlugin.extract([
+          { loader: 'css-loader', options: { minimize: true } },
+          'sass-loader'
+        ]),
+        include: [basePath('resources/assets/sass')]
+      }
     ]
   }
 }

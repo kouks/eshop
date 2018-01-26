@@ -13,14 +13,14 @@ route()->get('/profile/{user}/orders/{order}', function (Request $request) {
 
 route()->get('/', function (Request $request) {
     return view('index');
-})->middleware('auth');
+});
 
 route()->get('/about', function (Request $request) {
     return view('about');
 });
 
 route()->get('/login', function (Request $request) {
-    return view('login');
+    return view('auth.index');
 });
 
 route()->get('/shop', function (Request $request) {
