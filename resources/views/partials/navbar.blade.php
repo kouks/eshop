@@ -32,7 +32,7 @@
                 <span class="navbar-item">
                     <a class="button is-primary is-inverted" href="/login">
                         <span class="icon">
-                            <i class="fa fa-user" ></i>
+                            <i class="fa fa-user"></i>
                         </span>
                         <span>Login</span>
                     </a>
