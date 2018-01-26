@@ -18,7 +18,6 @@ class UriValidator implements Validator
     {
         $regex = $this->createRegexFromRouteUri($route);
         $location = $this->getRequestLocation($request);
-
         $matched = (bool) preg_match($regex, $location, $matches);
 
         foreach ($matches as $key => $value) {
@@ -51,6 +50,6 @@ class UriValidator implements Validator
     {
         $accepted = config('routing.accepted_route_params_regex');
 
-        return '/'.preg_replace('/\\\{([a-z_]+)\\\}/', '(?P<$1>'.$accepted.')', preg_quote($route->uri(), '/')).'/';
+        return '/^'.preg_replace('/\\\{([a-z_]+)\\\}/', '(?P<$1>'.$accepted.')', preg_quote($route->uri(), '/')).'$/';
     }
 }

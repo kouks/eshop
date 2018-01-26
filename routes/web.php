@@ -18,3 +18,11 @@ route()->get('/', function (Request $request) {
 route()->get('/about', function (Request $request) {
     return view('about');
 });
+
+route()->get('/login', function (Request $request) {
+    return view('login');
+});
+
+route()->get('/shop', function (Request $request) {
+    return view('shop');
+});
