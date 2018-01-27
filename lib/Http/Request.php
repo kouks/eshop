@@ -35,6 +35,16 @@ class Request extends \Symfony\Component\HttpFoundation\Request
     }
 
     /**
+     * Retrieves the matched route.
+     *
+     * @return \Lib\Routing\MatchedRoute
+     */
+    public function route()
+    {
+        return $this->route;
+    }
+
+    /**
      * Retrieves a param from the route by specified key.
      *
      * @param  string  $key

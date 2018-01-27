@@ -6,6 +6,7 @@ use Closure;
 use Exception;
 use Lib\Core\Pipe;
 use Lib\Routing\Route;
+use Lib\Routing\BindingResolver;
 use Lib\Contracts\Exceptions\Handler;
 use Lib\Contracts\Http\Kernel as KernelInterface;
 
@@ -19,6 +20,24 @@ class Kernel implements KernelInterface
     protected $request;
 
     /**
+     * The implicit binding resolver isntance.
+     *
+     * @var \Lib\Routing\BindingResolver
+     */
+    protected $bindingResolver;
+
+    /**
+     * Class constructor.
+     *
+     * @param  \Lib\Routing\BindingResolver  $bindingResolver
+     * @return void
+     */
+    public function __construct(BindingResolver $bindingResolver)
+    {
+        $this->bindingResolver = $bindingResolver;
+    }
+
+    /**
      * Handles the incoming request and generates a reponse.
      *
      * @param  \Lib\Http\Request  $request
@@ -27,6 +46,9 @@ class Kernel implements KernelInterface
     public function handle(Request $request)
     {
         $this->request = $request;
+
+        // We bind the request instance to the application container.
+        app()->instance(Request::class, $request);
 
         try {
             $response = $this->sendRequestThroughRouter();
@@ -49,8 +71,6 @@ class Kernel implements KernelInterface
             $route = app('router')->matchRoute($this->request)
         );
 
-        $action = $route->parsedAction();
-
         $middleware = collect(config('http.global_middleware'))->merge($route->middleware())->map(function ($item) {
             $middleware = config('http.middleware_names')[$item];
 
@@ -60,8 +80,22 @@ class Kernel implements KernelInterface
         return (new Pipe())
             ->pass($this->request)
             ->through($middleware)
-            ->finally(function () use ($action) {
-                return $action($this->request);
-            });
+            ->finally($this->initiateRouteAction());
+    }
+
+    /**
+     * Replaces implicing binding on a route action and initiates it.
+     *
+     * @return \Closure
+     */
+    protected function initiateRouteAction()
+    {
+        return function () {
+            $action = $this->request->route()->parsedAction();
+
+            $args = $this->bindingResolver->resolve($action);
+
+            return $action(...$args);
+        };
     }
 }

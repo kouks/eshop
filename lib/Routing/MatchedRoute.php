@@ -62,7 +62,7 @@ class MatchedRoute
         [$controller, $method] = explode('@', $action);
         $controller = config('http.controllers').'\\'.$controller;
 
-        return (new $controller)->$method;
+        return [new $controller, $method];
     }
 
     /**
