@@ -9,6 +9,7 @@ return [
         /**
          * Framework service providers.
          */
+        Lib\Database\DatabaseServiceProvider::class,
         Lib\Routing\RoutingServiceProvider::class,
         Lib\Templating\TemplatingServiceProvider::class,
 

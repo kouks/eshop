@@ -62,7 +62,7 @@ if (! function_exists('view')) {
      *
      * @param  string  $view
      * @param  array  $attributes
-     * @return \TemplateResponse
+     * @return \Lib\Http\Responses\TemplateResponse
      */
     function view($view, array $attributes = [])
     {

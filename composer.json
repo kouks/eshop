@@ -24,6 +24,7 @@
         "symfony/http-foundation": "^3.3",
         "illuminate/container": "^5.5",
         "symfony/dotenv": "^3.0",
-        "filp/whoops": "^2.1"
+        "filp/whoops": "^2.1",
+        "mongodb/mongodb": "^1.2"
     }
 }
