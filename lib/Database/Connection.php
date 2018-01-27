@@ -5,7 +5,7 @@ namespace Lib\Database;
 use MongoDB;
 use Lib\Contracts\Database\Connection as ConnectionContract;
 
-class Connection implements ConnetionContract
+class Connection implements ConnectionContract
 {
     /**
      * The database connection.
