@@ -41,7 +41,7 @@ class Kernel implements KernelInterface
      * Handles the incoming request and generates a reponse.
      *
      * @param  \Lib\Http\Request  $request
-     * @return \Lib\Http\Response|void
+     * @return \Lib\Http\Response
      */
     public function handle(Request $request)
     {
@@ -51,19 +51,19 @@ class Kernel implements KernelInterface
         app()->instance(Request::class, $request);
 
         try {
-            $response = $this->sendRequestThroughRouter();
+            $content = $this->sendRequestThroughRouter();
         } catch (Exception $e) {
-            return app(Handler::class)->render($e);
+            $content = app(Handler::class)->render($e);
         }
 
-        return $response;
+        return $this->prepareResponse($content);
     }
 
     /**
      * Sends the incoming request through router, matching a route and then
      * resolving it.
      *
-     * @return \Lib\Http\Response
+     * @return mixed
      */
     protected function sendRequestThroughRouter()
     {
@@ -97,5 +97,30 @@ class Kernel implements KernelInterface
 
             return $action(...$args);
         };
+    }
+
+    /**
+     * Prepares the response from various data types returned by the actions.
+     *
+     * @param  mixed  $content
+     * @return \Lib\Http\Response
+     */
+    protected function prepareResponse($content)
+    {
+        if ($content instanceof RedirectResponse) {
+            return $content;
+        }
+
+        $response = new Response();
+
+        if (is_array($content)) {
+            $response->headers->set('Content-Type', 'application/json');
+            $response->setContent(json_encode($content));
+        } else {
+            $response->headers->set('Content-Type', 'text/html');
+            $response->setContent($content);
+        }
+
+        return $response->prepare($this->request);
     }
 }

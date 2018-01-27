@@ -10,7 +10,7 @@ interface Handler
      * Renders the exception on the screen.
      *
      * @param  \Exception $e
-     * @return void
+     * @return \Lib\Http\Response
      *
      * @throws \Exception
      */

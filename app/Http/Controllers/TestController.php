@@ -8,6 +8,6 @@ class TestController
 {
     public function test()
     {
-        //
+        return redirect('/about');
     }
 }

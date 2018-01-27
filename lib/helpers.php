@@ -1,5 +1,6 @@
 <?php
 
+use Lib\Http\RedirectResponse;
 use Illuminate\Container\Container;
 use Lib\Http\Responses\TemplateResponse;
 
@@ -44,6 +45,19 @@ if (! function_exists('config')) {
     }
 }
 
+if (! function_exists('redirect')) {
+    /**
+     * Redirect response helper.
+     *
+     * @param  string  $url
+     * @return \Lib\Http\RedirectResponse
+     */
+    function redirect($url)
+    {
+        return new RedirectResponse($url);
+    }
+}
+
 if (! function_exists('route')) {
     /**
      * Route helper.
@@ -62,12 +76,10 @@ if (! function_exists('view')) {
      *
      * @param  string  $view
      * @param  array  $attributes
-     * @return \Lib\Http\Responses\TemplateResponse
+     * @return string
      */
     function view($view, array $attributes = [])
     {
-        return new TemplateResponse(
-            app(Lib\Contracts\Templating\Engine::class)->render($view, $attributes)
-        );
+        return app(Lib\Contracts\Templating\Engine::class)->render($view, $attributes);
     }
 }
