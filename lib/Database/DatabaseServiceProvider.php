@@ -3,6 +3,7 @@
 namespace Lib\Database;
 
 use Lib\Core\Provider;
+use Lib\Database\Connection;
 
 class DatabaseServiceProvider extends Provider
 {
@@ -13,6 +14,8 @@ class DatabaseServiceProvider extends Provider
      */
     public function register()
     {
-        //
+        $this->app->container->singleton(\Lib\Contracts\Database\Connection::class, function () {
+            return new Connection(config('database.mongodb'));
+        });
     }
 }

@@ -35,11 +35,12 @@ class Application
 
         $this->setBasePath();
 
+        $this->loadEnvironmentVariables();
+
         $this->registerExceptionHandlers();
         $this->registerBaseBindings();
         $this->registerProviders();
 
-        $this->loadEnvironmentVariables();
     }
 
     /**
