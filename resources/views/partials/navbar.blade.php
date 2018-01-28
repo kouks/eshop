@@ -2,8 +2,7 @@
     <div class="container">
         <div class="navbar-brand">
             <a class="navbar-item" href="/">
-                E-Shop
-                {{-- We need a custom logo with a better name here. --}}
+                h&amp;p
             </a>
 
             <span class="navbar-burger" data-target="menu" id="menu-burger">

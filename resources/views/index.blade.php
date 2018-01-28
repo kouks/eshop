@@ -5,18 +5,23 @@
 
 <header class="hero is-primary is-large is-banner">
     <div class="hero-body">
-        <div class="container">
+        <div class="container-fluid">
             <div class="columns">
-                <div class="column is-offset-3-tablet is-6-tablet">
-                    <form class="global-search" action="/products/search" method="GET">
-                        <input
-                            class="global-search-input"
-                            type="text"
-                            name="query"
-                            placeholder="Type anything..."
-                        ></input>
-                        <button class="global-search-button" type="submit">Go!</button>
-                    </form>
+                <div class="column is-offset-1-tablet is-3-tablet">
+                    <div class="banner-content">
+                        <h1 class="title is-main has-color-primary">h&amp;p</h1>
+                        <h2 class="subtitle is-3">The online store.</h2>
+
+                        <form class="global-search" action="/products/search" method="GET">
+                            <input
+                                class="global-search-input"
+                                type="text"
+                                name="query"
+                                placeholder="Type anything..."
+                            ></input>
+                            <button class="global-search-button" type="submit">Go!</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -32,11 +37,30 @@
 <main class="section">
     <div class="container">
         <div class="columns is-multiline">
-            @foreach ($products as $product)
-                <div class="column is-3-tablet">
-                    @include('products._product')
-                </div>
-            @endforeach
+            <div class="column is-3-tablet">
+                @include('products._product')
+            </div>
+            <div class="column is-3-tablet">
+                @include('products._product')
+            </div>
+            <div class="column is-3-tablet">
+                @include('products._product')
+            </div>
+            <div class="column is-3-tablet">
+                @include('products._product')
+            </div>
+            <div class="column is-3-tablet">
+                @include('products._product')
+            </div>
+            <div class="column is-3-tablet">
+                @include('products._product')
+            </div>
+            <div class="column is-3-tablet">
+                @include('products._product')
+            </div>
+            <div class="column is-3-tablet">
+                @include('products._product')
+            </div>
         </div>
     </div>
 </main>
