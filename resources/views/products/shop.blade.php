@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-@include('products._tabs')
+@include('partials.tabs', ['active' => false])
 
 <main class="section">
     <div class="container">
