@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+@include('partials.tabs', ['active' => false])
+
 <header class="hero is-primary is-large is-banner">
     <div class="hero-body">
         <div class="container">

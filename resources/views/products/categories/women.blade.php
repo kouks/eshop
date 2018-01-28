@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-women
+@include('partials.tabs', ['active' => 'women'])
+
 @stop
 
