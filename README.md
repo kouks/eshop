@@ -31,3 +31,6 @@ auth/login
 profile/settings
        /orders
        /orders/{order}/receipt
+
+also check the login page, i did a few changes to that, the link in sign up works
+check the shop page, the links also works (men women kids shoes)
