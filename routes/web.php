@@ -43,7 +43,11 @@ route()->get('/about', function (Request $request) {
 });
 
 route()->get('/login', function (Request $request) {
-    return view('auth.index');
+    return view('auth.login');
+});
+
+route()->get('/register', function (Request $request) {
+    return view('auth.register');
 });
 
 route()->get('/shop', function (Request $request) {
@@ -71,10 +75,6 @@ route()->get('/shop', function (Request $request) {
             ],
         ]
     ] );
-});
-
-route()->get('/register', function (Request $request) {
-    return view('auth.register');
 });
 
 route()->get('/cart', function (Request $request) {

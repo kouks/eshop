@@ -1,4 +1,4 @@
-# The second web development project
+# This is a second CSD 2550 project; E-Commerce Website
 > Pavel Koch & Hussein Bahdon
 
 
