@@ -15,11 +15,11 @@ class Connection implements ConnectionContract
     protected $connection;
 
     /**
-     * The collection to be used.
+     * The database to be used.
      *
      * @var string
      */
-    protected $collection;
+    protected $database;
 
     /**
      * Class constructor.
@@ -30,16 +30,26 @@ class Connection implements ConnectionContract
     public function __construct(array $credentials)
     {
         $this->connection = new MongoDB\Client($credentials['uri']);
-        $this->collection = $credentials['collection'];
+        $this->database = $credentials['database'];
     }
 
     /**
-     * Retrieve the database connection.
+     * Retrieve the database driver.
      *
      * @return \MongoDB\Client
      */
-    public function getConnection()
+    public function getDriver()
     {
         return $this->connection;
+    }
+
+    /**
+     * Retrieve the database name.
+     *
+     * @return string
+     */
+    public function getDatabase()
+    {
+        return $this->database;
     }
 }
