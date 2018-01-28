@@ -1,17 +1,10 @@
 <?php
 
-use Lib\Http\Request;
-
 /**
  * All the web routes are defined here.
  */
 
-route()->get('/profile/{user}/orders/{order}', function (Request $request) {
-    dd($request->param('order'));
-    return view('about');
-});
-
-route()->get('/', function (Request $request) {
+route()->get('/', function () {
     return view('index', [
         'products' => [
             [
@@ -38,19 +31,8 @@ route()->get('/', function (Request $request) {
     ]);
 });
 
-route()->get('/about', function (Request $request) {
-    return view('about');
-});
 
-route()->get('/login', function (Request $request) {
-    return view('auth.login');
-});
-
-route()->get('/register', function (Request $request) {
-    return view('auth.register');
-});
-
-route()->get('/shop', function (Request $request) {
+route()->get('/shop', function () {
     return view('products.shop', [
         'products' => [
             [
@@ -77,29 +59,34 @@ route()->get('/shop', function (Request $request) {
     ] );
 });
 
-route()->get('/cart', function (Request $request) {
+route()->get('/cart', function () {
     return view('cart');
 });
 
-route()->get('/contact', function (Request $request) {
+route()->get('/contact', function () {
     return view('contact');
 });
 
-
 //pages for shop
-route()->get('/men', function (Request $request) {
+route()->get('/men', function () {
     return view('products.categories.men');
 });
 
-route()->get('/women', function (Request $request) {
+route()->get('/women', function () {
     return view('products.categories.women');
 });
 
-route()->get('/kids', function (Request $request) {
+route()->get('/kids', function () {
     return view('products.categories.kids');
 });
 
-route()->get('/shoes', function (Request $request) {
+route()->get('/shoes', function () {
     return view('products.categories.shoes');
 });
 
+/**
+ * Auth routes.
+ */
+
+route()->get('/login', 'AuthController@showLoginForm');
+route()->get('/register', 'AuthController@showRegistrationForm');
