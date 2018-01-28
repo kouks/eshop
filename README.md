@@ -2,18 +2,27 @@
 > Pavel Koch & Hussein Bahdon
 
 
-pages that need to be created 
-about
-cart
-category-shop
-contact
-login- logout-registered
-order
-orders
-product-single page
-profile
-receipt
-search
+layout-
+
+view/index/(partials)navbar/footer
+    /about
+    /contact
+
+
+products/product
+        /shop
+          /men
+            /single product page
+              /add product to cart
+          /women
+            /single product page
+              /add product to cart
+          /shoes
+            /single product page
+              /add product to cart
+        /cart
+          /cheackout?
+
 
 
 auth/login

@@ -8,7 +8,22 @@
                 Welcome to Eshop
             </h1>
             <p class="subtitle is-4">
-                Maybe include a global search box as a bonus here?
+
+         <div class="box">
+
+            <div class="field is-grouped">
+              <p class="control is-expanded">
+                <input class="input" type="text" placeholder="search here">
+              </p>
+              <p class="control">
+                <a class="button is-info">
+                  click here
+                </a>
+              </p>
+            </div>
+          </div>
+
+
             </p>
         </div>
       </div>

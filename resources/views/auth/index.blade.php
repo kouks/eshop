@@ -8,10 +8,9 @@
             <div class="column">
                 @include('auth._login')
             </div>
-            <div class="column">
-                @include('auth._register')
-            </div>
+
         </div>
     </div>
 </main>
 @stop
+

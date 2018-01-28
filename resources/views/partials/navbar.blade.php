@@ -1,9 +1,7 @@
 <nav class="navbar is-primary">
     <div class="container">
         <div class="navbar-brand">
-            <a class="navbar-item" href="/">
-                <img src="https://blog.idevaffiliate.com/wp-content/uploads/2015/11/eshop_joomla_logo.png" alt="Logo">
-            </a>
+
 
             <span class="navbar-burger burger" data-target="navbarMenuHeroB">
                 <span></span>
@@ -20,14 +18,13 @@
                 <a class="navbar-item" href="/about">
                     About
                 </a>
-                <a class="navbar-item" >
-                    Men
-                </a>
-                <a class="navbar-item">
-                    Women
+                  <a class="navbar-item" href="/contact">
+                    contact
                 </a>
             </div>
-
+<a class="navbar-item" href="/">
+                <img src="https://blog.idevaffiliate.com/wp-content/uploads/2015/11/eshop_joomla_logo.png" alt="Logo">
+            </a>
             <div class="navbar-end">
                 <span class="navbar-item">
                     <a class="button is-primary is-inverted" href="/login">
@@ -38,7 +35,7 @@
                     </a>
                 </span>
                 <span class="navbar-item">
-                    <a class="button is-primary is-inverted">
+                    <a class="button is-primary is-inverted" href="/shop">
                         <span class="icon">
                             <i class="fa fa-shopping-cart"></i>
                         </span>
@@ -46,7 +43,7 @@
                     </a>
                 </span>
                 <span class="navbar-item">
-                    <a class="button is-primary is-inverted">
+                    <a class="button is-primary is-inverted" href="/cart">
                         <span class="icon">
                             <i class="fa fa-shopping-cart"></i>
                         </span>
