@@ -4,7 +4,7 @@
 <div class="box">
   <form>
     <div class="field">
-        <input class="input is-large" type="text" placeholder="Your Full Name" name="name" autofocus>
+        <input class="input is-large" type="text" placeholder="Your Full Name" name="name">
     </div>
 
     <div class="field">
