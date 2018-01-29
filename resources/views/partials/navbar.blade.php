@@ -19,7 +19,7 @@
                         <span class="icon">
                             <i class="fa fa-key"></i>
                         </span>
-                        <span>Login</span>
+                        <span>Account</span>
                     </a>
                 </span>
                 <span class="navbar-item">
@@ -28,14 +28,6 @@
                             <i class="fa fa-key"></i>
                         </span>
                         <span>admin (tem)</span>
-                    </a>
-                </span>
-                <span class="navbar-item">
-                    <a class="button is-primary is-inverted" href="/register">
-                        <span class="icon">
-                            <i class="fa fa-user"></i>
-                        </span>
-                        <span>Register</span>
                     </a>
                 </span>
                 <span class="navbar-item">
