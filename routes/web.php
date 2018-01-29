@@ -41,24 +41,17 @@ route()->get('/shoes', function () {
 });
 
 
-//admin
+/**
+ * Administration routes.
+ */
+
 route()->get('/admin', function () {
-    return view('admin.admin');
+    return view('admin.index');
 });
 
-
-route()->get('/viewproducts', function () {
-    return view('admin.viewproducts');
+route()->get('/admin/products', function () {
+    return view('admin.products.index');
 });
-
-route()->get('/editproducts', function () {
-    return view('admin.editproducts');
-});
-
-route()->get('/addproducts', function () {
-    return view('admin.addproducts');
-});
-
 
 /**
  * Auth routes.

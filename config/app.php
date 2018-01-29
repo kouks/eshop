@@ -1,7 +1,10 @@
 <?php
 
 return [
-    'name' => 'h&p&mdash;The online store.',
+    'name' => [
+        'shop' => 'h&p&mdash;The online store.',
+        'admin' => 'h&p&mdash;Admin panel.',
+    ],
 
     'controllers' => '\\App\\Http\\Controllers',
 
