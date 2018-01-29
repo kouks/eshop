@@ -90,8 +90,8 @@ class Kernel implements KernelInterface
      */
     protected function initiateRouteAction()
     {
-        return function () {
-            $action = $this->request->route()->parsedAction();
+        return function (Request $request) {
+            $action = $request->route()->parsedAction();
 
             $args = $this->bindingResolver->resolve($action);
 

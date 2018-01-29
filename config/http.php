@@ -9,7 +9,7 @@ return [
     ],
 
     'global_middleware' => [
-        //,
+        //
     ],
 
 ];

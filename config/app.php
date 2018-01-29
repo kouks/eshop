@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'name' => 'Eshop',
+    'name' => 'h&p&mdash;The online store.',
 
     'controllers' => '\\App\\Http\\Controllers',
 
