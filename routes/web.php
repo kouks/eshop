@@ -40,6 +40,26 @@ route()->get('/shoes', function () {
     return view('products.categories.shoes');
 });
 
+
+//admin
+route()->get('/admin', function () {
+    return view('admin.admin');
+});
+
+
+route()->get('/viewproducts', function () {
+    return view('admin.viewproducts');
+});
+
+route()->get('/editproducts', function () {
+    return view('admin.editproducts');
+});
+
+route()->get('/addproducts', function () {
+    return view('admin.addproducts');
+});
+
+
 /**
  * Auth routes.
  */
