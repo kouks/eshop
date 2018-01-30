@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use Exception;
+use Lib\Exceptions\Routing\RouteNotFoundException;
 
 class Handler extends \Lib\Exceptions\Handler
 {
@@ -14,7 +15,9 @@ class Handler extends \Lib\Exceptions\Handler
      */
     public function render(Exception $e)
     {
-        //
+        if ($e instanceof RouteNotFoundException) {
+            return view('errors.404');
+        }
 
         parent::render($e);
     }
