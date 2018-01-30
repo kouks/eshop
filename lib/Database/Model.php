@@ -18,25 +18,35 @@ abstract class Model
      */
     protected $builder;
 
+    /**
+     * Creates a new builder instance for the model.
+     *
+     * @return \Lib\Database\Builder
+     */
     public function newQuery()
     {
-        return $this->builder = app('builder');
+        return $this->builder = app('builder')->collection($this->getCollectionName());
     }
 
-    public static function __callStatic($method, $args)
-    {
-        $instance = new static;
-
-        return $instance->newQuery()->$method($instance->getCollectionName(), ...$args);
-    }
-
-    public function hydrate()
-    {
-        //
-    }
-
+    /**
+     * Returns the collection name for given model.
+     *
+     * @return string
+     */
     protected function getCollectionName()
     {
         return str_plural(strtolower(substr(strrchr(get_class($this), "\\"), 1)));
+    }
+
+    /**
+     * Magic function that redirects all method calls to the builder instance.
+     *
+     * @param  string  $method
+     * @param  array  $args
+     * @return \MongoDB\Model\BSONDocument
+     */
+    public static function __callStatic($method, $args)
+    {
+        return (new static)->newQuery()->$method(...$args);
     }
 }
