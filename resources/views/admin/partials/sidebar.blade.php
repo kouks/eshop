@@ -17,7 +17,7 @@
             <a href="/admin/products">Products</a>
             <ul>
                 <li><a href="/admin/products">Manage</a></li>
-                <li><a href="#">Add</a></li>
+                <li><a href="/admin/products/create">Add</a></li>
             </ul>
         </li>
         <li>

@@ -26,7 +26,7 @@
                     <div class="column is-2-tablet">
                         @include('admin.partials.sidebar')
                     </div>
-                    <div class="column is-10-tablet">
+                    <div class="column is-offset-1-tablet is-9-tablet">
                         @yield('content')
                     </div>
                 </div>

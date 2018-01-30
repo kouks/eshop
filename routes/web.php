@@ -49,9 +49,9 @@ route()->get('/admin', function () {
     return view('admin.index');
 });
 
-route()->get('/admin/products', function () {
-    return view('admin.products.index');
-});
+route()->get('/admin/products', 'ProductController@index');
+route()->get('/admin/products/create', 'ProductController@create');
+route()->post('/admin/products', 'ProductController@store');
 
 /**
  * Auth routes.

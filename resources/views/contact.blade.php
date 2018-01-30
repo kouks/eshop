@@ -3,23 +3,23 @@
 @section('content')
 @include('partials.tabs', ['active' => false])
 
-<main class="section is-medium">
+<section class="section">
     <div class="container">
         <div class="columns">
-            <div class="column is-3-tablet">
+            <div class="column is-offset-1-tablet is-3-tablet">
                 <figure class="image is-square">
                     <img src="https://bulma.io/images/placeholders/256x256.png">
                 </figure>
             </div>
 
-            <div class="column is-offset-1-tablet is-8-tablet">
+            <div class="column is-offset-1-tablet is-6-tablet">
                 <h3 class="title is-3">Hussein Bahdon</h3>
                 <hr>
                 <div class="columns is-mobile is-multiline">
                     <div class="column is-3">
                         <strong>Email</strong><br>
                         <strong>Phone</strong><br>
-                        <strong>Postition</strong>
+                        <strong>Position</strong>
                     </div>
                     <div class="column is-9">
                         <a href="mailto:hb641@live.mdx.ac.uk">hb641@live.mdx.ac.uk</a><br>
@@ -35,16 +35,20 @@
                 </div>
             </div>
         </div>
+    </div>
+</section>
 
+<section class="section">
+    <div class="container">
         <div class="columns">
-            <div class="column is-8-tablet">
+            <div class="column is-offset-1-tablet is-6-tablet">
                 <h3 class="title is-3">Pavel Koch</h3>
                 <hr>
                 <div class="columns is-mobile is-multiline">
                     <div class="column is-3">
                         <strong>Email</strong><br>
                         <strong>Phone</strong><br>
-                        <strong>Postition</strong>
+                        <strong>Position</strong>
                     </div>
                     <div class="column is-9">
                         <a href="mailto:kouks.koch@gmail.com">kouks.koch@gmail.com</a><br>
@@ -66,5 +70,5 @@
             </div>
         </div>
     </div>
-</main>
+</section>
 @stop

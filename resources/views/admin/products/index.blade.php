@@ -6,5 +6,5 @@ product list
 
 @section('heading')
 <h1 class="title">Product management page.</h1>
-<h2 class="subtitle">List, create and edit products on this page.</h2>
+<h2 class="subtitle">List, edit and remove products on this page.</h2>
 @stop

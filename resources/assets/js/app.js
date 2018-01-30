@@ -17,3 +17,11 @@ document.addEventListener('DOMContentLoaded', function () {
     $target.classList.toggle('is-active')
   })
 })
+
+// File input name
+var file = document.getElementById('product-image')
+file.onchange = function () {
+  if (file.files.length > 0) {
+    document.getElementById('product-image-name').innerHTML = file.files[0].name
+  }
+}
