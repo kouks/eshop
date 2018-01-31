@@ -18,17 +18,19 @@
                     <a class="navbar-link" href="/users">
                         Account
                     </a>
+
                     <div class="navbar-dropdown is-boxed">
-                    <a class="navbar-item" href="/users">
-                        Profile
-                    </a>
-                    <a class="navbar-item" href="/users">
-                        Cart
-                    </a>
-                    <hr class="navbar-divider">
-                    <a class="navbar-item is-static" href="#">
-                        Logout
-                    </a>
+                        <a class="navbar-item" href="/users">
+                            Profile
+                        </a>
+                        <a class="navbar-item" href="/users">
+                            Cart
+                        </a>
+                        <hr class="navbar-divider">
+                        <a class="navbar-item is-static" href="#">
+                            Logout
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
