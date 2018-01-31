@@ -26,8 +26,6 @@
     </div>
 </header>
 
-
-
 <section class="section">
     <div class="container has-text-centered">
         <h1 class="title is-3">Trending Products</h1>

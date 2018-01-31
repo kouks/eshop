@@ -41,14 +41,12 @@ route()->get('/shoes', function () {
 });
 
 /**
- * profiles routes.
+ * Profile routes.
  */
-route()->get('/users', function () {
-    return view('users.index');
+
+route()->get('/profile', function () {
+    return view('profile');
 });
-
-
-
 
 /**
  * Administration routes.
