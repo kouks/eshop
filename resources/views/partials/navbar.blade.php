@@ -12,30 +12,25 @@
             </button>
         </div>
 
-
-<section class="level is-right">
-     <div id="navbarExampleTransparentExample" class="navbar-menu">
-    <div class="navbar-start">
-      <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link" href="/documentation/overview/start/">
-          Account
-        </a>
-        <div class="navbar-dropdown is-boxed">
-        <a class="navbar-item" href="/login">
-            my account
-          </a>
-          <a class="navbar-item" href="/cart">
-            my cart
-          </a>
-          <a class="navbar-item" href="https://bulma.io/documentation/modifiers/syntax/">
-            about us
-          </a>
-
+        <div class="navbar-menu" id="menu">
+            <div class="navbar-end">
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link" href="/users">
+                        Account
+                    </a>
+                    <div class="navbar-dropdown is-boxed">
+                    <a class="navbar-item" href="/users">
+                        Profile
+                    </a>
+                    <a class="navbar-item" href="/users">
+                        Cart
+                    </a>
+                    <hr class="navbar-divider">
+                    <a class="navbar-item is-static" href="#">
+                        Logout
+                    </a>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-</section>
-
-
-
 </nav>
