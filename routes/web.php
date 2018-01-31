@@ -40,6 +40,15 @@ route()->get('/shoes', function () {
     return view('products.categories.shoes');
 });
 
+/**
+ * profiles routes.
+ */
+route()->get('/users', function () {
+    return view('users.index');
+});
+
+
+
 
 /**
  * Administration routes.

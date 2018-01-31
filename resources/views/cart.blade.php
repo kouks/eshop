@@ -2,5 +2,10 @@
 
 @section('content')
 @include('partials.tabs', ['active' => false])
-cart
+
+
 @stop
+
+
+
+
