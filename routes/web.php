@@ -13,7 +13,7 @@ route()->get('/shop', function () {
 });
 
 route()->get('/cart', function () {
-    return view('cart');
+    return view('cart.cart');
 });
 
 route()->get('/contact', function () {
