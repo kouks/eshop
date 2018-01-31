@@ -15,19 +15,19 @@
         <div class="navbar-menu" id="menu">
             <div class="navbar-end">
                 <div class="navbar-item has-dropdown is-hoverable">
-                    <a class="navbar-link" href="/users">
+                    <a class="navbar-link" href="/profile">
                         Account
                     </a>
 
                     <div class="navbar-dropdown is-boxed">
-                        <a class="navbar-item" href="/users">
+                        <a class="navbar-item" href="/profile">
                             Profile
                         </a>
-                        <a class="navbar-item" href="/users">
+                        <a class="navbar-item" href="/cart">
                             Cart
                         </a>
                         <hr class="navbar-divider">
-                        <a class="navbar-item is-static" href="#">
+                        <a class="navbar-item is-static" href="/logout">
                             Logout
                         </a>
                     </div>
