@@ -36,10 +36,6 @@ route()->get('/kids', function () {
     return view('products.categories.kids');
 });
 
-route()->get('/shoes', function () {
-    return view('products.categories.shoes');
-});
-
 /**
  * Profile routes.
  */
