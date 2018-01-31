@@ -4,41 +4,26 @@
 @include('partials.tabs', ['active' => false])
 
 <header class="hero is-primary is-large is-banner">
+    <div class="hero-body">
+        <div class="container">
+            <div class="columns">
+                <div class="banner-content">
+                    <h1 class="title is-main has-color-primary">h&amp;p</h1>
+                    <h2 class="subtitle is-3">The online store.</h2>
 
-        <section class=" hero is-fullheight">
-
-            <div class="hero-body">
-                <div class="container-fluid">
-                    <div class="columns">
-
-                         <div class="banner-content">
-                        <h1 class="title is-main has-color-primary">h&amp;p</h1>
-                        <h2 class="subtitle is-3">The online store.</h2>
-
-                        <form class="global-search" action="/products/search" method="GET">
+                    <form class="global-search" action="/products/search" method="GET">
                         <input
-                          class="global-search-input"
-                          type="text"
-                          name="query"
-                          placeholder="Type anything..."
-                     ></input>
-                          <button class="global-search-button" type="submit">Go!</button>
-                             </form>
-                         </div>
-                    </div>
-
+                            class="global-search-input"
+                            type="text"
+                            name="query"
+                            placeholder="Type anything..."
+                        ></input>
+                        <button class="global-search-button" type="submit">Go!</button>
+                    </form>
                 </div>
-              </div>
-          </section>
-
-          <link rel="stylesheet" type="text/css" href="button.js">
-                         <div class="banner-content">
-                            <div class="level-item">
-
-                        <h1 class="title is-main is-level-right has-color-primary">h&amp;p</h1>
-
-                        </div>
-                    </div>
+            </div>
+        </div>
+    </div>
 </header>
 
 
