@@ -24,13 +24,13 @@
                     <div class="column is-9">
                         <a href="mailto:hb641@live.mdx.ac.uk">hb641@live.mdx.ac.uk</a><br>
                         (+44) 12345 12345<br>
-                        Frontend Enginner &middot; Website Designer
+                        Frontend Engineer &middot; Website Designer
 
                     </div>
                     <div class="column">
                         <a target="_blank" href="https://github.com/HusseinMccoin">GitHub</a>
                         &nbsp;&middot;&nbsp;
-                        <a target="_blank" href="#">Something you want</a>
+                        <a target="_blank" href="#">Anything</a>
                     </div>
                 </div>
             </div>
