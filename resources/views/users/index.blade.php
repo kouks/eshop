@@ -1,10 +1,18 @@
-@extends('layouts.users')
+@extends('layouts.app')
 
 @section('content')
 @include('partials.tabs', ['active' => false])
 
+        <main class="section">
+            <div class="container">
+                <div class="columns">
 
-<div class="box level-right">
+                    <div class="column is-2-tablet">
+                        @include('users.partials.sidebar')
+                    </div>
+
+                    <div class="columns is-9-tablet is-offset-1-tablet">
+                        <div class="box level-right">
 <table class="table is-fullwidth is-striped is-hoverable">
     <thead>
         <tr>
@@ -17,6 +25,15 @@
     </thead>
 </table>
 </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </main>
+
+
+
 
 
 @stop
