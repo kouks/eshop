@@ -1,6 +1,12 @@
 <?php
 
 /**
+ * Start the session
+ */
+
+session_start();
+
+/**
  * Require the composer autoload file.
  */
 

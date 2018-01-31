@@ -3,9 +3,12 @@
 namespace Lib\Http;
 
 use Lib\Routing\MatchedRoute;
+use Lib\Http\Concerns\ValidatesSelf;
 
 class Request extends \Symfony\Component\HttpFoundation\Request
 {
+    use ValidatesSelf;
+
     /**
      * The route that was matched with the request.
      *
@@ -53,5 +56,16 @@ class Request extends \Symfony\Component\HttpFoundation\Request
     public function param($key)
     {
         return $this->route->param($key);
+    }
+
+    /**
+     * Retrieves an input field from the request by a key.
+     *
+     * @param  string  $key
+     * @return string
+     */
+    public function input($key)
+    {
+        return $this->request->get($key);
     }
 }

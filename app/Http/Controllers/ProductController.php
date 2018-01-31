@@ -34,7 +34,13 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
+        dd($request->validate([
+            'name' => 'min:3|max:7'
+        ], [
+            'name.min' => 'Min 3',
+            'name.max' => 'Max 7',
+        ]));
+
         return redirect('/admin/products');
     }
 
