@@ -23,10 +23,9 @@
         <li>
             <a href="/users/payments">Payment</a>
         </li>
-
     </ul>
 
- <p class="menu-label">
+    <p class="menu-label">
         contact
     </p>
 
@@ -38,6 +37,4 @@
             <a href="/aboutus">About us</a>
         </li>
     </ul>
-
-
 </aside>
