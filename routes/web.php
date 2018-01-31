@@ -9,11 +9,11 @@ route()->get('/', function () {
 });
 
 route()->get('/shop', function () {
-    return view('products.shop');
+    return view('products.index');
 });
 
 route()->get('/cart', function () {
-    return view('cart.cart');
+    return view('cart');
 });
 
 route()->get('/contact', function () {
