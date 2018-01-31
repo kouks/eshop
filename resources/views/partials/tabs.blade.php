@@ -2,6 +2,7 @@
     <div class="hero-foot">
         <div class="container">
             <div class="tabs is-centered is-boxed is-medium">
+
                 <ul>
                     <li class="{{ $active !== 'men' ?: 'is-active '}}">
                         <a href="/men">Men</a>

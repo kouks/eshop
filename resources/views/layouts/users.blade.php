@@ -24,18 +24,6 @@
     <div id="app">
 
 
-        <main class="section">
-            <div class="container">
-                <div class="columns">
-
-                    <div class="column is-2-tablet">
-                        @include('users.partials.sidebar')
-                    </div>
-
-
-                </div>
-            </div>
-        </main>
 
     </div>
 

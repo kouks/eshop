@@ -13,18 +13,18 @@
 
                     <div class="columns is-9-tablet is-offset-1-tablet">
                         <div class="box level-right">
-<table class="table is-fullwidth is-striped is-hoverable">
-    <thead>
-        <tr>
-            <th>Order ID</th>
-            <th>order date</th>
-            <th>Price</th>
-            <th>Satus</th>
-            <th>invoice</th>
-        </tr>
-    </thead>
-</table>
-</div>
+                            <table class="table is-fullwidth is-striped is-hoverable">
+                                <thead>
+                                    <tr>
+                                        <th>Order ID</th>
+                                        <th>order date</th>
+                                        <th>Price</th>
+                                        <th>Satus</th>
+                                        <th>invoice</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
                     </div>
 
 
