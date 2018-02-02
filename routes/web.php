@@ -41,7 +41,7 @@ route()->get('/kids', function () {
  */
 
 route()->get('/profile', function () {
-    return view('profile');
+    return view('profile.index');
 });
 
 /**

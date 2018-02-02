@@ -26,6 +26,13 @@
     </ul>
 </aside>
 
+<hr>
+
 <div class="field">
-    <button class="button is-primary">Apply Filters</button>
-</div>78
+    <button class="button is-primary is-fullwidth">Apply Filters</button>
+</div>
+
+<div class="field">
+
+    <button class="button is-default is-fullwidth">Clear Filters</button>
+</div>
