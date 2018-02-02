@@ -24,9 +24,7 @@
             <li><a>Name: </a></li>
             <li><a>email: </a></li>
             <li><a></a></li>
-            <li><a>Payments</a></li>
-            <li><a>Transfers</a></li>
-            <li><a>Balance</a></li>
+            <li><a>setting</a></li>
           </ul>
         </aside>
 
