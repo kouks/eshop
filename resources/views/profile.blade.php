@@ -3,11 +3,9 @@
 @section('content')
 @include('partials.tabs', ['active' => false])
 
-<main class="section">
-    <div class="container">
-        User data, editable
-    </div>
-</main>
+
+
+
 
 <section class="section">
     <div class="container">
@@ -15,7 +13,27 @@
     </div>
 </section>
 
-<section class="section">
+
+  <section class="container">
+    <div class="columns">
+      <div class="column is-3">
+        <a class="button is-primary is-block is-alt is-large" href="#">Profile Info</a>
+
+        <aside class="menu">
+          <ul class="menu-list">
+            <li><a>Name: </a></li>
+            <li><a>email: </a></li>
+            <li><a></a></li>
+            <li><a>Payments</a></li>
+            <li><a>Transfers</a></li>
+            <li><a>Balance</a></li>
+          </ul>
+        </aside>
+
+      </div>
+
+      <div class="column is-9">
+
     <div class="container">
         <div class="box">
             <table class="table is-fullwidth is-striped is-hoverable">
@@ -41,7 +59,12 @@
             </table>
         </div>
     </div>
+</div>
+</div>
 </section>
+
+
+
 @stop
 
 
