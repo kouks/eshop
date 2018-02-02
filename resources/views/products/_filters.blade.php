@@ -33,6 +33,5 @@
 </div>
 
 <div class="field">
-
     <button class="button is-default is-fullwidth">Clear Filters</button>
 </div>

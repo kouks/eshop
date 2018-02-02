@@ -8,10 +8,6 @@ route()->get('/', function () {
     return view('index');
 });
 
-route()->get('/shop', function () {
-    return view('products.index');
-});
-
 route()->get('/cart', function () {
     return view('cart');
 });
@@ -24,16 +20,8 @@ route()->get('/contact', function () {
  * Shopping routes.
  */
 
-route()->get('/men', function () {
-    return view('products.categories.men');
-});
-
-route()->get('/women', function () {
-    return view('products.categories.women');
-});
-
-route()->get('/kids', function () {
-    return view('products.categories.kids');
+route()->get('/shop', function () {
+    return view('products.index');
 });
 
 /**
