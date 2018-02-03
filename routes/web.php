@@ -24,6 +24,10 @@ route()->get('/shop', function () {
     return view('products.index');
 });
 
+route()->get('/products/{product}', function () {
+    return view('products.show');
+});
+
 /**
  * Profile routes.
  */
