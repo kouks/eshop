@@ -54,3 +54,5 @@ route()->post('/admin/products', 'ProductController@store');
 
 route()->get('/login', 'AuthController@showLoginForm');
 route()->get('/register', 'AuthController@showRegistrationForm');
+route()->post('/register', 'AuthController@register');
+

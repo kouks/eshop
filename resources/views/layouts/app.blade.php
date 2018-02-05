@@ -16,6 +16,8 @@
 
         @yield('content')
 
+        @include('partials.messages')
+
         @include('partials.footer')
     </div>
 

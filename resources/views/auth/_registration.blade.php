@@ -2,7 +2,7 @@
 <p class="subtitle">Please sign up to create an account.</p>
 
 <div class="box">
-  <form>
+  <form action="/register" method="post">
     <div class="field">
         <input class="input is-large" type="text" placeholder="Your Full Name" name="name">
     </div>

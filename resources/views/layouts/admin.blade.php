@@ -20,6 +20,8 @@
             </div>
         </header>
 
+        @include('partials.messages')
+
         <main class="section">
             <div class="container">
                 <div class="columns">
