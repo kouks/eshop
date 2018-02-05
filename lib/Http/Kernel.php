@@ -12,6 +12,13 @@ use Lib\Contracts\Http\Kernel as KernelInterface;
 
 class Kernel implements KernelInterface
 {
+    const OK = 200;
+    const CREATED = 201;
+    const ACCEPTED = 202;
+    const NOT_FOUND = 404;
+    const UNAUTHORIZED = 401;
+    const UNPROCESSABLE_ENTITY = 422;
+
     /**
      * The request instance.
      *
