@@ -41,7 +41,7 @@ route()->get('/profile', function () {
  */
 
 route()->get('/admin', function () {
-    return view('admin.index');
+    return view('admin.index', ['users' => App\Models\User::all()]);
 });
 
 route()->get('/admin/products', 'ProductController@index');

@@ -30,13 +30,13 @@ class AuthController extends Controller
 
     public function register(Request $request)
     {
-        $passed = $request->validate([
-            'name' => 'min:3'
-        ]);
+        // $passed = $request->validate([
+        //     'name' => 'min:3'
+        // ]);
 
-        if (! $passed) {
-            return redirect('/login');
-        }
+        // if (! $passed) {
+        //     return redirect('/login');
+        // }
 
         User::create([
             'name' => $request->input('name'),
