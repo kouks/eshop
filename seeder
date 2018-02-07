@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\User;
+use App\Models\Product;
 /**
  * Booting the app.
  */
@@ -14,3 +16,4 @@ $app = new Lib\Core\Application(
  */
 
 factory(User::class, 5)->create();
+factory(Product::class, 20)->create();

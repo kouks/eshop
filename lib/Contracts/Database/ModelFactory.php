@@ -8,7 +8,7 @@ interface ModelFactory
      * Create a record on the database.
      *
      * @param  array  $data
-     * @return \MongoDB\Model\BSONDocument
+     * @return void
      */
     public function create($data = []);
 }

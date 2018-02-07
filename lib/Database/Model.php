@@ -12,20 +12,13 @@ abstract class Model
     protected $key = '_id';
 
     /**
-     * The current builder instance.
-     *
-     * @var \Lib\Database\Builder
-     */
-    protected $builder;
-
-    /**
      * Creates a new builder instance for the model.
      *
      * @return \Lib\Database\Builder
      */
     public function newQuery()
     {
-        return $this->builder = app('builder')->collection($this->getCollectionName());
+        return app('builder')->collection($this->getCollectionName());
     }
 
     /**

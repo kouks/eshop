@@ -21,7 +21,8 @@ route()->get('/contact', function () {
  */
 
 route()->get('/shop', function () {
-    return view('products.index');
+    dd(App\Models\Product::all());
+    return view('products.index', ['products' => App\Models\Product::all()]);
 });
 
 route()->get('/products/{product}', function () {

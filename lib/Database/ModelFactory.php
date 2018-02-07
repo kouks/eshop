@@ -26,12 +26,14 @@ class ModelFactory implements ModelFactoryContract
      * Create a record on the database.
      *
      * @param  array  $data
-     * @return \MongoDB\Model\BSONDocument
+     * @return void
      */
     public function create($data = [])
     {
         $data = array_merge($this->factory, $data);
 
-        return $this->model::create($data);
+        for ($x = 0; $x < $this->count; $x++) {
+            $this->model::create($data);
+        }
     }
 }
