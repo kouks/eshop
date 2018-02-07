@@ -41,12 +41,12 @@ route()->get('/profile', function () {
  */
 
 route()->get('/admin', function () {
-    return view('admin.index', ['users' => App\Models\User::all()]);
+    return view('admin.index');
 });
 
-route()->get('/admin/products', 'ProductController@index');
-route()->get('/admin/products/create', 'ProductController@create');
-route()->post('/admin/products', 'ProductController@store');
+route()->get('/admin/products', 'Admin\\ProductController@index');
+route()->get('/admin/products/create', 'Admin\\ProductController@create');
+route()->post('/admin/products', 'Admin\\ProductController@store');
 
 /**
  * Auth routes.

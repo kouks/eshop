@@ -39,6 +39,6 @@ class RoutingServiceProvider extends Provider
     {
         require config('routing.routes_dir').'/web.php';
 
-        // require config('routing.routes_dir').'/api.php';
+        require config('routing.routes_dir').'/api.php';
     }
 }

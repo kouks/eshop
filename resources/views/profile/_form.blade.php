@@ -92,6 +92,6 @@
 
     <div class="field">
         <button type="submit" class="button is-primary">Save</button>
-        <a href="/profile" class="button is-default">Discard</a>
+        <a href="/profile" class="button is-text">Discard</a>
     </div>
 </form>
