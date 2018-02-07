@@ -1,0 +1,16 @@
+<?php
+
+/**
+ * Booting the app.
+ */
+
+require 'vendor/autoload.php';
+$app = new Lib\Core\Application(
+    realpath(__DIR__)
+);
+
+/**
+ * Seeders are defined here.
+ */
+
+factory(User::class, 5)->create();

@@ -1,5 +1,6 @@
 <?php
 
+use Lib\Database\ModelFactory;
 use Lib\Http\RedirectResponse;
 use Illuminate\Container\Container;
 use Lib\Http\Responses\TemplateResponse;
@@ -42,6 +43,20 @@ if (! function_exists('config')) {
     function config($path)
     {
         return app(Lib\Contracts\Support\Config::class)->read($path);
+    }
+}
+
+if (! function_exists('factory')) {
+    /**
+     * Runs the model factory for a provided model.
+     *
+     * @param  string  $model
+     * @param  int  $count
+     * @return mixed
+     */
+    function factory($model, $count = 1)
+    {
+        return new ModelFactory($model, $count);
     }
 }
 
