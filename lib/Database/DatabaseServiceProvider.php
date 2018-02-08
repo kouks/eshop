@@ -17,9 +17,5 @@ class DatabaseServiceProvider extends Provider
         $this->app->container->singleton(\Lib\Contracts\Database\Connection::class, function () {
             return new Connection(config('database.mongodb'));
         });
-
-        $this->app->container->bind('builder', function () {
-            return new Builder(app(\Lib\Contracts\Database\Connection::class));
-        });
     }
 }
