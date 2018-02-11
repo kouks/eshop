@@ -28,7 +28,7 @@ return [
 
     Product::class => function (Faker $faker) {
         return [
-            'name' => $faker->sentence(5),
+            'name' => $faker->sentence(2),
             'slug' => str_slug($faker->sentence(5)),
             'description' => $faker->paragraph(),
             'category' => ['Men', 'Women', 'Kids'][rand(0, 2)],

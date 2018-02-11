@@ -47,6 +47,7 @@ route()->get('/admin', function () {
 route()->get('/admin/products', 'Admin\\ProductController@index');
 route()->get('/admin/products/create', 'Admin\\ProductController@create');
 route()->post('/admin/products', 'Admin\\ProductController@store');
+route()->get('/admin/products/{product}/delete', 'Admin\\ProductController@destroy');
 
 /**
  * Auth routes.

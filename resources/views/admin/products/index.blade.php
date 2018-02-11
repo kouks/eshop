@@ -15,10 +15,9 @@
         </tr>
     </thead>
     <tbody>
-        @include('admin.products._product')
-        @include('admin.products._product')
-        @include('admin.products._product')
-        @include('admin.products._product')
+        @foreach ($products as $index => $product)
+            @include('admin.products._product')
+        @endforeach
     </tbody>
 </table>
 </div>

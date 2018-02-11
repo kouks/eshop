@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use Lib\Http\Request;
+use App\Models\Product;
 use Lib\Http\Controller;
 
 class ProductController extends Controller
@@ -14,7 +15,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('admin.products.index');
+        $products = Product::all();
+
+        return view('admin.products.index', compact('products'));
     }
 
     /**
@@ -30,16 +33,20 @@ class ProductController extends Controller
     /**
      * Store a newly created resource in storage.
      *
+     * @param  \Lib\Http\Request  $request
      * @return \Lib\Http\Response
      */
     public function store(Request $request)
     {
-        // $request->validate([
-        //     'name' => 'min:3|max:7'
-        // ], [
-        //     'name.min' => 'Min 3',
-        //     'name.max' => 'Max 7',
-        // ]);
+        Product::create([
+            'name' => $request->input('name'),
+            'slug' => str_slug($request->input('name')),
+            'description' => $request->input('description'),
+            'category' => $request->input('category'),
+            'stock' => $request->input('stock'),
+            'price' => $request->input('price'),
+            'image' => 'https://img.michaels.com/L6/3/IOGLO/919444523/229971821/10508507_2000px.jpg?fit=inside|220:220',
+        ]);
 
         return redirect('/admin/products');
     }
@@ -57,10 +64,15 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      *
+     * @param  \Lib\Http\Request  $request
      * @return \Lib\Http\Response
      */
-    public function destroy()
+    public function destroy(Request $request)
     {
-        //
+        Product::delete([
+            'slug' => $request->param('product'),
+        ]);
+
+        return redirect('/admin/products');
     }
 }
