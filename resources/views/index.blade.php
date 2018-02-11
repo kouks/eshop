@@ -35,30 +35,11 @@
 <main class="section">
     <div class="container">
         <div class="columns is-multiline">
-            <div class="column is-3-tablet">
-                @include('products._product')
-            </div>
-            <div class="column is-3-tablet">
-                @include('products._product')
-            </div>
-            <div class="column is-3-tablet">
-                @include('products._product')
-            </div>
-            <div class="column is-3-tablet">
-                @include('products._product')
-            </div>
-            <div class="column is-3-tablet">
-                @include('products._product')
-            </div>
-            <div class="column is-3-tablet">
-                @include('products._product')
-            </div>
-            <div class="column is-3-tablet">
-                @include('products._product')
-            </div>
-            <div class="column is-3-tablet">
-                @include('products._product')
-            </div>
+            @foreach ($products as $product)
+                <div class="column is-3-tablet">
+                    @include('products._product')
+                </div>
+            @endforeach
         </div>
     </div>
 </main>

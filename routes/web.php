@@ -5,7 +5,7 @@
  */
 
 route()->get('/', function () {
-    return view('index');
+    return view('index', ['products' => App\Models\Product::all()]);
 });
 
 route()->get('/cart', function () {
