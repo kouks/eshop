@@ -5,6 +5,13 @@ namespace Lib\Http\Concerns;
 trait ValidatesSelf
 {
     /**
+     * Boolean determining whether the request passed the validation.
+     *
+     * @var bool
+     */
+    public $passed = true;
+
+    /**
      * Validates the request, returning an array of error messages.
      *
      * @param  array  $restrictions
@@ -37,10 +44,17 @@ trait ValidatesSelf
         $errors = [];
 
         foreach (explode('|', $list) as $function) {
-            [$rule, $args] = explode(':', $function);
+            if (strpos(':', $function) > 0) {
+                [$rule, $args] = explode(':', $function);
+            } else {
+                $rule = $function;
+                $args = '';
+            }
 
             if (! $rules[$rule]($this->input($field), ...explode(',', $args))) {
                 $errors[] = $messages[$field.'.'.$rule];
+
+                $this->passed = false;
             }
         }
 

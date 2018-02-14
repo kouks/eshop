@@ -58,12 +58,12 @@ class Kernel implements KernelInterface
         app()->instance(Request::class, $request);
 
         try {
-            $content = $this->sendRequestThroughRouter();
+            $response = $this->sendRequestThroughRouter();
         } catch (Exception $e) {
-            $content = app(Handler::class)->render($e);
+            $response = app(Handler::class)->render($e);
         }
 
-        return $this->prepareResponse($content);
+        return $response->prepare($this->request);
     }
 
     /**
@@ -104,30 +104,5 @@ class Kernel implements KernelInterface
 
             return $action(...$args);
         };
-    }
-
-    /**
-     * Prepares the response from various data types returned by the actions.
-     *
-     * @param  mixed  $content
-     * @return \Lib\Http\Response
-     */
-    protected function prepareResponse($content)
-    {
-        if ($content instanceof RedirectResponse) {
-            return $content;
-        }
-
-        $response = new Response();
-
-        if (is_array($content)) {
-            $response->headers->set('Content-Type', 'application/json');
-            $response->setContent(json_encode($content));
-        } else {
-            $response->headers->set('Content-Type', 'text/html');
-            $response->setContent($content);
-        }
-
-        return $response->prepare($this->request);
     }
 }

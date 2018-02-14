@@ -14,4 +14,8 @@ return [
         return strlen($value) <= $max;
     },
 
+    'required' => function ($value) {
+        return ! empty($value);
+    },
+
 ];

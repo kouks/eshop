@@ -20,7 +20,7 @@ route()->get('/contact', function () {
  * Shopping routes.
  */
 
-route()->get('/shop', function () {
+route()->get('/shop', function (Lib\Http\Request $request) {
     return view('products.index', ['products' => App\Models\Product::all()]);
 });
 
@@ -54,6 +54,7 @@ route()->get('/admin/products/{product}/delete', 'Admin\\ProductController@destr
  */
 
 route()->get('/login', 'AuthController@showLoginForm');
+route()->post('/login', 'AuthController@login');
 route()->get('/register', 'AuthController@showRegistrationForm');
 route()->post('/register', 'AuthController@register');
 

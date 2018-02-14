@@ -61,12 +61,24 @@ abstract class Model
     }
 
     /**
-     * Performs a selection based on provided restrictions
+     * Performs a single selection based on provided restrictions
      *
      * @param  array  $restrictions
      * @return \MongoDB\Model\BSONDocument
      */
     public static function find($restrictions)
+    {
+        return (new static(app(\Lib\Contracts\Database\Connection::class)))
+            ->query()->findOne($restrictions);
+    }
+
+    /**
+     * Performs a selection based on provided restrictions
+     *
+     * @param  array  $restrictions
+     * @return \MongoDB\Model\BSONDocument
+     */
+    public static function where($restrictions)
     {
         return (new static(app(\Lib\Contracts\Database\Connection::class)))
             ->query()->find($restrictions);

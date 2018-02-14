@@ -1,5 +1,6 @@
 <?php
 
+use Lib\Http\Response;
 use Lib\Database\ModelFactory;
 use Lib\Http\RedirectResponse;
 use Illuminate\Container\Container;
@@ -33,6 +34,18 @@ if (! function_exists('base_path')) {
     }
 }
 
+if (! function_exists('cookie')) {
+    /**
+     * The cookie factory helper.
+     *
+     * @return \Lib\Contracts\Cookies\Factory
+     */
+    function cookie()
+    {
+        return app(Lib\Contracts\Cookies\Factory::class);
+    }
+}
+
 if (! function_exists('config')) {
     /**
      * The functions that reads the config files.
@@ -57,6 +70,23 @@ if (! function_exists('factory')) {
     function factory($model, $count = 1)
     {
         return new ModelFactory($model, $count);
+    }
+}
+
+if (! function_exists('json')) {
+    /**
+     * Json response helper.
+     *
+     * @param  array  $content
+     * @return \Lib\Http\Response
+     */
+    function json(array $content)
+    {
+        return new Response(
+            json_encode($content),
+            200,
+            ['Content-Type' => 'application/json']
+        );
     }
 }
 
@@ -85,16 +115,32 @@ if (! function_exists('route')) {
     }
 }
 
+if (! function_exists('session')) {
+    /**
+     * Session factory helper.
+     *
+     * @return \Lib\Contracts\Session\Factory
+     */
+    function session()
+    {
+        return app(\Lib\Contracts\Session\Factory::class);
+    }
+}
+
 if (! function_exists('view')) {
     /**
      * View rendering helper.
      *
      * @param  string  $view
      * @param  array  $attributes
-     * @return string
+     * @return \Lib\Http\Response
      */
     function view($view, array $attributes = [])
     {
-        return app(Lib\Contracts\Templating\Engine::class)->render($view, $attributes);
+        return new Response(
+            app(Lib\Contracts\Templating\Engine::class)->render($view, $attributes),
+            200,
+            ['Content-Type' => 'text/html']
+        );
     }
 }
