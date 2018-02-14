@@ -39,7 +39,7 @@ class Factory implements FactoryContract
      */
     public function get($name)
     {
-        return $_SESSION[$name];
+        return $_SESSION[$name] ?? '';
     }
 
     /**

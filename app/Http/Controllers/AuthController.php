@@ -56,7 +56,7 @@ class AuthController extends Controller
         ]);
 
         if (is_null($user)) {
-            session()->flash('message', ['error' => 'The credentials are incorrect.']);
+            session()->flash('messages', ['danger' => 'The credentials are incorrect.']);
 
             return redirect('/login');
         }

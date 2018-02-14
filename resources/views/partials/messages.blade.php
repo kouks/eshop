@@ -1,10 +1,9 @@
-@if (false)
+@if ($messages = session()->flashed('messages'))
     <section class="section">
-        <div class="notification is-danger">
-            <button class="delete"></button>
-            Primar lorem ipsum dolor sit amet, consectetur
-            adipiscing elit lorem ipsum dolor. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur. Sit amet,
-            consectetur adipiscing elit
-        </div>
+        @foreach ($messages as $type => $message)
+            <div class="notification is-{{ $type }}">
+                {{ $message }}
+            </div>
+        @endforeach
     </section>
 @endif

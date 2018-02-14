@@ -20,7 +20,7 @@ route()->get('/contact', function () {
  * Shopping routes.
  */
 
-route()->get('/shop', function (Lib\Http\Request $request) {
+route()->get('/shop', function () {
     return view('products.index', ['products' => App\Models\Product::all()]);
 });
 

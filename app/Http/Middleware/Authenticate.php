@@ -43,7 +43,7 @@ class Authenticate implements Middleware
      */
     protected function reject()
     {
-        session()->flash('message', ['error' => 'You need to be logged in to access this page.']);
+        session()->flash('messages', ['danger' => 'You need to be logged in to access this page.']);
 
         return redirect('/login');
     }
