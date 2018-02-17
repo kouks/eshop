@@ -18,4 +18,8 @@ return [
         return ! empty($request->input($field));
     },
 
+    'same' => function ($request, $field, $confirmation) {
+        return $request->input($field) === $request->input($confirmation);
+    },
+
 ];

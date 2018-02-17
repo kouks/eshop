@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Lib\Http\Request;
 use Lib\Http\Controller;
+use App\Http\Validators\LoginValidator;
+use App\Http\Validators\RegistrationValidator;
 
 class AuthController extends Controller
 {
@@ -29,24 +31,14 @@ class AuthController extends Controller
     }
 
     /**
-     * Requetss login with provided credentials.
+     * Requests login with provided credentials.
      *
      * @param  \Lib\Http\Request  $request
      * @return \Lib\Http\Response
      */
     public function login(Request $request)
     {
-        $errors = $request->validate([
-            'email' => 'required',
-            'password' => 'required',
-        ], [
-            'email.required' => 'The email field is required.',
-            'password.required' => 'The email field is required.',
-        ]);
-
-        if (! $request->passed) {
-            session()->flash('errors', $errors);
-
+        if (! $request->validate(new LoginValidator)) {
             return redirect('/login');
         }
 
@@ -64,15 +56,17 @@ class AuthController extends Controller
         return redirect('/shop')->withCookie(cookie()->bake('api_token', $user->api_token, 1440, false));
     }
 
+    /**
+     * Attemps to register a user with provided credentials.
+     *
+     * @param  \Lib\Http\Request  $request
+     * @return \Lib\Http\Response
+     */
     public function register(Request $request)
     {
-        // $passed = $request->validate([
-        //     'name' => 'min:3'
-        // ]);
-
-        // if (! $passed) {
-        //     return redirect('/login');
-        // }
+        if (! $request->validate(new RegistrationValidator)) {
+            return redirect('/register');
+        }
 
         User::create($user = [
             'name' => $request->input('name'),

@@ -2,6 +2,8 @@
 
 namespace Lib\Http\Concerns;
 
+use Lib\Http\Validator;
+
 trait ValidatesSelf
 {
     /**
@@ -12,22 +14,38 @@ trait ValidatesSelf
     public $passed = true;
 
     /**
-     * Validates the request, returning an array of error messages.
+     * The array of error messages.
      *
-     * @param  array  $restrictions
-     * @param  array  $messages
-     * @return array
+     * @var bool
      */
-    public function validate($restrictions, $messages)
-    {
-        $rules = $this->readRulesFile();
-        $errors = [];
+    public $errors = [];
 
-        foreach ($restrictions as $field => $list) {
-            $errors[$field] = $this->validateField($field, $list, $rules, $messages);
+    /**
+     * Validates the request.
+     *
+     * @param  array|\Lib\Http\Validator  $restrictions
+     * @param  array  $messages
+     * @return bool
+     */
+    public function validate($restrictions, $messages = null)
+    {
+        if ($restrictions instanceof Validator) {
+            $messages = $restrictions->messages();
+            $restrictions = $restrictions->rules();
         }
 
-        return $errors;
+        $rules = $this->readRulesFile();
+
+        foreach ($restrictions as $field => $list) {
+            $this->errors[$field] = $this->validateField($field, $list, $rules, $messages);
+        }
+
+        if (! $this->passed) {
+            session()->flash('errors', $this->errors);
+            session()->flash('old', $this->request->all());
+        }
+
+        return $this->passed;
     }
 
     /**

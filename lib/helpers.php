@@ -90,6 +90,19 @@ if (! function_exists('json')) {
     }
 }
 
+if (! function_exists('old')) {
+    /**
+     * The old request flashed in the session helper.
+     *
+     * @param  string  $input
+     * @return mixed
+     */
+    function old($input)
+    {
+        return session()->flashed('old') ? session()->flashed('old')[$input] : null;
+    }
+}
+
 if (! function_exists('redirect')) {
     /**
      * Redirect response helper.
