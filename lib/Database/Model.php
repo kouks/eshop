@@ -9,7 +9,7 @@ abstract class Model
      *
      * @var string
      */
-    protected $key = '_id';
+    public static $key = '_id';
 
     /**
      * The database driver.
@@ -45,43 +45,39 @@ abstract class Model
      */
     public static function create($data)
     {
-        return (new static(app(\Lib\Contracts\Database\Connection::class)))
-            ->query()->insertOne($data);
+        return static::query()->insertOne($data);
     }
 
     /**
      * Performs listing of all data in the collection.
      *
-     * @return \MongoDB\Model\BSONDocument
+     * @return \Illuminate\Support\Collection
      */
     public static function all()
     {
-        return (new static(app(\Lib\Contracts\Database\Connection::class)))
-            ->query()->find();
+        return static::hydrateMany(static::query()->find());
     }
 
     /**
      * Performs a single selection based on provided restrictions
      *
      * @param  array  $restrictions
-     * @return \MongoDB\Model\BSONDocument
+     * @return static
      */
     public static function find($restrictions)
     {
-        return (new static(app(\Lib\Contracts\Database\Connection::class)))
-            ->query()->findOne($restrictions);
+        return static::hydrate(static::query()->findOne($restrictions));
     }
 
     /**
      * Performs a selection based on provided restrictions
      *
      * @param  array  $restrictions
-     * @return \MongoDB\Model\BSONDocument
+     * @return \Illuminate\Support\Collection
      */
     public static function where($restrictions)
     {
-        return (new static(app(\Lib\Contracts\Database\Connection::class)))
-            ->query()->find($restrictions);
+        return static::hydrateMany(static::query()->find($restrictions));
     }
 
     /**
@@ -93,8 +89,7 @@ abstract class Model
      */
     public static function update($restrictions, $data)
     {
-        return (new static(app(\Lib\Contracts\Database\Connection::class)))
-            ->query()->updateMany($restrictions, ['$set' => $data]);
+        return static::query()->updateMany($restrictions, ['$set' => $data]);
     }
 
     /**
@@ -105,8 +100,7 @@ abstract class Model
      */
     public static function delete($restrictions)
     {
-        return (new static(app(\Lib\Contracts\Database\Connection::class)))
-            ->query()->deleteMany($restrictions);
+        return static::query()->deleteMany($restrictions);
     }
 
     /**
@@ -124,9 +118,11 @@ abstract class Model
      *
      * @return \MongoDB\Collection
      */
-    protected function query()
+    protected static function query()
     {
-        return $this->driver->{$this->database}->{$this->getCollectionName()};
+        $instance = new static(app(\Lib\Contracts\Database\Connection::class));
+
+        return $instance->driver->{$instance->database}->{$instance->getCollectionName()};
     }
 
     /**
@@ -137,5 +133,40 @@ abstract class Model
     protected function getCollectionName()
     {
         return str_plural(strtolower(substr(strrchr(get_class($this), "\\"), 1)));
+    }
+
+    /**
+     * Hydrates a model with provided data.
+     *
+     * @param  array  $data
+     * @return static
+     */
+    protected static function hydrate($data)
+    {
+        if (count($data) === 0) {
+            return null;
+        }
+
+        $instance = new static(app(\Lib\Contracts\Database\Connection::class));
+
+        foreach ($data as $field => $value) {
+            $instance->$field = $value;
+        }
+
+        return $instance;
+    }
+
+
+    /**
+     * Hydrates a collection of models with provided data.
+     *
+     * @param  array  $data
+     * @return \Illuminate\Support\Collection
+     */
+    protected static function hydrateMany($data)
+    {
+        return collect($data)->map(function ($item) {
+            return static::hydrate($item);
+        });
     }
 }

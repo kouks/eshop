@@ -61,7 +61,7 @@ class AuthController extends Controller
             return redirect('/login');
         }
 
-        return redirect('/shop')->withCookie(cookie()->bake('api_token', $user['api_token'], 1440, false));
+        return redirect('/shop')->withCookie(cookie()->bake('api_token', $user->api_token, 1440, false));
     }
 
     public function register(Request $request)

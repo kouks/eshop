@@ -51,7 +51,7 @@ trait ValidatesSelf
                 $args = '';
             }
 
-            if (! $rules[$rule]($this->input($field), ...explode(',', $args))) {
+            if (! $rules[$rule]($this, $field, ...explode(',', $args))) {
                 $errors[] = $messages[$field.'.'.$rule];
 
                 $this->passed = false;

@@ -2,6 +2,7 @@
 
 namespace Lib\Routing;
 
+use Lib\Http\Request;
 use ReflectionMethod;
 use ReflectionFunction;
 
@@ -10,17 +11,21 @@ class BindingResolver
     /**
      * Resolves implicit bindings for a provided route.
      *
+     * @param  \Lib\Http\Request  $request
      * @param  array|\Closure  $action
      * @return array
      */
-    public function resolve($action)
+    public function resolve(Request $request, $action)
     {
         $reflection = $this->getReflection($action);
         $args = [];
 
         foreach ($reflection->getParameters() as $param) {
-            if (/*$param instanceof Mode*/ false) {
-                //
+            if (strpos((string) $param->getType(), 'App\\Models\\') !== false) {
+                $model = (string) $param->getType();
+                $args[] = $model::find([$model::$key => $request->param($param->getName())]);
+
+                continue;
             }
 
             $args[] = app((string) $param->getType());

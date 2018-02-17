@@ -100,7 +100,7 @@ class Kernel implements KernelInterface
         return function (Request $request) {
             $action = $request->route()->parsedAction();
 
-            $args = $this->bindingResolver->resolve($action);
+            $args = $this->bindingResolver->resolve($request, $action);
 
             return $action(...$args);
         };

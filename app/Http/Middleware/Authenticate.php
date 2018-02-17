@@ -31,7 +31,7 @@ class Authenticate implements Middleware
             return $this->reject();
         }
 
-        $request->user((array) $user);
+        $request->user($user);
 
         return $next($request);
     }

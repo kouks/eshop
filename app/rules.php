@@ -6,16 +6,16 @@ return [
      * Validaton rules are defined here.
      */
 
-    'min' => function ($value, $min) {
-        return strlen($value) >= $min;
+    'min' => function ($request, $field, $min) {
+        return strlen($request->input($field)) >= $min;
     },
 
-    'max' => function ($value, $max) {
-        return strlen($value) <= $max;
+    'max' => function ($request, $field, $max) {
+        return strlen($request->input($field)) <= $max;
     },
 
-    'required' => function ($value) {
-        return ! empty($value);
+    'required' => function ($request, $field) {
+        return ! empty($request->input($field));
     },
 
 ];
