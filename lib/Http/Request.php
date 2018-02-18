@@ -88,6 +88,17 @@ class Request extends \Symfony\Component\HttpFoundation\Request
     }
 
     /**
+     * Retrieves a file based on a provided key.
+     *
+     * @param  string  $key
+     * @return \Lib\Http\File
+     */
+    public function file($key)
+    {
+        return new File($this->files->get($key));
+    }
+
+    /**
      * Sets or gets the user that is logged in.
      *
      * @param  mixed  $user

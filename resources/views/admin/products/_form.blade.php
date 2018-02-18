@@ -62,7 +62,7 @@
         <label class="label">Product Image</label>
         <div class="file has-name is-fullwidth">
             <label class="file-label">
-                <input class="file-input" type="file" name="resume" id="product-image">
+                <input class="file-input" type="file" name="image" id="product-image">
                 <span class="file-cta">
                     <span class="file-icon">
                         <i class="fa fa-upload"></i>

@@ -45,7 +45,7 @@ class ProductController extends Controller
             'category' => $request->input('category'),
             'stock' => $request->input('stock'),
             'price' => $request->input('price'),
-            'image' => 'https://img.michaels.com/L6/3/IOGLO/919444523/229971821/10508507_2000px.jpg?fit=inside|220:220',
+            'image' => $request->file('image')->store()
         ]);
 
         return redirect('/admin/products');
