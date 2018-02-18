@@ -38,6 +38,13 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        // $request->validate([
+        //     'image' => 'image',
+        // ], [
+        //     'image.image' => 'The product image has to be an image.',
+        //     'image.required' => 'The product image is required.',
+        // ]);
+
         Product::create([
             'name' => $request->input('name'),
             'slug' => str_slug($request->input('name')),

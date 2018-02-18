@@ -22,4 +22,13 @@ return [
         return $request->input($field) === $request->input($confirmation);
     },
 
+    'image' => function ($request, $field) {
+        $file = $request->files->get($field);
+
+        return $file && in_array(
+            strtolower($file->guessClientExtension()),
+            ['png', 'jpg', 'jpeg']
+        );
+    },
+
 ];
