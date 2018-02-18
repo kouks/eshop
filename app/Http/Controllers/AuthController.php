@@ -72,6 +72,10 @@ class AuthController extends Controller
             'name' => $request->input('name'),
             'email' => $request->input('email'),
             'password' => md5($request->input('password')),
+            'address' => ['street' => '', 'city' => '', 'country' => '', 'postcode' => ''],
+            'phone' => '',
+            'shadow' => false,
+            'admin' => false,
             'api_token' => str_random(60),
         ]);
 
