@@ -9,23 +9,120 @@ abstract class Model
      *
      * @var string
      */
-    protected $key = '_id';
+    public static $key = '_id';
 
     /**
-     * The current builder instance.
+     * The database driver.
      *
-     * @var \Lib\Database\Builder
+     * @var \MongoDB\Client
      */
-    protected $builder;
+    protected $driver;
 
     /**
-     * Creates a new builder instance for the model.
+     * The database name.
      *
-     * @return \Lib\Database\Builder
+     * @var string
      */
-    public function newQuery()
+    protected $database;
+
+    /**
+     * Class constructor.
+     *
+     * @param  \Lib\Contracts\Database\Connection  $connection
+     * @return void
+     */
+    public function __construct(Connection $connection)
     {
-        return $this->builder = app('builder')->collection($this->getCollectionName());
+        $this->driver = $connection->getDriver();
+        $this->database = $connection->getDatabase();
+    }
+
+    /**
+     * Performs insertion of data.
+     *
+     * @param  array  $data
+     * @return \MongoDB\Model\BSONDocument
+     */
+    public static function create($data)
+    {
+        return static::query()->insertOne($data);
+    }
+
+    /**
+     * Performs listing of all data in the collection.
+     *
+     * @return \Illuminate\Support\Collection
+     */
+    public static function all()
+    {
+        return static::hydrateMany(static::query()->find());
+    }
+
+    /**
+     * Performs a single selection based on provided restrictions
+     *
+     * @param  array  $restrictions
+     * @return static
+     */
+    public static function find($restrictions)
+    {
+        return static::hydrate(static::query()->findOne($restrictions));
+    }
+
+    /**
+     * Performs a selection based on provided restrictions
+     *
+     * @param  array  $restrictions
+     * @return \Illuminate\Support\Collection
+     */
+    public static function where($restrictions)
+    {
+        return static::hydrateMany(static::query()->find($restrictions));
+    }
+
+    /**
+     * Performs an update query on restriceted elements.
+     *
+     * @param  array  $restrictions
+     * @param  array  $data
+     * @return \MongoDB\Model\BSONDocument
+     */
+    public static function update($restrictions, $data)
+    {
+        return static::query()->updateMany($restrictions, ['$set' => $data]);
+    }
+
+    /**
+     * Performs a delete query based on provided restrictions.
+     *
+     * @param  array  $restrictions
+     * @return \MongoDB\Model\BSONDocument
+     */
+    public static function delete($restrictions)
+    {
+        return static::query()->deleteMany($restrictions);
+    }
+
+    /**
+     * Truncates the given collection.
+     *
+     * @return \MongoDB\Model\BSONDocument
+     */
+    public static function truncate()
+    {
+        return static::delete([]);
+    }
+
+    /**
+     * Returns the database and the collection to perform the query on.
+     *
+     * @return \MongoDB\Collection
+     */
+    protected static function query()
+    {
+        $instance = new static(app(\Lib\Contracts\Database\Connection::class));
+
+        return $instance->driver->{$instance->database}->{$instance->getCollectionName()};
     }
 
     /**
@@ -39,14 +136,37 @@ abstract class Model
     }
 
     /**
-     * Magic function that redirects all method calls to the builder instance.
+     * Hydrates a model with provided data.
      *
-     * @param  string  $method
-     * @param  array  $args
-     * @return \MongoDB\Model\BSONDocument
+     * @param  array  $data
+     * @return static
      */
-    public static function __callStatic($method, $args)
+    protected static function hydrate($data)
     {
-        return (new static)->newQuery()->$method(...$args);
+        if (count($data) === 0) {
+            return null;
+        }
+
+        $instance = new static(app(\Lib\Contracts\Database\Connection::class));
+
+        foreach ($data as $field => $value) {
+            $instance->$field = $value;
+        }
+
+        return $instance;
+    }
+
+
+    /**
+     * Hydrates a collection of models with provided data.
+     *
+     * @param  array  $data
+     * @return \Illuminate\Support\Collection
+     */
+    protected static function hydrateMany($data)
+    {
+        return collect($data)->map(function ($item) {
+            return static::hydrate($item);
+        });
     }
 }

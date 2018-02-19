@@ -27,13 +27,10 @@
                     </thead>
 
                     <tbody>
-                        <tr>
-                            <td>123</td>
-                            <td>yesterday</td>
-                            <td>Shirt</td>
-                            <td>Shipped</td>
-                            <td><a href="#">PDF</a></td>
-                        </tr>
+                        @include('profile._order')
+                        @include('profile._order')
+                        @include('profile._order')
+                        @include('profile._order')
                     </tbody>
                 </table>
             </div>

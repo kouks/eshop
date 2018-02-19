@@ -29,6 +29,7 @@
         "illuminate/container": "^5.5",
         "symfony/dotenv": "^3.0",
         "filp/whoops": "^2.1",
-        "mongodb/mongodb": "^1.2"
+        "mongodb/mongodb": "^1.2",
+        "fzaninotto/faker": "^1.7"
     }
 }

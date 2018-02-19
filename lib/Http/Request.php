@@ -17,6 +17,13 @@ class Request extends \Symfony\Component\HttpFoundation\Request
     protected $route;
 
     /**
+     * The user that is associated with the request
+     *
+     * @var array
+     */
+    protected $user;
+
+    /**
      * Captures the request from global variables.
      *
      * @return static
@@ -67,5 +74,42 @@ class Request extends \Symfony\Component\HttpFoundation\Request
     public function input($key)
     {
         return $this->request->get($key);
+    }
+
+    /**
+     * Retrieves a cookie based on a provided key.
+     *
+     * @param  string  $key
+     * @return string
+     */
+    public function cookie($key)
+    {
+        return $this->cookies->get($key);
+    }
+
+    /**
+     * Retrieves a file based on a provided key.
+     *
+     * @param  string  $key
+     * @return \Lib\Http\File
+     */
+    public function file($key)
+    {
+        return new File($this->files->get($key));
+    }
+
+    /**
+     * Sets or gets the user that is logged in.
+     *
+     * @param  mixed  $user
+     * @return mixed
+     */
+    public function user($user = null)
+    {
+        if (is_null($user)) {
+            return $this->user;
+        }
+
+        $this->user = $user;
     }
 }

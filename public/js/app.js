@@ -95,7 +95,7 @@ module.exports = g;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(2);
-module.exports = __webpack_require__(11);
+module.exports = __webpack_require__(12);
 
 
 /***/ }),
@@ -109,30 +109,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
+/**
+ * Bulma JS utils.
+ */
+__webpack_require__(11);
+
 /* harmony default export */ __webpack_exports__["default"] = (new __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */]({
   el: '#app',
   components: { Hello: __WEBPACK_IMPORTED_MODULE_1__components_Hello__["a" /* default */] }
 }));
-
-// Navbar Burger
-document.addEventListener('DOMContentLoaded', function () {
-  document.getElementById('menu-burger').addEventListener('click', function () {
-    // Get the target from the "data-target" attribute
-    let $target = document.getElementById(this.dataset.target);
-
-    // Toggle the class on both the "navbar-burger" and the "navbar-menu"
-    this.classList.toggle('is-active');
-    $target.classList.toggle('is-active');
-  });
-});
-
-// File input name
-var file = document.getElementById('product-image');
-file.onchange = function () {
-  if (file.files.length > 0) {
-    document.getElementById('product-image-name').innerHTML = file.files[0].name;
-  }
-};
 
 /***/ }),
 /* 3 */
@@ -11306,6 +11291,31 @@ if (false) {
 
 /***/ }),
 /* 11 */
+/***/ (function(module, exports) {
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  let $burger = document.getElementById('menu-burger');
+  if ($burger) {
+    $burger.addEventListener('click', function () {
+      let $target = document.getElementById(this.dataset.target);
+      this.classList.toggle('is-active');
+      $target.classList.toggle('is-active');
+    });
+  }
+
+  let $fileInput = document.getElementById('product-image');
+  if ($fileInput) {
+    $fileInput.onchange = function () {
+      if ($fileInput.files.length > 0) {
+        document.getElementById('product-image-name').innerHTML = $fileInput.files[0].name;
+      }
+    };
+  }
+});
+
+/***/ }),
+/* 12 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

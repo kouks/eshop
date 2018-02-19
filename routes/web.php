@@ -5,7 +5,7 @@
  */
 
 route()->get('/', function () {
-    return view('index');
+    return view('index', ['products' => App\Models\Product::all()]);
 });
 
 route()->get('/cart', function () {
@@ -21,7 +21,7 @@ route()->get('/contact', function () {
  */
 
 route()->get('/shop', function () {
-    return view('products.index');
+    return view('products.index', ['products' => App\Models\Product::all()]);
 });
 
 route()->get('/products/{product}', function () {
@@ -41,18 +41,20 @@ route()->get('/profile', function () {
  */
 
 route()->get('/admin', function () {
-    return view('admin.index', ['users' => App\Models\User::all()]);
+    return view('admin.index');
 });
 
-route()->get('/admin/products', 'ProductController@index');
-route()->get('/admin/products/create', 'ProductController@create');
-route()->post('/admin/products', 'ProductController@store');
+route()->get('/admin/products', 'Admin\\ProductController@index');
+route()->get('/admin/products/create', 'Admin\\ProductController@create');
+route()->post('/admin/products', 'Admin\\ProductController@store');
+route()->get('/admin/products/{product}/delete', 'Admin\\ProductController@destroy');
 
 /**
  * Auth routes.
  */
 
 route()->get('/login', 'AuthController@showLoginForm');
+route()->post('/login', 'AuthController@login');
 route()->get('/register', 'AuthController@showRegistrationForm');
 route()->post('/register', 'AuthController@register');
 

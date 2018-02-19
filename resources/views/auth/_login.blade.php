@@ -2,9 +2,9 @@
 <p class="subtitle">Please login to proceed.</p>
 
 <div class="box">
-    <form>
+    <form action="/login" method="POST">
         <div class="field">
-            <input class="input is-large" type="email" placeholder="Your Email" name="email">
+            <input class="input is-large" type="email" placeholder="Your Email" name="email" value="{{ old('email') }}">
         </div>
 
         <div class="field">
