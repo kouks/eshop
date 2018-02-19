@@ -22,6 +22,10 @@ return [
         return $request->input($field) === $request->input($confirmation);
     },
 
+    'email' => function ($request, $field) {
+        return true;
+    },
+
     'image' => function ($request, $field) {
         $file = $request->files->get($field);
 

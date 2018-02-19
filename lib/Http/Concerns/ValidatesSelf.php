@@ -62,7 +62,7 @@ trait ValidatesSelf
         $errors = [];
 
         foreach (explode('|', $list) as $function) {
-            if (strpos(':', $function) > 0) {
+            if (strpos($function, ':') > 0) {
                 [$rule, $args] = explode(':', $function);
             } else {
                 $rule = $function;
