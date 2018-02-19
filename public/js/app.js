@@ -11262,9 +11262,33 @@ module.exports = function normalizeComponent (
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["a"] = ({
-  //
+  data() {
+    return {
+      products: [{
+        name: 'asd',
+        price: 1
+      }, {
+        name: 'asdasdads',
+        price: 3
+      }, {
+        name: 'adasd',
+        price: 64
+      }]
+    };
+  }
 });
 
 /***/ }),
@@ -11276,7 +11300,27 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("p", [_vm._v("Hello World")])
+  return _c("div", { staticClass: "container" }, [
+    _c(
+      "div",
+      { staticClass: "columns" },
+      _vm._l(_vm.products, function(product) {
+        return _c("div", { staticClass: "column is-4" }, [
+          _c("a", { staticClass: "product", attrs: { href: "/products" } }, [
+            _c("div", { staticClass: "product-head" }, [
+              _c("h3", { staticClass: "title is-4" }, [
+                _vm._v(_vm._s(product.name))
+              ]),
+              _vm._v(" "),
+              _c("p", { staticClass: "subtitle is-6" }, [
+                _vm._v(_vm._s(product.price))
+              ])
+            ])
+          ])
+        ])
+      })
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
