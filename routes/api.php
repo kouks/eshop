@@ -11,3 +11,7 @@ route()->get('/api/products', function (Request $request) {
         'category' => (int) $request->query('category'),
     ])->toArray());
 });
+
+route()->get('/api/products/{product}', function (App\Models\Product $product) {
+    return json((array) $product);
+});

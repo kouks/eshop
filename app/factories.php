@@ -35,6 +35,7 @@ return [
             'price' => rand(1000, 10000) / 100,
             'stock' => rand(0, 10),
             'image' => $faker->imageUrl(300, 300),
+            'views' => rand(0, 200),
         ];
     },
 ];

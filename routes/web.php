@@ -21,11 +21,13 @@ route()->get('/contact', function () {
  */
 
 route()->get('/shop', function () {
-    return view('products.index', ['products' => App\Models\Product::all()]);
+    return view('products.index');
 });
 
-route()->get('/products/{product}', function () {
-    return view('products.show');
+route()->get('/products/{product}', function (Lib\Http\Request $request) {
+    return view('products.show', [
+        'slug' => $request->param('product')
+    ]);
 });
 
 /**

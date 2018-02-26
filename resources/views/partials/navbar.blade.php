@@ -2,7 +2,7 @@
     <div class="container">
         <div class="navbar-brand">
             <a class="navbar-item" href="/">
-                <h1>H&p</h1>
+                <h1>h&amp;p</h1>
             </a>
 
             <span class="navbar-burger" data-target="menu" id="menu-burger">
