@@ -2,7 +2,7 @@
     <div class="container">
         <div class="navbar-brand">
             <a class="navbar-item" href="/">
-                <img src="/img/logo.png" alt="h&p Logo" width="120px">
+                <h1>H&p</h1>
             </a>
 
             <span class="navbar-burger" data-target="menu" id="menu-burger">
