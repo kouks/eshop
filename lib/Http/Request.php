@@ -77,6 +77,17 @@ class Request extends \Symfony\Component\HttpFoundation\Request
     }
 
     /**
+     * Retrieves a query field from the request by a key.
+     *
+     * @param  string  $key
+     * @return string
+     */
+    public function query($key)
+    {
+        return $this->query->get($key);
+    }
+
+    /**
      * Retrieves a cookie based on a provided key.
      *
      * @param  string  $key

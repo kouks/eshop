@@ -31,7 +31,7 @@
         <h1 class="title is-3">Trending Products</h1>
     </div>
 </section>
-test
+
 <main class="section">
     <div class="container">
         <div class="columns is-multiline">

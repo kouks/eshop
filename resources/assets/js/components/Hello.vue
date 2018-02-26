@@ -1,11 +1,4 @@
 <template>
-<<<<<<< HEAD
-
-
-
-
-
-=======
   <div class="container">
     <div class="columns">
       <div v-for="product in products" class="column is-4">
@@ -18,24 +11,7 @@
       </div>
     </div>
   </div>
->>>>>>> 187e43b6aa5f927b863a2af4e8a36332afcd1b47
 </template>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <script>
 export default {
