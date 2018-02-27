@@ -40,14 +40,14 @@
 
         <div class="columns">
           <div class="column is-offset-3-tablet is-6-tablet">
-            <form action="/products/asd/cart" method="POST">
+            <form>
               <div class="field has-addons">
                 <div class="control is-expanded">
-                  <input class="input is-large" type="text" placeholder="Quantity">
+                  <input class="input is-large" type="number" v-model="quantity">
                 </div>
 
                 <div class="control">
-                  <button type="submit" class="button is-primary is-large">Add to Cart</button>
+                  <button type="button" class="button is-primary is-large" @click="addToCart()">Add to Cart</button>
                 </div>
               </div>
             </form>
@@ -59,12 +59,15 @@
 </template>
 
 <script>
+import Cart from '@/core/Cart'
+
 export default {
   props: ['slug'],
 
   data () {
     return {
-      product: {}
+      product: {},
+      quantity: 1
     }
   },
 
@@ -88,6 +91,10 @@ export default {
     loadProduct () {
       this.$http.get(`/api/products/${this.slug}`)
         .then(({data}) => { this.product = data })
+    },
+
+    addToCart () {
+      Cart.add(this.product, this.quantity)
     }
   }
 }

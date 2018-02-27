@@ -5,6 +5,7 @@ export default {
    *
    * @param {Object} item - The item object.
    * @param {number} quantity - The quantity to be added.
+   * @returns {void}
    */
   add (item, quantity) {
     this._write(this._read().concat([
@@ -16,6 +17,7 @@ export default {
    * Removes an item from the cart.
    *
    * @param {string} slug - The slug to remove by.
+   * @returns {void}
    */
   remove (slug) {
     this._write(this._read().filter(data => data.item.slug !== slug))
@@ -26,6 +28,7 @@ export default {
    *
    * @param {string} slug - The slug to increment.
    * @param {number} count - The amount to increment by.
+   * @returns {void}
    */
   increment (slug, count) {
     let cart = this._read()
@@ -46,6 +49,7 @@ export default {
    *
    * @param {string} slug - The slug to decrement.
    * @param {number} count - The amount to decrement by.
+   * @returns {void}
    */
   decrement (slug, count) {
     this.increment(slug, -count)
@@ -63,12 +67,12 @@ export default {
       : JSON.parse(window.localStorage.cart)
   },
 
-
   /**
    * Rewrites the items in cart.
    *
    * @private
    * @param {Array} cart - The cart data to be written.
+   * @returns {void}
    */
   _write (cart) {
     window.localStorage.cart = JSON.stringify(cart)

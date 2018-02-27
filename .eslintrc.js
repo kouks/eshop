@@ -6,6 +6,7 @@ module.exports = {
     'html'
   ],
   'rules': {
-    'arrow-parens': 0
+    'valid-jsdoc': 'error',
+    'require-jsdoc': 'error'
   }
 }
