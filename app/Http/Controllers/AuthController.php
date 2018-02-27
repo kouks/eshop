@@ -81,4 +81,14 @@ class AuthController extends Controller
 
         return redirect('/shop')->withCookie(cookie()->bake('api_token', $user['api_token'], 1440, false));
     }
+
+    /**
+     * Logs the user out.
+     *
+     * @return \Lib\Http\Response
+     */
+    public function logout()
+    {
+        return redirect('/')->withCookie(cookie()->forget('api_token'));
+    }
 }

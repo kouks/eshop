@@ -21,6 +21,18 @@ if (! function_exists('app')) {
     }
 }
 
+if (! function_exists('auth')) {
+    /**
+     * The authentication helper.
+     *
+     * @return \Lib\Contracts\Auth\Guard
+     */
+    function auth()
+    {
+        return app(\Lib\Contracts\Auth\Guard::class);
+    }
+}
+
 if (! function_exists('base_path')) {
     /**
      * The base path.

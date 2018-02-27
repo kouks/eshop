@@ -67,9 +67,9 @@ class Application
         );
 
         // As well as the Whoops library for handling exceptions.
-        // $whoops = new Whoops\Run;
-        // $whoops->pushHandler(new Whoops\Handler\PrettyPageHandler);
-        // $whoops->register();
+        $whoops = new Whoops\Run;
+        $whoops->pushHandler(new Whoops\Handler\PrettyPageHandler);
+        $whoops->register();
     }
     /**
      * Registers the basic application bindings.

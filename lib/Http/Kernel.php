@@ -57,6 +57,9 @@ class Kernel implements KernelInterface
         // We bind the request instance to the application container.
         app()->instance(Request::class, $request);
 
+        // We attempt to login a user based on an API token.
+        app(\Lib\Contracts\Auth\Guard::class)->attempt($request);
+
         try {
             $response = $this->sendRequestThroughRouter();
         } catch (Exception $e) {

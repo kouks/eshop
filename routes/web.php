@@ -59,6 +59,7 @@ route()->get('/login', 'AuthController@showLoginForm');
 route()->post('/login', 'AuthController@login');
 route()->get('/register', 'AuthController@showRegistrationForm');
 route()->post('/register', 'AuthController@register');
+route()->get('/logout', 'AuthController@logout');
 
 // testing zone
 route()->get('/test', function () {

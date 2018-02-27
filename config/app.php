@@ -12,6 +12,7 @@ return [
         /**
          * Framework service providers.
          */
+        Lib\Auth\AuthServiceProvider::class,
         Lib\Cookies\CookieServiceProvider::class,
         Lib\Database\DatabaseServiceProvider::class,
         Lib\Routing\RoutingServiceProvider::class,
