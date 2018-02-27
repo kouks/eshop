@@ -3,6 +3,12 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 import Shop from '@/components/Products/Index'
 import Product from '@/components/Products/Show'
+import ProductList from '@/components/Products/List'
+// import Cart from '@/core/Cart'
+
+// Cart.add({ slug: 'asd' }, 1)
+// Cart.increment('asd', -1)
+// Cart.remove('asd')
 
 /**
  * Bulma JS utils.
@@ -20,6 +26,7 @@ export default new Vue({
   el: '#app',
   components: {
     Shop,
-    Product
+    Product,
+    ProductList
   }
 })

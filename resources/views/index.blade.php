@@ -35,11 +35,7 @@
 <main class="section">
     <div class="container">
         <div class="columns is-multiline">
-            @foreach ($products as $product)
-                <div class="column is-3-tablet">
-                    @include('products._product')
-                </div>
-            @endforeach
+            <product-list />
         </div>
     </div>
 </main>

@@ -3,7 +3,9 @@
     <div class="columns">
       <product-filters />
 
-      <product-list />
+      <div class="column is-offset-1-tablet is-8-tablet">
+        <product-list />
+      </div>
     </div>
   </div>
 </template>
