@@ -1,7 +1,7 @@
 
 export default {
   /**
-   * The array of cart action listeners.
+   * The array of cart event listeners.
    *
    * @var {Array}
    */
@@ -58,6 +58,16 @@ export default {
   remove (slug) {
     this._write(this._read().filter(data => data.item.slug !== slug))
     this._dispatch('removed', { slug })
+  },
+
+  /**
+   * Removes all items from the cart.
+   *
+   * @returns {void}
+   */
+  clear () {
+    this._write([])
+    this._dispatch('cleared')
   },
 
   /**

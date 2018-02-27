@@ -33,7 +33,9 @@ export default {
 
     listenForCartChanges () {
       Cart.on('added', this.loadProducts)
+      Cart.on('cleared', this.loadProducts)
       Cart.on('removed', this.loadProducts)
+      Cart.on('incremented', this.loadProducts)
     }
   }
 }
