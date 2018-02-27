@@ -44,7 +44,7 @@ route()->get('/profile', function () {
 
 route()->get('/admin', function () {
     return view('admin.index');
-})->middleware('admin');
+});
 
 route()->get('/admin/products', 'Admin\\ProductController@index');
 route()->get('/admin/products/create', 'Admin\\ProductController@create');
