@@ -90,7 +90,7 @@ export default {
   methods: {
     loadProduct () {
       this.$http.get(`/api/products/${this.slug}`)
-        .then(({data}) => { this.product = data })
+        .then(({ data }) => { this.product = data })
     },
 
     addToCart () {

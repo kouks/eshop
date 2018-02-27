@@ -39,9 +39,7 @@
                     </a>
                 @endif
 
-                <a class="navbar-item" href="/cart">
-                    <span class="tag is-light"><i class="fa fa-shopping-cart"></i>&nbsp;(0)</span>
-                </a>
+                <cart-icon />
             </div>
         </div>
     </div>

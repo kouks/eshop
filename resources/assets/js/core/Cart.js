@@ -1,6 +1,34 @@
 
 export default {
   /**
+   * The array of cart action listeners.
+   *
+   * @var {Array}
+   */
+  listeners: [],
+
+  /**
+   * Returns all items in the cart.
+   *
+   * @returns {Array} - The array of items.
+   */
+  all () {
+    this._dispatch('listed')
+
+    return this._read()
+  },
+
+  /**
+   * Checks whether the product is present in the cart
+   *
+   * @param {string} slug - The slug to check by.
+   * @returns {bool} - Whether the item is present.
+   */
+  has (slug) {
+    return this._read().filter(data => data.item.slug === slug).length > 0
+  },
+
+  /**
    * Adds an item to the cart.
    *
    * @param {Object} item - The item object.
@@ -8,9 +36,17 @@ export default {
    * @returns {void}
    */
   add (item, quantity) {
+    quantity = parseInt(quantity)
+
+    if (this.has(item.slug)) {
+      return this.increment(item.slug, quantity)
+    }
+
     this._write(this._read().concat([
       { item, quantity }
     ]))
+
+    this._dispatch('added', { item, quantity })
   },
 
   /**
@@ -21,6 +57,7 @@ export default {
    */
   remove (slug) {
     this._write(this._read().filter(data => data.item.slug !== slug))
+    this._dispatch('removed', { slug })
   },
 
   /**
@@ -32,6 +69,7 @@ export default {
    */
   increment (slug, count) {
     let cart = this._read()
+    count = parseInt(count)
 
     for (let key in cart) {
       if (cart[key].item.slug === slug) {
@@ -42,6 +80,7 @@ export default {
     }
 
     this._write(cart)
+    this._dispatch('incremented', { slug, count })
   },
 
   /**
@@ -56,10 +95,21 @@ export default {
   },
 
   /**
+   * Adds an event listener to an event.
+   *
+   * @param {string} event - The event to be assigned to.
+   * @param {Closure} callback - The callback.
+   * @returns {void}
+   */
+  on (event, callback) {
+    this.listeners.push({ event, callback })
+  },
+
+  /**
    * Reads the json from the local storate.
    *
    * @private
-   * @returns {Array} - The items in cart.
+   * @returns {Array} - The array of items.
    */
   _read () {
     return window.localStorage.cart === undefined
@@ -76,5 +126,21 @@ export default {
    */
   _write (cart) {
     window.localStorage.cart = JSON.stringify(cart)
+  },
+
+  /**
+   * Dispatches an event on the cart object.
+   *
+   * @private
+   * @param {string} event - The event to be dispatched.
+   * @param {Object} payload - The payload to be sent.
+   * @returns {void}
+   */
+  _dispatch (event, payload) {
+    for (let listener of this.listeners) {
+      if (event === listener.event) {
+        listener.callback(payload)
+      }
+    }
   }
 }
