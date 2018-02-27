@@ -79,7 +79,6 @@ export default {
    */
   increment (slug, count) {
     let cart = this._read()
-    count = parseInt(count)
 
     for (let key in cart) {
       if (cart[key].item.slug === slug) {

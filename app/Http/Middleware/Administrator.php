@@ -8,7 +8,7 @@ use Lib\Http\Request;
 use Lib\Http\Response;
 use Lib\Contracts\Http\Middleware;
 
-class Authenticate implements Middleware
+class Administrator implements Middleware
 {
     /**
      * Handle the request.
@@ -19,8 +19,8 @@ class Authenticate implements Middleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if (! auth()->logged()) {
-            session()->flash('messages', ['danger' => 'You need to be logged in to access this page.']);
+        if (! auth()->logged() || ! auth()->user()->admin) {
+            session()->flash('messages', ['danger' => 'You are not permitted to access this page.']);
 
             return redirect('/login');
         }
