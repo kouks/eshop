@@ -85,6 +85,10 @@ export default {
       if (cart[key].item.slug === slug) {
         cart[key].quantity += count
 
+        if (cart[key].quantity === 0) {
+          return this.remove(cart[key].item.slug)
+        }
+
         break
       }
     }

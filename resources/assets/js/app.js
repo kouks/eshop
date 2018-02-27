@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+import Cart from '@/components/Cart/Index'
 import CartIcon from '@/components/Cart/Icon'
 import Shop from '@/components/Products/Index'
 import Product from '@/components/Products/Show'
@@ -24,6 +25,7 @@ export default new Vue({
     Shop,
     Product,
     ProductList,
+    Cart,
     CartIcon
   }
 })

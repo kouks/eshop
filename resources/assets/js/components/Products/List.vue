@@ -1,6 +1,6 @@
 <template>
   <div class="columns is-multiline">
-    <product :product="product" :key="product.id" v-for="product in products" />
+    <product :product="product" :key="product._id.$oid" v-for="product in products" />
   </div>
 </template>
 
