@@ -13203,6 +13203,10 @@ if (false) {(function () {
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -13398,28 +13402,32 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "table",
-    { staticClass: "table is-striped is-hoverable is-fullwidth" },
-    [
-      _vm._m(0),
-      _vm._v(" "),
-      _c(
-        "tbody",
-        _vm._l(_vm.products, function(product) {
-          return _c("product", {
-            key: product.item._id.$oid,
-            attrs: { product: product.item, quantity: product.quantity },
-            on: {
-              update: function($event) {
-                _vm.loadProducts()
-              }
-            }
-          })
-        })
-      )
-    ]
-  )
+  return _c("div", [
+    _vm.products.length > 0
+      ? _c(
+          "table",
+          { staticClass: "table is-striped is-hoverable is-fullwidth" },
+          [
+            _vm._m(0),
+            _vm._v(" "),
+            _c(
+              "tbody",
+              _vm._l(_vm.products, function(product) {
+                return _c("product", {
+                  key: product.item._id.$oid,
+                  attrs: { product: product.item, quantity: product.quantity },
+                  on: {
+                    update: function($event) {
+                      _vm.loadProducts()
+                    }
+                  }
+                })
+              })
+            )
+          ]
+        )
+      : _c("strong", [_vm._v("The Cart is Empty")])
+  ])
 }
 var staticRenderFns = [
   function() {
@@ -13687,25 +13695,45 @@ if (false) {(function () {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__core_Cart__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__List__ = __webpack_require__(39);
 //
 //
 //
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
+  components: { CartList: __WEBPACK_IMPORTED_MODULE_1__List__["a" /* default */] },
   data() {
     return {
-      products: []
+      products: [],
+      popoverState: 'hidden'
     };
   },
 
   computed: {
     countOfProducts() {
       return this.products.reduce((carry, item) => carry + parseInt(item.quantity), 0);
+    },
+
+    popoverStyles() {
+      return {
+        hidden: { opacity: 0, transform: 'translateY(-5px)', 'z-index': -1 },
+        shown: { opacity: 1, transform: 'translateY(0)', 'z-index': 1000 }
+      }[this.popoverState];
     }
   },
 
@@ -13721,10 +13749,18 @@ if (false) {(function () {
     },
 
     listenForCartChanges() {
-      __WEBPACK_IMPORTED_MODULE_0__core_Cart__["a" /* default */].on('added', this.loadProducts);
+      __WEBPACK_IMPORTED_MODULE_0__core_Cart__["a" /* default */].on('added', () => {
+        this.loadProducts();
+        this.popoverState = 'shown';
+      });
+
       __WEBPACK_IMPORTED_MODULE_0__core_Cart__["a" /* default */].on('cleared', this.loadProducts);
       __WEBPACK_IMPORTED_MODULE_0__core_Cart__["a" /* default */].on('removed', this.loadProducts);
       __WEBPACK_IMPORTED_MODULE_0__core_Cart__["a" /* default */].on('incremented', this.loadProducts);
+    },
+
+    togglePopover() {
+      this.popoverState = this.popoverState === 'hidden' ? 'shown' : 'hidden';
     }
   }
 });
@@ -13738,14 +13774,57 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("a", { staticClass: "navbar-item", attrs: { href: "/cart" } }, [
-    _c("span", { staticClass: "tag is-light" }, [
-      _c("i", { staticClass: "fa fa-shopping-cart" }),
-      _vm._v(" (" + _vm._s(_vm.countOfProducts) + ")")
-    ])
+  return _c("div", { staticClass: "navbar-item is-hoverable has-dropdown" }, [
+    _c(
+      "a",
+      {
+        staticClass: "navbar-link",
+        on: {
+          click: function($event) {
+            _vm.togglePopover()
+          }
+        }
+      },
+      [
+        _c("span", { staticClass: "tag is-light" }, [
+          _c("i", { staticClass: "fa fa-shopping-cart" }),
+          _vm._v(" (" + _vm._s(_vm.countOfProducts) + ")")
+        ])
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "cart-popover", style: _vm.popoverStyles },
+      [
+        _c("span", {
+          staticClass: "delete is-pulled-right",
+          on: {
+            click: function($event) {
+              _vm.togglePopover()
+            }
+          }
+        }),
+        _vm._v(" "),
+        _vm._m(0),
+        _vm._v(" "),
+        _c("cart-list", { attrs: { products: _vm.products } })
+      ],
+      1
+    )
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", [
+      _vm._v("Cart · "),
+      _c("a", { attrs: { href: "/cart" } }, [_vm._v("Go to Cart")])
+    ])
+  }
+]
 render._withStripped = true
 var esExports = { render: render, staticRenderFns: staticRenderFns }
 /* harmony default export */ __webpack_exports__["a"] = (esExports);
