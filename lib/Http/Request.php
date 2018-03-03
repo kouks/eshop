@@ -73,7 +73,21 @@ class Request extends \Symfony\Component\HttpFoundation\Request
      */
     public function input($key)
     {
-        return $this->request->get($key);
+        if ($value = $this->request->get($key)) {
+            return $value;
+        }
+
+        $data = json_decode($this->getContent(), true);
+
+        foreach (explode('.', $key) as $part) {
+            if (! isset($data[$part])) {
+                return null;
+            }
+
+            $data = $data[$part];
+        }
+
+        return $data;
     }
 
     /**
@@ -96,6 +110,17 @@ class Request extends \Symfony\Component\HttpFoundation\Request
     public function cookie($key)
     {
         return $this->cookies->get($key);
+    }
+
+    /**
+     * Retrieves a header based on a provided key.
+     *
+     * @param  string  $key
+     * @return string
+     */
+    public function header($key)
+    {
+        return $this->headers->get($key);
     }
 
     /**

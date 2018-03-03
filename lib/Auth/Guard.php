@@ -25,7 +25,10 @@ class Guard implements GuardContract
     {
         $request = app(\Lib\Http\Request::class);
 
-        if (! $api_token = $request->cookie('api_token')) {
+        if (
+            ! ($api_token = $request->cookie('api_token')) &&
+            ! ($api_token = $request->header('Authorization'))
+        ) {
             return;
         }
 

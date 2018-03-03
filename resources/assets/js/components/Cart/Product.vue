@@ -6,7 +6,7 @@
       </figure>
     </td>
     <th><a :href="`/products/${product.slug}`">{{ product.name }}</a></th>
-    <td>&pound;{{ product.price }}</td>
+    <td>&pound;{{ product.price }}&times;{{ quantity }}</td>
     <td>
       <div class="tags has-addons">
         <span class="tag is-danger" @click="Cart.remove(product.slug)"><i class="fa fa-times"></i></span>

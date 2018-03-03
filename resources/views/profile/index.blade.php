@@ -7,9 +7,7 @@
     <div class="container">
         <div class="columns">
             <div class="column is-4-tablet">
-                <h1 class="title is-3">Account Settings</h1>
-
-                @include('profile._form')
+                <profile />
             </div>
 
             <div class="column is-offset-2-tablet is-6-tablet">

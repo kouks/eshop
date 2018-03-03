@@ -16,7 +16,7 @@
       </tfoot>
     </table>
 
-    <button class="button is-primary is-large is-fullwidth">Checkout</button>
+    <a href="/checkout" class="button is-primary is-large is-fullwidth">Checkout</a>
   </div>
 </template>
 

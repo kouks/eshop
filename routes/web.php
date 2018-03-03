@@ -16,6 +16,10 @@ route()->get('/contact', function () {
     return view('contact');
 });
 
+route()->get('/checkout', function () {
+    return view('checkout');
+});
+
 /**
  * Shopping routes.
  */
