@@ -1,38 +1,25 @@
 <?php
 
 /**
- * All the web routes are defined here.
+ * Base web routes.
  */
 
 route()->get('/', function () {
-    return view('index', ['products' => App\Models\Product::all()]);
-});
-
-route()->get('/cart', function () {
-    return view('cart');
+    return view('index');
 });
 
 route()->get('/contact', function () {
     return view('contact');
 });
 
-route()->get('/checkout', function () {
-    return view('checkout');
-});
-
 /**
  * Shopping routes.
  */
 
-route()->get('/shop', function () {
-    return view('products.index');
-});
-
-route()->get('/products/{product}', function (Lib\Http\Request $request) {
-    return view('products.show', [
-        'slug' => $request->param('product')
-    ]);
-});
+route()->get('/shop', 'ShopController@index');
+route()->get('/products/{product}', 'ShopController@show');
+route()->get('/cart', 'ShopController@cart');
+route()->get('/checkout', 'ShopController@checkout');
 
 /**
  * Profile routes.
@@ -40,7 +27,7 @@ route()->get('/products/{product}', function (Lib\Http\Request $request) {
 
 route()->get('/profile', function () {
     return view('profile.index');
-});
+})->middleware('auth');
 
 /**
  * Administration routes.
