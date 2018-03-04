@@ -85,11 +85,12 @@ abstract class Model
      *
      * @param  int  $page
      * @param  int  $perPage
+     * @param  array  $restrictions
      * @return \Illuminate\Support\Collection
      */
-    public static function paginated($page, $perPage)
+    public static function paginated($page = 1, $perPage = 10, array $restrictions = [])
     {
-        return static::hydrateMany(static::query()->find([], [
+        return static::hydrateMany(static::query()->find($restrictions, [
             'limit' => $perPage,
             'skip' => ($page - 1) * $perPage,
         ]));

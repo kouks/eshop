@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use Lib\Http\Request;
 use App\Models\Product;
+use MongoDB\BSON\Regex;
 use Lib\Http\Controller;
 
 class ProductController extends Controller
@@ -23,7 +24,13 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        $products = Product::paginated($request->query('page'), $this->perPage);
+        $filters = [];
+
+        if ($query = $request->query('query')) {
+            $filters['name'] = new Regex($query, 'i');
+        }
+
+        $products = Product::paginated($request->query('page') ?? 1, $this->perPage, $filters);
 
         return json($products);
     }

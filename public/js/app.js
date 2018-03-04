@@ -15792,9 +15792,53 @@ if (false) {(function () {
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["a"] = ({
-  //
+  data() {
+    return {
+      lastTyped: 0,
+      loading: false,
+      query: '',
+      results: [],
+      timeout: null
+    };
+  },
+
+  watch: {
+    query() {
+      clearTimeout(this.timeout);
+
+      if (this.query.length < 1) {
+        this.results = [];
+        this.loading = false;
+
+        return;
+      }
+
+      this.loading = true;
+      this.timeout = setTimeout(this.loadProducts, 750);
+    }
+  },
+
+  methods: {
+    loadProducts() {
+      this.$http.get(`/api/products?query=${this.query}`).then(({ data }) => {
+        this.loading = false;
+        this.results = data;
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -15806,46 +15850,88 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "banner-content" }, [
-      _c("h1", { staticClass: "title is-main has-color-primary" }, [
-        _vm._v("h&p")
-      ]),
-      _vm._v(" "),
-      _c("h2", { staticClass: "subtitle is-3" }, [_vm._v("The online store.")]),
-      _vm._v(" "),
-      _c(
-        "form",
-        {
-          staticClass: "global-search",
-          attrs: { action: "/products/search", method: "GET" }
-        },
-        [
-          _c("input", {
-            staticClass: "global-search-input",
-            attrs: {
-              type: "text",
-              name: "query",
-              placeholder: "Type anything..."
+  return _c("div", { staticClass: "banner-content" }, [
+    _c("h1", { staticClass: "title is-main has-color-primary" }, [
+      _vm._v("h&p")
+    ]),
+    _vm._v(" "),
+    _c("h2", { staticClass: "subtitle is-3" }, [_vm._v("The online store.")]),
+    _vm._v(" "),
+    _c(
+      "form",
+      {
+        staticClass: "global-search",
+        attrs: { action: "/products/search", method: "GET" }
+      },
+      [
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.query,
+              expression: "query"
             }
-          }),
-          _vm._v(" "),
-          _c(
-            "button",
-            { staticClass: "global-search-button", attrs: { type: "submit" } },
-            [_vm._v("Go!")]
-          )
-        ]
-      )
-    ])
-  }
-]
+          ],
+          staticClass: "global-search-input",
+          attrs: {
+            type: "text",
+            name: "query",
+            placeholder: "Type anything...",
+            autocomplete: "off"
+          },
+          domProps: { value: _vm.query },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.query = $event.target.value
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "global-search-spinner" }, [
+          _c("i", {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: _vm.loading,
+                expression: "loading"
+              }
+            ],
+            staticClass: "fa fa-spinner fa-spin"
+          })
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "global-search-results" },
+          _vm._l(_vm.results, function(product) {
+            return _c("a", { attrs: { href: "/products/" + product.slug } }, [
+              _c("span", {
+                domProps: {
+                  innerHTML: _vm._s(
+                    product.name.replace(
+                      _vm.query,
+                      "<strong>" + _vm.query + "</strong>"
+                    )
+                  )
+                }
+              }),
+              _vm._v(" "),
+              _c("span", { staticClass: "is-pulled-right has-text-primary" }, [
+                _vm._v("£" + _vm._s(product.price))
+              ])
+            ])
+          })
+        )
+      ]
+    )
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 var esExports = { render: render, staticRenderFns: staticRenderFns }
 /* harmony default export */ __webpack_exports__["a"] = (esExports);
