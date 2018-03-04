@@ -30,7 +30,7 @@ class Route
     /**
      * The action to be performed upon matching the route. Accepts:
      *  1) A closure function
-     *  2) A controller method reference
+     *  2) A controller method reference.
      *
      * @var string
      */

@@ -2,8 +2,8 @@
 
 namespace Lib\Database;
 
-use Lib\Contracts\Database\ModelFactory as ModelFactoryContract;
 use Faker;
+use Lib\Contracts\Database\ModelFactory as ModelFactoryContract;
 
 class ModelFactory implements ModelFactoryContract
 {

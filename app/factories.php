@@ -5,7 +5,7 @@ use App\Models\Product;
 use Faker\Generator as Faker;
 
 return [
-    /**
+    /*
      * Model factories are defined here.
      */
 
@@ -32,7 +32,7 @@ return [
             'slug' => str_slug($faker->sentence(5)),
             'description' => $faker->paragraph(),
             'category' => rand(1, 3),
-            'price' => ((rand(10, 100) * 100) + 99)/ 100,
+            'price' => ((rand(10, 100) * 100) + 99) / 100,
             'stock' => rand(0, 10),
             'image' => $faker->imageUrl(300, 300),
             'views' => rand(0, 200),

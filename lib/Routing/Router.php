@@ -3,7 +3,6 @@
 namespace Lib\Routing;
 
 use Lib\Http\Request;
-use Lib\Routing\MatchedRoute;
 use Lib\Routing\Concerns\CreatesRoutes;
 use Lib\Exceptions\Routing\RouteNotFoundException;
 

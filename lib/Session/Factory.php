@@ -43,7 +43,7 @@ class Factory implements FactoryContract
     }
 
     /**
-     * Retrieves a flashed value from the session
+     * Retrieves a flashed value from the session.
      *
      * @param  string  $name
      * @return mixed

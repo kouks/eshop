@@ -3,7 +3,6 @@
 namespace Lib\Database;
 
 use Lib\Core\Provider;
-use Lib\Database\Connection;
 
 class DatabaseServiceProvider extends Provider
 {

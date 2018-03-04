@@ -32,7 +32,7 @@ class UserController extends Controller
                 'street' => $request->input('address.street'),
                 'city' => $request->input('address.city'),
                 'country' => $request->input('address.country'),
-                'postcode' => $request->input('address.postcode')
+                'postcode' => $request->input('address.postcode'),
             ],
             'phone' => $request->input('phone'),
         ]);

@@ -4,7 +4,6 @@ use Lib\Http\Response;
 use Lib\Database\ModelFactory;
 use Lib\Http\RedirectResponse;
 use Illuminate\Container\Container;
-use Lib\Http\Responses\TemplateResponse;
 
 if (! function_exists('app')) {
     /**

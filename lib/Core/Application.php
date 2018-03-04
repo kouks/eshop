@@ -40,7 +40,6 @@ class Application
         $this->registerExceptionHandlers();
         $this->registerBaseBindings();
         $this->registerProviders();
-
     }
 
     /**
@@ -71,6 +70,7 @@ class Application
         $whoops->pushHandler(new Whoops\Handler\PrettyPageHandler);
         $whoops->register();
     }
+
     /**
      * Registers the basic application bindings.
      *
