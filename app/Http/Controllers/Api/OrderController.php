@@ -20,7 +20,7 @@ class OrderController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Lib\Http\Request
+     * @param  \Lib\Http\Request  $request
      * @return \Lib\Http\Response
      */
     public function store(Request $request)

@@ -38,13 +38,6 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        // $request->validate([
-        //     'image' => 'image',
-        // ], [
-        //     'image.image' => 'The product image has to be an image.',
-        //     'image.required' => 'The product image is required.',
-        // ]);
-
         Product::create([
             'name' => $request->input('name'),
             'slug' => str_slug($request->input('name')),
@@ -59,13 +52,34 @@ class ProductController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Show a form for editing a resource.
      *
+     * @param  \App\Models\Product  $product
      * @return \Lib\Http\Response
      */
-    public function update()
+    public function edit(Product $product)
     {
-        //
+        return view('admin.products.edit', compact('product'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \App\Models\Product  $product
+     * @param  \Lib\Http\Request  $request
+     * @return \Lib\Http\Response
+     */
+    public function update(Product $product, Request $request)
+    {
+        Product::update(['slug' => $product->slug], [
+            'name' => $request->input('name'),
+            'description' => $request->input('description'),
+            'category' => $request->input('category'),
+            'stock' => $request->input('stock'),
+            'price' => $request->input('price'),
+        ]);
+
+        return redirect('/admin/products');
     }
 
     /**

@@ -25,12 +25,19 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         $filters = [];
+        $page = $request->query('page') ?? 1;
+
+        $options = [
+            'limit' => $this->perPage,
+            'skip' => ($page - 1) * $this->perPage,
+            'sort' => ['views' => -1],
+        ];
 
         if ($query = $request->query('query')) {
             $filters['name'] = new Regex($query, 'i');
         }
 
-        $products = Product::paginated($request->query('page') ?? 1, $this->perPage, $filters);
+        $products = Product::where($filters, $options);
 
         return json($products);
     }

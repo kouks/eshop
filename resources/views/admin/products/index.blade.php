@@ -10,7 +10,6 @@
             <th>Category</th>
             <th>Price</th>
             <th>Stock</th>
-            <th>Image</th>
             <th colspan="2">Manage</th>
         </tr>
     </thead>

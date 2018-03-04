@@ -51,7 +51,7 @@ class SampleController extends Controller
     /**
      * Show a form for editing a resource.
      *
-     * @param  \Lib\Http\Request
+     * @param  \Lib\Http\Request  $request
      * @return \Lib\Http\Response
      */
     public function edit(Request $request)
@@ -62,7 +62,7 @@ class SampleController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Lib\Http\Request
+     * @param  \Lib\Http\Request  $request
      * @return \Lib\Http\Response
      */
     public function update(Request $request)

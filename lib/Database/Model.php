@@ -73,27 +73,12 @@ abstract class Model
      * Performs a selection based on provided restrictions.
      *
      * @param  array  $restrictions
+     * @param  array  $options
      * @return \Illuminate\Support\Collection
      */
-    public static function where($restrictions)
+    public static function where(array $restrictions = [], array $options = [])
     {
-        return static::hydrateMany(static::query()->find($restrictions));
-    }
-
-    /**
-     * Performs listing of paginated data in the collection.
-     *
-     * @param  int  $page
-     * @param  int  $perPage
-     * @param  array  $restrictions
-     * @return \Illuminate\Support\Collection
-     */
-    public static function paginated($page = 1, $perPage = 10, array $restrictions = [])
-    {
-        return static::hydrateMany(static::query()->find($restrictions, [
-            'limit' => $perPage,
-            'skip' => ($page - 1) * $perPage,
-        ]));
+        return static::hydrateMany(static::query()->find($restrictions, $options));
     }
 
     /**

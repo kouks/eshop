@@ -18,7 +18,6 @@
         "Lib\\": "lib/"
       },
       "files": [
-        "app/helpers.php",
         "lib/helpers.php"
       ]
     },

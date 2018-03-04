@@ -5,7 +5,6 @@
 
 ## TODO
 
-- Global Search
 - Filters
 - Tracking
 - Tests (HTML, CSS?, JS (Selenium), PHP) - 5 tests each

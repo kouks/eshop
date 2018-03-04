@@ -30,7 +30,7 @@ class OrderController extends Controller
     /**
      * Show a form for editing a resource.
      *
-     * @param  \Lib\Http\Request
+     * @param  \Lib\Http\Request  $request
      * @return \Lib\Http\Response
      */
     public function edit(Request $request)
@@ -41,7 +41,7 @@ class OrderController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Lib\Http\Request
+     * @param  \Lib\Http\Request  $request
      * @return \Lib\Http\Response
      */
     public function update(Request $request)
@@ -52,7 +52,7 @@ class OrderController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \Lib\Http\Request
+     * @param  \Lib\Http\Request  $request
      * @return \Lib\Http\Response
      */
     public function destroy(Request $request)

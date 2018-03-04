@@ -3,7 +3,7 @@
 @section('content')
 <div class="columns">
     <div class="column is-8-tablet">
-        @include('admin.products._form')
+        @include('admin.products._form', ['mode' => 'create'])
     </div>
 </div>
 @stop

@@ -1,17 +1,10 @@
 <tr>
     <th>{{ $index + 1 }}</th>
     <td>{{ $product->name }}</td>
-    <td>{{ $product->category }}</td>
+    <td>{{ ['Men', 'Women', 'Kids'][$product->category - 1] }}</td>
     <td>&pound;{{ $product->price }}</td>
-    <td>
-        <div class="tags has-addons">
-            <span class="tag is-primary"><i class="fa fa-minus"></i></span>
-            <span class="tag"><b>{{ $product->stock }}</b></span>
-            <span class="tag is-primary"><i class="fa fa-plus"></i></span>
-        </div>
-    </td>
-    <td><a href="#" class="has-text-link"><i class="fa fa-image"></i></a></td>
-    <td><a href="/admin/products/1/edit" class="has-text-link">Edit</a></td>
+    <td>{{ $product->stock }}</td>
+    <td><a href="/admin/products/{{ $product->slug }}/edit" class="has-text-link">Edit</a></td>
     <td>
         <a
             href="/admin/products/{{ $product->slug }}/delete"

@@ -39,6 +39,8 @@ route()->get('/admin', function () {
 route()->get('/admin/products', 'Admin\\ProductController@index')->middleware('admin');
 route()->get('/admin/products/create', 'Admin\\ProductController@create')->middleware('admin');
 route()->post('/admin/products', 'Admin\\ProductController@store')->middleware('admin');
+route()->get('/admin/products/{product}/edit', 'Admin\\ProductController@edit')->middleware('admin');
+route()->post('/admin/products/{product}', 'Admin\\ProductController@update')->middleware('admin');
 route()->get('/admin/products/{product}/delete', 'Admin\\ProductController@destroy')->middleware('admin');
 
 /*
