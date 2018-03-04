@@ -34,12 +34,12 @@ route()->get('/profile', function () {
 
 route()->get('/admin', function () {
     return view('admin.index');
-});
+})->middleware('admin');
 
-route()->get('/admin/products', 'Admin\\ProductController@index');
-route()->get('/admin/products/create', 'Admin\\ProductController@create');
-route()->post('/admin/products', 'Admin\\ProductController@store');
-route()->get('/admin/products/{product}/delete', 'Admin\\ProductController@destroy');
+route()->get('/admin/products', 'Admin\\ProductController@index')->middleware('admin');
+route()->get('/admin/products/create', 'Admin\\ProductController@create')->middleware('admin');
+route()->post('/admin/products', 'Admin\\ProductController@store')->middleware('admin');
+route()->get('/admin/products/{product}/delete', 'Admin\\ProductController@destroy')->middleware('admin');
 
 /*
  * Auth routes.

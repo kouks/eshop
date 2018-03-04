@@ -5,7 +5,6 @@
 
     <ul class="menu-list">
         <li><a href="/admin">Dashboard</a></li>
-        <li><a href="/admin/customers">Customers</a></li>
     </ul>
 
     <p class="menu-label">
