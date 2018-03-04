@@ -40,7 +40,7 @@ class ProductController extends Controller
     {
         Product::create([
             'name' => $request->input('name'),
-            'slug' => str_slug($request->input('name')),
+            'slug' => $this->generateSlug($request->input('name')),
             'description' => $request->input('description'),
             'category' => $request->input('category'),
             'stock' => $request->input('stock'),
@@ -95,5 +95,22 @@ class ProductController extends Controller
         ]);
 
         return redirect('/admin/products');
+    }
+
+    /**
+     * Generates an unique slug for given base.
+     *
+     * @param  string  $base
+     * @return string
+     */
+    public function generateSlug($base)
+    {
+        $temp = $base;
+
+        for ($i = 2; Product::find(['slug' => $temp]) !== null; $i++) {
+            $temp = $base.'-'.$i;
+        }
+
+        return $temp;
     }
 }

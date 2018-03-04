@@ -2,7 +2,9 @@
 
 namespace Lib\Database;
 
-abstract class Model
+use Illuminate\Contracts\Support\Arrayable;
+
+abstract class Model implements Arrayable
 {
     /**
      * The primary key to be used.
@@ -24,6 +26,13 @@ abstract class Model
      * @var string
      */
     protected $database;
+
+    /**
+     * The data field populated after executing a query.
+     *
+     * @var array
+     */
+    public $data = [];
 
     /**
      * Class constructor.
@@ -139,20 +148,17 @@ abstract class Model
     /**
      * Hydrates a model with provided data.
      *
-     * @param  array  $data
+     * @param  \MongoDB\Model\BSONDocument  $data
      * @return static
      */
     protected static function hydrate($data)
     {
-        if (count($data) === 0) {
+        if (count((array) $data) === 0) {
             return null;
         }
 
         $instance = new static(app(\Lib\Contracts\Database\Connection::class));
-
-        foreach ($data as $field => $value) {
-            $instance->$field = $value;
-        }
+        $instance->data = (array) $data;
 
         return $instance;
     }
@@ -177,6 +183,17 @@ abstract class Model
      */
     public function toArray()
     {
-        return (array) $this;
+        return $this->data;
+    }
+
+    /**
+     * Accessing the data array implicitly.
+     *
+     * @param  string  $key
+     * @return mixed
+     */
+    public function __get($key)
+    {
+        return $this->data[$key];
     }
 }
