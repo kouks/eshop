@@ -52,7 +52,7 @@ class ProductController extends Controller
             'category' => $request->input('category'),
             'stock' => $request->input('stock'),
             'price' => $request->input('price'),
-            'image' => $request->file('image')->store()
+            'image' => $request->file('image')->store(),
         ]);
 
         return redirect('/admin/products');

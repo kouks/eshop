@@ -2,7 +2,7 @@
 
 return [
 
-    /**
+    /*
      * Validaton rules are defined here.
      */
 

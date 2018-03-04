@@ -2,7 +2,6 @@
 
 namespace Lib\Http;
 
-use Closure;
 use Exception;
 use Lib\Core\Pipe;
 use Lib\Routing\Route;

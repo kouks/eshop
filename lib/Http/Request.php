@@ -17,7 +17,7 @@ class Request extends \Symfony\Component\HttpFoundation\Request
     protected $route;
 
     /**
-     * The user that is associated with the request
+     * The user that is associated with the request.
      *
      * @var array
      */

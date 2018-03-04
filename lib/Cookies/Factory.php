@@ -16,7 +16,8 @@ class Factory implements FactoryContract
      * @param  bool  $httpOnly
      * @return \Symfony\Component\HttpFoundation\Cookie
      */
-    public function bake($name, $value, $minutes = 0, $httpOnly = true) {
+    public function bake($name, $value, $minutes = 0, $httpOnly = true)
+    {
         $time = time() + $minutes * 60;
 
         return new Cookie($name, $value, $time, null, null, false, $httpOnly);
@@ -30,7 +31,8 @@ class Factory implements FactoryContract
      * @param  bool  $httpOnly
      * @return \Symfony\Component\HttpFoundation\Cookie
      */
-    public function forever($name, $value, $httpOnly = true) {
+    public function forever($name, $value, $httpOnly = true)
+    {
         return $this->bake($name, $value, 2628000, $httpOnly);
     }
 

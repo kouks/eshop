@@ -59,7 +59,7 @@ abstract class Model
     }
 
     /**
-     * Performs a single selection based on provided restrictions
+     * Performs a single selection based on provided restrictions.
      *
      * @param  array  $restrictions
      * @return static
@@ -70,7 +70,7 @@ abstract class Model
     }
 
     /**
-     * Performs a selection based on provided restrictions
+     * Performs a selection based on provided restrictions.
      *
      * @param  array  $restrictions
      * @return \Illuminate\Support\Collection
@@ -147,7 +147,7 @@ abstract class Model
      */
     protected function getCollectionName()
     {
-        return str_plural(strtolower(substr(strrchr(get_class($this), "\\"), 1)));
+        return str_plural(strtolower(substr(strrchr(get_class($this), '\\'), 1)));
     }
 
     /**
