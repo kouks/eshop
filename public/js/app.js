@@ -1339,7 +1339,7 @@ if (false) {(function () {
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(14);
-module.exports = __webpack_require__(70);
+module.exports = __webpack_require__(73);
 
 
 /***/ }),
@@ -1361,7 +1361,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_Profile_Index__ = __webpack_require__(63);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_Products_Show__ = __webpack_require__(66);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_Products_List__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_GlobalSearch__ = __webpack_require__(72);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_GlobalSearch__ = __webpack_require__(69);
 
 
 
@@ -1378,7 +1378,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
  * Bulma JS utils.
  */
 
-__webpack_require__(69);
+__webpack_require__(72);
 
 /**
  * Assign the api token to the all outcoming requests.
@@ -14274,6 +14274,8 @@ if (false) {
 //
 //
 //
+//
+//
 
 
 
@@ -14398,8 +14400,6 @@ if (false) {(function () {
 //
 //
 //
-//
-//
 
 
 
@@ -14409,8 +14409,15 @@ if (false) {(function () {
   data() {
     return {
       bought: false,
+      opacity: 0,
       Cart: __WEBPACK_IMPORTED_MODULE_0__core_Cart__["a" /* default */]
     };
+  },
+
+  mounted() {
+    this.$nextTick(() => {
+      this.opacity = 1;
+    });
   },
 
   computed: {
@@ -14439,8 +14446,10 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "column is-4" }, [
-    _c("div", { staticClass: "card product" }, [
+  return _c(
+    "div",
+    { staticClass: "card product", style: { opacity: _vm.opacity } },
+    [
       _c("div", { staticClass: "card-image" }, [
         _c("a", { attrs: { href: "/products/" + _vm.product.slug } }, [
           _c("figure", { staticClass: "image is-4by3" }, [
@@ -14467,9 +14476,7 @@ var render = function() {
           _vm._v(" "),
           _c("div", { staticClass: "column is-narrow" }, [
             _c("p", { staticClass: "title is-4 has-text-primary" }, [
-              _vm._v(
-                "\n            £" + _vm._s(_vm.product.price) + "\n          "
-              )
+              _vm._v("\n          £" + _vm._s(_vm.product.price) + "\n        ")
             ])
           ])
         ]),
@@ -14513,12 +14520,12 @@ var render = function() {
               },
               [_vm._v(" ")]
             ),
-            _vm._v("\n        Buy\n      ")
+            _vm._v("\n      Buy\n    ")
           ]
         )
       ])
-    ])
-  ])
+    ]
+  )
 }
 var staticRenderFns = [
   function() {
@@ -14572,7 +14579,12 @@ var render = function() {
       ),
       _vm._v(" "),
       _vm._l(_vm.products, function(product) {
-        return _c("product", { key: product.slug, attrs: { product: product } })
+        return _c(
+          "div",
+          { staticClass: "column is-4" },
+          [_c("product", { key: product.slug, attrs: { product: product } })],
+          1
+        )
       }),
       _vm._v(" "),
       _c(
@@ -15708,43 +15720,11 @@ if (false) {
 
 /***/ }),
 /* 69 */
-/***/ (function(module, exports) {
-
-
-document.addEventListener('DOMContentLoaded', function () {
-  let $burger = document.getElementById('menu-burger');
-  if ($burger) {
-    $burger.addEventListener('click', function () {
-      let $target = document.getElementById(this.dataset.target);
-      this.classList.toggle('is-active');
-      $target.classList.toggle('is-active');
-    });
-  }
-
-  let $fileInput = document.getElementById('product-image');
-  if ($fileInput) {
-    $fileInput.onchange = function () {
-      if ($fileInput.files.length > 0) {
-        document.getElementById('product-image-name').innerHTML = $fileInput.files[0].name;
-      }
-    };
-  }
-});
-
-/***/ }),
-/* 70 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 71 */,
-/* 72 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_GlobalSearch_vue__ = __webpack_require__(73);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_7e6b6aa4_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_GlobalSearch_vue__ = __webpack_require__(74);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_GlobalSearch_vue__ = __webpack_require__(70);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_7e6b6aa4_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_GlobalSearch_vue__ = __webpack_require__(71);
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
@@ -15790,7 +15770,7 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 73 */
+/* 70 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -15818,7 +15798,7 @@ if (false) {(function () {
 });
 
 /***/ }),
-/* 74 */
+/* 71 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -15875,6 +15855,37 @@ if (false) {
     require("vue-hot-reload-api")      .rerender("data-v-7e6b6aa4", esExports)
   }
 }
+
+/***/ }),
+/* 72 */
+/***/ (function(module, exports) {
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  let $burger = document.getElementById('menu-burger');
+  if ($burger) {
+    $burger.addEventListener('click', function () {
+      let $target = document.getElementById(this.dataset.target);
+      this.classList.toggle('is-active');
+      $target.classList.toggle('is-active');
+    });
+  }
+
+  let $fileInput = document.getElementById('product-image');
+  if ($fileInput) {
+    $fileInput.onchange = function () {
+      if ($fileInput.files.length > 0) {
+        document.getElementById('product-image-name').innerHTML = $fileInput.files[0].name;
+      }
+    };
+  }
+});
+
+/***/ }),
+/* 73 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);

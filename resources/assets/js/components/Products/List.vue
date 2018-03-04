@@ -6,7 +6,9 @@
       </div>
     </div>
 
-    <product :product="product" :key="product.slug" v-for="product in products" />
+    <div class="column is-4" v-for="product in products">
+      <product :product="product" :key="product.slug" />
+    </div>
 
     <div class="column is-12" v-show="products.length > 0">
       <div class="has-text-centered mt-3">
