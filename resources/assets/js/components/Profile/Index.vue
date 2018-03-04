@@ -175,7 +175,7 @@ export default {
     saveUser () {
       this.progress = true
 
-      this.$http.post('/user/edit', this.user)
+      this.$http.post('/user/update', this.user)
         .then(() => {
           this.progress = false
           this.error = false

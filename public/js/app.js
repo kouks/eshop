@@ -14374,6 +14374,8 @@ if (false) {(function () {
 //
 //
 //
+//
+//
 
 
 
@@ -14381,7 +14383,26 @@ if (false) {(function () {
   props: ['product'],
 
   data() {
-    return { Cart: __WEBPACK_IMPORTED_MODULE_0__core_Cart__["a" /* default */] };
+    return {
+      bought: false,
+      Cart: __WEBPACK_IMPORTED_MODULE_0__core_Cart__["a" /* default */]
+    };
+  },
+
+  computed: {
+    buttonClass() {
+      return this.bought ? 'is-success' : 'is-primary';
+    }
+  },
+
+  methods: {
+    buy() {
+      __WEBPACK_IMPORTED_MODULE_0__core_Cart__["a" /* default */].add(this.product, 1);
+      this.bought = true;
+      setInterval(() => {
+        this.bought = false;
+      }, 3000);
+    }
   }
 });
 
@@ -14434,14 +14455,42 @@ var render = function() {
         _c(
           "button",
           {
-            staticClass: "button is-primary is-fullwidth",
+            class: ["button", _vm.buttonClass, "is-fullwidth"],
             on: {
               click: function($event) {
-                _vm.Cart.add(_vm.product, 1)
+                _vm.buy()
               }
             }
           },
-          [_vm._v("\n        Buy\n      ")]
+          [
+            _c("i", {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: _vm.bought,
+                  expression: "bought"
+                }
+              ],
+              staticClass: "fa fa-check"
+            }),
+            _vm._v(" "),
+            _c(
+              "span",
+              {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: _vm.bought,
+                    expression: "bought"
+                  }
+                ]
+              },
+              [_vm._v(" ")]
+            ),
+            _vm._v("\n        Buy\n      ")
+          ]
         )
       ])
     ])
@@ -14772,7 +14821,7 @@ if (false) {(function () {
     saveUser() {
       this.progress = true;
 
-      this.$http.post('/user/edit', this.user).then(() => {
+      this.$http.post('/user/update', this.user).then(() => {
         this.progress = false;
         this.error = false;
         this.done = true;

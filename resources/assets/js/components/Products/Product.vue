@@ -27,7 +27,9 @@
 
         <hr>
 
-        <button class="button is-primary is-fullwidth" @click="Cart.add(product, 1)">
+        <button :class="['button', buttonClass, 'is-fullwidth']" @click="buy()">
+          <i class="fa fa-check" v-show="bought"></i>
+          <span v-show="bought">&nbsp;</span>
           Buy
         </button>
       </div>
@@ -42,7 +44,24 @@ export default {
   props: ['product'],
 
   data () {
-    return { Cart }
+    return {
+      bought: false,
+      Cart
+    }
+  },
+
+  computed: {
+    buttonClass () {
+      return this.bought ? 'is-success' : 'is-primary'
+    }
+  },
+
+  methods: {
+    buy () {
+      Cart.add(this.product, 1)
+      this.bought = true
+      setInterval(() => { this.bought = false }, 3000)
+    }
   }
 }
 </script>

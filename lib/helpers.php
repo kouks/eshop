@@ -152,6 +152,22 @@ if (! function_exists('session')) {
     }
 }
 
+if (! function_exists('status')) {
+    /**
+     * Status code response helper.
+     *
+     * @param  int  $status
+     * @return \Lib\Http\Response
+     */
+    function status($status)
+    {
+        return new Response(
+            '',
+            $status
+        );
+    }
+}
+
 if (! function_exists('view')) {
     /**
      * View rendering helper.

@@ -156,7 +156,6 @@ abstract class Model
         return $instance;
     }
 
-
     /**
      * Hydrates a collection of models with provided data.
      *
@@ -168,5 +167,15 @@ abstract class Model
         return collect($data)->map(function ($item) {
             return static::hydrate($item);
         });
+    }
+
+    /**
+     * Casts the model to an array.
+     *
+     * @return array
+     */
+    public function toArray()
+    {
+        return (array) $this;
     }
 }
