@@ -81,6 +81,21 @@ abstract class Model
     }
 
     /**
+     * Performs listing of paginated data in the collection.
+     *
+     * @param  int  $page
+     * @param  int  $perPage
+     * @return \Illuminate\Support\Collection
+     */
+    public static function paginated($page, $perPage)
+    {
+        return static::hydrateMany(static::query()->find([], [
+            'limit' => $perPage,
+            'skip' => ($page - 1) * $perPage,
+        ]));
+    }
+
+    /**
      * Performs an update query on restriceted elements.
      *
      * @param  array  $restrictions

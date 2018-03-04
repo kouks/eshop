@@ -15,7 +15,7 @@ class UserController extends Controller
      */
     public function show(Request $request)
     {
-        return json($request->user()->toArray());
+        return json($request->user());
     }
 
     /**

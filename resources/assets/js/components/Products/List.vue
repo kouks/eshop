@@ -1,6 +1,22 @@
 <template>
   <div class="columns is-multiline">
-    <product :product="product" :key="product._id.$oid" v-for="product in products" />
+    <div class="column is-12" v-show="products.length === 0">
+      <div class="has-text-centered mt-5">
+        <i class="fa fa-spinner fa-spin fa-5x has-text-primary"></i>
+      </div>
+    </div>
+
+    <product :product="product" :key="product.slug" v-for="product in products" />
+
+    <div class="column is-12" v-show="products.length > 0">
+      <div class="has-text-centered mt-3">
+        <button class="button is-primary is-outlined is-large" @click="page++; loadProducts()">
+          <i class="fa fa-spinner fa-spin" v-show="loading"></i>
+          <span v-show="loading">&nbsp;</span>
+          Load More
+        </button>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -12,6 +28,8 @@ export default {
 
   data () {
     return {
+      loading: false,
+      page: 1,
       products: []
     }
   },
@@ -22,8 +40,13 @@ export default {
 
   methods: {
     loadProducts () {
-      this.$http.get('/api/products')
-        .then(({ data }) => { this.products = data })
+      this.loading = true
+
+      this.$http.get(`/api/products?page=${this.page}`)
+        .then(({ data }) => {
+          this.products = this.products.concat(data)
+          this.loading = false
+        })
     }
   }
 }

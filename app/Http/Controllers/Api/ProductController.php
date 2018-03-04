@@ -9,15 +9,23 @@ use Lib\Http\Controller;
 class ProductController extends Controller
 {
     /**
+     * Number of product to be show per page.
+     *
+     * @var int
+     */
+    protected $perPage = 9;
+
+    /**
      * Display a listing of the resource.
      *
+     * @param  \Lib\Http\Request  $request
      * @return \Lib\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::all();
+        $products = Product::paginated($request->query('page'), $this->perPage);
 
-        return json($products->toArray());
+        return json($products);
     }
 
     /**
@@ -28,6 +36,6 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        return json($product->toArray());
+        return json($product);
     }
 }

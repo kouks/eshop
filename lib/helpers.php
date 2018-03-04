@@ -89,11 +89,13 @@ if (! function_exists('json')) {
     /**
      * Json response helper.
      *
-     * @param  array  $content
+     * @param  mixed  $content
      * @return \Lib\Http\Response
      */
-    function json(array $content)
+    function json($content)
     {
+        $content = is_array($content) ? $content : $content->toArray();
+
         return new Response(
             json_encode($content),
             200,

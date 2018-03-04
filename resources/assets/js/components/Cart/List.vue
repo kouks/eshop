@@ -13,7 +13,7 @@
         <product
           :product="product.item"
           :quantity="product.quantity"
-          :key="product.item._id.$oid"
+          :key="product.item.slug"
           v-for="product in products"
           @update="loadProducts()"
         />

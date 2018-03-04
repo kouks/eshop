@@ -8,6 +8,7 @@ import Shop from '@/components/Products/Index'
 import Profile from '@/components/Profile/Index'
 import Product from '@/components/Products/Show'
 import ProductList from '@/components/Products/List'
+import GlobalSearch from '@/components/GlobalSearch'
 
 /**
  * Bulma JS utils.
@@ -35,6 +36,7 @@ export default new Vue({
     ProductList,
     Cart,
     CartIcon,
-    Profile
+    Profile,
+    GlobalSearch
   }
 })

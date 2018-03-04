@@ -47,7 +47,11 @@
                 </div>
 
                 <div class="control">
-                  <button type="button" class="button is-primary is-large" @click="addToCart()">Add to Cart</button>
+                  <button type="button" :class="['button', buttonClass, 'is-large']" @click="addToCart()">
+                    <i class="fa fa-check" v-show="bought"></i>
+                    <span v-show="bought">&nbsp;</span>
+                    Add to Cart
+                  </button>
                 </div>
               </div>
             </form>
@@ -66,6 +70,7 @@ export default {
 
   data () {
     return {
+      bought: false,
       product: {},
       quantity: 1
     }
@@ -80,6 +85,10 @@ export default {
 
     stockCount () {
       return this.product.stock > 5 ? '5+' : this.product.stock
+    },
+
+    buttonClass () {
+      return this.bought ? 'is-success' : 'is-primary'
     }
   },
 
@@ -95,6 +104,7 @@ export default {
 
     addToCart () {
       Cart.add(this.product, this.quantity)
+      this.bought = true
     }
   }
 }
