@@ -148,4 +148,14 @@ class Request extends \Symfony\Component\HttpFoundation\Request
 
         $this->user = $user;
     }
+
+    /**
+     * Determines whether the request accepts a json response.
+     *
+     * @return bool
+     */
+    public function wantsJson()
+    {
+        return strpos($this->header('Accept'), 'application/json') !== false;
+    }
 }

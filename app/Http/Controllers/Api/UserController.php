@@ -39,4 +39,16 @@ class UserController extends Controller
 
         return status(202);
     }
+
+    /**
+     * Return the count of the specified resource.
+     *
+     * @return \Lib\Http\Response
+     */
+    public function count()
+    {
+        $count = User::all()->count();
+
+        return json(compact('count'));
+    }
 }

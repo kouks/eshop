@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use Exception;
+use Lib\Http\Request;
 use Lib\Exceptions\Routing\RouteNotFoundException;
 
 class Handler extends \Lib\Exceptions\Handler
@@ -10,12 +11,17 @@ class Handler extends \Lib\Exceptions\Handler
     /**
      * Renders the exception on the screen.
      *
-     * @param  \Exception $e
+     * @param  \Lib\Http\Request  $request
+     * @param  \Exception  $e
      * @return void
      */
-    public function render(Exception $e)
+    public function render(Request $request, Exception $e)
     {
         if ($e instanceof RouteNotFoundException) {
+            if ($request->wantsJson()) {
+                return json(['error' => 'This endpoint was not found.'])->status(404);
+            }
+
             return view('errors.404');
         }
 

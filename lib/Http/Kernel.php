@@ -62,7 +62,7 @@ class Kernel implements KernelInterface
         try {
             $response = $this->sendRequestThroughRouter();
         } catch (Exception $e) {
-            $response = app(Handler::class)->render($e);
+            $response = app(Handler::class)->render($request, $e);
         }
 
         return $response->prepare($this->request);

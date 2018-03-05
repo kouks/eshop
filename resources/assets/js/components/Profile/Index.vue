@@ -168,14 +168,14 @@ export default {
 
   methods: {
     loadUser () {
-      this.$http.get('/user')
-        .then(response => { this.user = response.data })
+      this.$http.get('/api/user')
+        .then(({ data }) => { this.user = data })
     },
 
     saveUser () {
       this.progress = true
 
-      this.$http.post('/user/update', this.user)
+      this.$http.post('/api/user/update', this.user)
         .then(() => {
           this.progress = false
           this.error = false

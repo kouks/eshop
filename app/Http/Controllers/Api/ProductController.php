@@ -52,4 +52,16 @@ class ProductController extends Controller
     {
         return json($product);
     }
+
+    /**
+     * Return the count of the specified resource.
+     *
+     * @return \Lib\Http\Response
+     */
+    public function count()
+    {
+        $count = Product::all()->count();
+
+        return json(compact('count'));
+    }
 }
