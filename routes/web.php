@@ -1,8 +1,9 @@
 <?php
 
-/**
+/*
  * Base web routes.
  */
+
 route()->get('/', function () {
     return view('index');
 });
