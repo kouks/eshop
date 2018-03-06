@@ -3,9 +3,10 @@ export default {
   /**
    * The array of cart event listeners.
    *
+   * @private
    * @var {Array}
    */
-  listeners: [],
+  _listeners: [],
 
   /**
    * Returns all items in the cart.
@@ -115,7 +116,7 @@ export default {
    * @returns {void}
    */
   on (event, callback) {
-    this.listeners.push({ event, callback })
+    this._listeners.push({ event, callback })
   },
 
   /**
@@ -150,7 +151,7 @@ export default {
    * @returns {void}
    */
   _dispatch (event, payload) {
-    for (let listener of this.listeners) {
+    for (let listener of this._listeners) {
       if (event === listener.event) {
         listener.callback(payload)
       }

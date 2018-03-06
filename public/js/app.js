@@ -492,9 +492,10 @@ module.exports = {
   /**
    * The array of cart event listeners.
    *
+   * @private
    * @var {Array}
    */
-  listeners: [],
+  _listeners: [],
 
   /**
    * Returns all items in the cart.
@@ -602,7 +603,7 @@ module.exports = {
    * @returns {void}
    */
   on(event, callback) {
-    this.listeners.push({ event, callback });
+    this._listeners.push({ event, callback });
   },
 
   /**
@@ -635,7 +636,7 @@ module.exports = {
    * @returns {void}
    */
   _dispatch(event, payload) {
-    for (let listener of this.listeners) {
+    for (let listener of this._listeners) {
       if (event === listener.event) {
         listener.callback(payload);
       }
@@ -13911,6 +13912,7 @@ if (false) {(function () {
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   components: { CartList: __WEBPACK_IMPORTED_MODULE_1__List__["a" /* default */] },
+
   data() {
     return {
       products: [],
@@ -13925,8 +13927,8 @@ if (false) {(function () {
 
     popoverStyles() {
       return {
-        hidden: { opacity: 0, transform: 'translateY(-5px)', 'z-index': -1 },
-        shown: { opacity: 1, transform: 'translateY(0)', 'z-index': 1000 }
+        hidden: { display: 'none' },
+        shown: { display: 'block' }
       }[this.popoverState];
     }
   },
@@ -14112,11 +14114,12 @@ if (false) {(function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__node_modules_vue_loader_lib_template_compiler_index_id_data_v_726ae9b3_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_Filters_vue__ = __webpack_require__(56);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_Filters_vue__ = __webpack_require__(78);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_726ae9b3_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_Filters_vue__ = __webpack_require__(56);
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = null
+
 /* template */
 
 /* template functional */
@@ -14128,8 +14131,8 @@ var __vue_scopeId__ = null
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
-  __vue_script__,
-  __WEBPACK_IMPORTED_MODULE_0__node_modules_vue_loader_lib_template_compiler_index_id_data_v_726ae9b3_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_Filters_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_Filters_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_726ae9b3_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_Filters_vue__["a" /* default */],
   __vue_template_functional__,
   __vue_styles__,
   __vue_scopeId__,
@@ -14166,75 +14169,231 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "column is-2-tablet" }, [
+    _c("aside", { staticClass: "menu" }, [
+      _c("p", { staticClass: "menu-label" }, [_vm._v("\n      Filters\n    ")]),
+      _vm._v(" "),
+      _c("ul", { staticClass: "menu-list" }, [
+        _c("li", [
+          _c("a", { attrs: { href: "#" } }, [_vm._v("Category")]),
+          _vm._v(" "),
+          _c("ul", [
+            _c("li", [
+              _c("label", { staticClass: "checkbox" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.filters.categories[1],
+                      expression: "filters.categories[1]"
+                    }
+                  ],
+                  attrs: { type: "checkbox", checked: "" },
+                  domProps: {
+                    checked: Array.isArray(_vm.filters.categories[1])
+                      ? _vm._i(_vm.filters.categories[1], null) > -1
+                      : _vm.filters.categories[1]
+                  },
+                  on: {
+                    change: function($event) {
+                      var $$a = _vm.filters.categories[1],
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = null,
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 &&
+                            (_vm.filters.categories[1] = $$a.concat([$$v]))
+                        } else {
+                          $$i > -1 &&
+                            (_vm.filters.categories[1] = $$a
+                              .slice(0, $$i)
+                              .concat($$a.slice($$i + 1)))
+                        }
+                      } else {
+                        _vm.$set(_vm.filters.categories, 1, $$c)
+                      }
+                    }
+                  }
+                }),
+                _vm._v(" Men")
+              ])
+            ]),
+            _vm._v(" "),
+            _c("li", [
+              _c("label", { staticClass: "checkbox" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.filters.categories[2],
+                      expression: "filters.categories[2]"
+                    }
+                  ],
+                  attrs: { type: "checkbox", checked: "" },
+                  domProps: {
+                    checked: Array.isArray(_vm.filters.categories[2])
+                      ? _vm._i(_vm.filters.categories[2], null) > -1
+                      : _vm.filters.categories[2]
+                  },
+                  on: {
+                    change: function($event) {
+                      var $$a = _vm.filters.categories[2],
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = null,
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 &&
+                            (_vm.filters.categories[2] = $$a.concat([$$v]))
+                        } else {
+                          $$i > -1 &&
+                            (_vm.filters.categories[2] = $$a
+                              .slice(0, $$i)
+                              .concat($$a.slice($$i + 1)))
+                        }
+                      } else {
+                        _vm.$set(_vm.filters.categories, 2, $$c)
+                      }
+                    }
+                  }
+                }),
+                _vm._v(" Women")
+              ])
+            ]),
+            _vm._v(" "),
+            _c("li", [
+              _c("label", { staticClass: "checkbox" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.filters.categories[3],
+                      expression: "filters.categories[3]"
+                    }
+                  ],
+                  attrs: { type: "checkbox", checked: "" },
+                  domProps: {
+                    checked: Array.isArray(_vm.filters.categories[3])
+                      ? _vm._i(_vm.filters.categories[3], null) > -1
+                      : _vm.filters.categories[3]
+                  },
+                  on: {
+                    change: function($event) {
+                      var $$a = _vm.filters.categories[3],
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = null,
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 &&
+                            (_vm.filters.categories[3] = $$a.concat([$$v]))
+                        } else {
+                          $$i > -1 &&
+                            (_vm.filters.categories[3] = $$a
+                              .slice(0, $$i)
+                              .concat($$a.slice($$i + 1)))
+                        }
+                      } else {
+                        _vm.$set(_vm.filters.categories, 3, $$c)
+                      }
+                    }
+                  }
+                }),
+                _vm._v(" Kids")
+              ])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _vm._m(0)
+      ]),
+      _vm._v(" "),
+      _c("p", { staticClass: "menu-label" }, [_vm._v("\n      Sort By\n    ")]),
+      _vm._v(" "),
+      _c("ul", { staticClass: "menu-list" }, [
+        _c("li", [
+          _c("a", [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.filters.orderby,
+                  expression: "filters.orderby"
+                }
+              ],
+              attrs: {
+                value: "views",
+                type: "radio",
+                id: "orderby-popularity",
+                checked: ""
+              },
+              domProps: { checked: _vm._q(_vm.filters.orderby, "views") },
+              on: {
+                change: function($event) {
+                  _vm.$set(_vm.filters, "orderby", "views")
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c("label", { attrs: { for: "orderby-popularity" } }, [
+              _vm._v("Popularity")
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _c("a", [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.filters.orderby,
+                  expression: "filters.orderby"
+                }
+              ],
+              attrs: { value: "price", type: "radio", id: "orderby-price" },
+              domProps: { checked: _vm._q(_vm.filters.orderby, "price") },
+              on: {
+                change: function($event) {
+                  _vm.$set(_vm.filters, "orderby", "price")
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c("label", { attrs: { for: "orderby-price" } }, [_vm._v("Price")])
+          ])
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("hr"),
+    _vm._v(" "),
+    _vm._m(1)
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "column is-2-tablet" }, [
-      _c("aside", { staticClass: "menu" }, [
-        _c("p", { staticClass: "menu-label" }, [
-          _vm._v("\n      Filters\n    ")
-        ]),
-        _vm._v(" "),
-        _c("ul", { staticClass: "menu-list" }, [
-          _c("li", [
-            _c("a", { attrs: { href: "#" } }, [_vm._v("Category")]),
-            _vm._v(" "),
-            _c("ul", [
-              _c("li", [
-                _c("label", { staticClass: "checkbox" }, [
-                  _c("input", { attrs: { type: "checkbox" } }),
-                  _vm._v(" Men")
-                ])
-              ]),
-              _vm._v(" "),
-              _c("li", [
-                _c("label", { staticClass: "checkbox" }, [
-                  _c("input", { attrs: { type: "checkbox" } }),
-                  _vm._v(" Women")
-                ])
-              ]),
-              _vm._v(" "),
-              _c("li", [
-                _c("label", { staticClass: "checkbox" }, [
-                  _c("input", { attrs: { type: "checkbox" } }),
-                  _vm._v(" Kids")
-                ])
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("li", [_c("a", { attrs: { href: "#" } }, [_vm._v("Price")])])
-        ]),
-        _vm._v(" "),
-        _c("p", { staticClass: "menu-label" }, [
-          _vm._v("\n      Sort By\n    ")
-        ]),
-        _vm._v(" "),
-        _c("ul", { staticClass: "menu-list" }, [
-          _c("li", [_c("a", { attrs: { href: "#" } }, [_vm._v("Price")])]),
-          _vm._v(" "),
-          _c("li", [_c("a", { attrs: { href: "#" } }, [_vm._v("Popularity")])]),
-          _vm._v(" "),
-          _c("li", [_c("a", { attrs: { href: "#" } }, [_vm._v("Newest")])])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("hr"),
-      _vm._v(" "),
-      _c("div", { staticClass: "field" }, [
-        _c("button", { staticClass: "button is-primary is-fullwidth" }, [
-          _vm._v("Apply Filters")
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "field" }, [
-        _c("button", { staticClass: "button is-default is-fullwidth" }, [
-          _vm._v("Clear Filters")
-        ])
+    return _c("li", [_c("a", { attrs: { href: "#" } }, [_vm._v("Price")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "field" }, [
+      _c("button", { staticClass: "button is-default is-fullwidth" }, [
+        _vm._v("Clear Filters")
       ])
     ])
   }
@@ -14255,6 +14414,7 @@ if (false) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Product__ = __webpack_require__(58);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_Filters__ = __webpack_require__(79);
 //
 //
 //
@@ -14279,6 +14439,7 @@ if (false) {
 //
 //
 //
+
 
 
 
@@ -14295,15 +14456,24 @@ if (false) {
 
   mounted() {
     this.loadProducts();
+    this.listenForFilterChanges();
   },
 
   methods: {
     loadProducts() {
       this.loading = true;
 
-      this.$http.get(`/api/products?page=${this.page}`).then(({ data }) => {
+      this.$http.get(`/api/products?page=${this.page}&${__WEBPACK_IMPORTED_MODULE_1__core_Filters__["a" /* default */].toQueryString()}`).then(({ data }) => {
         this.products = this.products.concat(data);
         this.loading = false;
+      });
+    },
+
+    listenForFilterChanges() {
+      __WEBPACK_IMPORTED_MODULE_1__core_Filters__["a" /* default */].on('changed', () => {
+        this.products = [];
+        this.page = 1;
+        this.loadProducts();
       });
     }
   }
@@ -16156,6 +16326,178 @@ document.addEventListener('DOMContentLoaded', function () {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 77 */,
+/* 78 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__core_Filters__ = __webpack_require__(79);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+  data() {
+    return {
+      filters: __WEBPACK_IMPORTED_MODULE_0__core_Filters__["a" /* default */].get()
+    };
+  },
+
+  watch: {
+    filters: {
+      handler(value) {
+        __WEBPACK_IMPORTED_MODULE_0__core_Filters__["a" /* default */].set(value);
+      },
+
+      deep: true
+    }
+  }
+});
+
+/***/ }),
+/* 79 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+  /**
+   * The object containing the filters.
+   *
+   * @private
+   * @var {Object}
+   */
+  _filters: {
+    orderby: 'views',
+    orderdir: {
+      views: -1,
+      price: 1
+    },
+    categories: {
+      '1': true,
+      '2': true,
+      '3': true
+    }
+  },
+
+  /**
+   * The array of filter event listeners.
+   *
+   * @private
+   * @var {Array}
+   */
+  _listeners: [],
+
+  /**
+   * Adds an event listener to an event.
+   *
+   * @param {string} event - The event to be assigned to.
+   * @param {Closure} callback - The callback.
+   * @returns {void}
+   */
+  on(event, callback) {
+    this._listeners.push({ event, callback });
+  },
+
+  /**
+   * Returns all current filters.
+   *
+   * @returns {Object} - The filters.
+   */
+  get() {
+    return this._filters;
+  },
+
+  /**
+   * Updates filters on the instance.
+   *
+   * @param {Object} filters - The filters to be updated-
+   * @returns {void}
+   */
+  set(filters) {
+    this._filters = filters;
+    this._dispatch('changed', filters);
+  },
+
+  /**
+   * Transforms the filters to a query string.
+   *
+   * @returns {string} - The query string.
+   */
+  toQueryString() {
+    let filters = this._filters;
+
+    let categories = Object.keys(filters.categories).reduce((carry, item) => {
+      return filters.categories[item] ? carry.concat([item]) : carry;
+    }, []);
+
+    return `orderby=${filters.orderby}&orderdir=${filters.orderdir[filters.orderby]}&categories=${categories.join('|')}`;
+  },
+
+  /**
+   * Dispatches an event on the filter object.
+   *
+   * @private
+   * @param {string} event - The event to be dispatched.
+   * @param {Object} payload - The payload to be sent.
+   * @returns {void}
+   */
+  _dispatch(event, payload) {
+    for (let listener of this._listeners) {
+      if (event === listener.event) {
+        listener.callback(payload);
+      }
+    }
+  }
+});
 
 /***/ })
 /******/ ]);

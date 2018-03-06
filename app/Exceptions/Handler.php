@@ -25,6 +25,6 @@ class Handler extends \Lib\Exceptions\Handler
             return view('errors.404');
         }
 
-        parent::render($e);
+        parent::render($request, $e);
     }
 }

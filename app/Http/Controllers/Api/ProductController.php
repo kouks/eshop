@@ -30,11 +30,18 @@ class ProductController extends Controller
         $options = [
             'limit' => $this->perPage,
             'skip' => ($page - 1) * $this->perPage,
-            'sort' => ['views' => -1],
         ];
 
-        if ($query = $request->query('query')) {
-            $filters['name'] = new Regex($query, 'i');
+        if ($request->query('query')) {
+            $filters['name'] = new Regex($request->query('query'), 'i');
+        }
+
+        if ($request->query('orderby') && $request->query('orderdir')) {
+            $options['sort'][$request->query('orderby')] = (int) $request->query('orderdir');
+        }
+
+        if ($request->query('categories')) {
+            $filters['category'] = new Regex('('.$request->query('categories').')', 'i');
         }
 
         $products = Product::where($filters, $options);

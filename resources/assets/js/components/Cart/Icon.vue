@@ -19,6 +19,7 @@ import CartList from './List'
 
 export default {
   components: { CartList },
+
   data () {
     return {
       products: [],
@@ -33,8 +34,8 @@ export default {
 
     popoverStyles () {
       return {
-        hidden: { opacity: 0, transform: 'translateY(-5px)', 'z-index': -1 },
-        shown: { opacity: 1, transform: 'translateY(0)', 'z-index': 1000 }
+        hidden: { display: 'none' },
+        shown: { display: 'block' }
       }[this.popoverState]
     }
   },

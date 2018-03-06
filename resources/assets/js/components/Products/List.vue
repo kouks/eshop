@@ -24,6 +24,7 @@
 
 <script>
 import Product from './Product'
+import Filters from '@/core/Filters'
 
 export default {
   components: { Product },
@@ -38,17 +39,26 @@ export default {
 
   mounted () {
     this.loadProducts()
+    this.listenForFilterChanges()
   },
 
   methods: {
     loadProducts () {
       this.loading = true
 
-      this.$http.get(`/api/products?page=${this.page}`)
+      this.$http.get(`/api/products?page=${this.page}&${Filters.toQueryString()}`)
         .then(({ data }) => {
           this.products = this.products.concat(data)
           this.loading = false
         })
+    },
+
+    listenForFilterChanges () {
+      Filters.on('changed', () => {
+        this.products = []
+        this.page = 1
+        this.loadProducts()
+      })
     }
   }
 }

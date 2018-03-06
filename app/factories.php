@@ -31,7 +31,7 @@ return [
             'name' => $faker->sentence(2),
             'slug' => str_slug($faker->sentence(5)),
             'description' => $faker->paragraph(),
-            'category' => rand(1, 3),
+            'category' => (string) rand(1, 3),
             'price' => ((rand(10, 100) * 100) + 99) / 100,
             'stock' => rand(0, 10),
             'image' => $faker->imageUrl(300, 300),
