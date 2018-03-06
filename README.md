@@ -5,9 +5,8 @@
 
 ## TODO
 
-- Filters
-- Tracking
 - Tests (HTML, CSS?, JS (Selenium), PHP) - 5 tests each
 - Orders
 - Checkout
 - Suggestions
+- Cart improvements when empty
