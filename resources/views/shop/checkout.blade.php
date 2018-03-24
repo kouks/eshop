@@ -4,6 +4,6 @@
 @include('partials.tabs', ['active' => false])
 
 <main class="section is-medium">
-    asd
+    <checkout></checkout>
 </main>
 @stop

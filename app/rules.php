@@ -26,6 +26,29 @@ return [
         return true;
     },
 
+    'has' => function ($request, $field, ...$keys) {
+        foreach ($keys as $key) {
+            if (
+                ! array_key_exists($key, $request->input($field))
+                || empty($request->input($field)[$key])
+            ) {
+                return false;
+            }
+        }
+
+        return true;
+    },
+
+    'each_exist' => function ($request, $field, $model, $key) {
+        foreach ($request->input($field) as $item) {
+            if ($model::find([$key => $item['item'][$key]]) === null) {
+                return false;
+            }
+        }
+
+        return true;
+    },
+
     'image' => function ($request, $field) {
         $file = $request->files->get($field);
 

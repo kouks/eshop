@@ -69,7 +69,7 @@ class Request extends \Symfony\Component\HttpFoundation\Request
      * Retrieves an input field from the request by a key.
      *
      * @param  string  $key
-     * @return string
+     * @return mixed
      */
     public function input($key)
     {

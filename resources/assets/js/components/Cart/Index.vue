@@ -2,11 +2,13 @@
   <div class="container">
     <div class="columns">
       <div class="column is-8-tablet">
-        <cart-list :products="products" />
+        <cart-list :products="products"></cart-list>
       </div>
 
       <div class="column is-offset-1-tablet is-2-tablet">
-        <checkout :products="products" />
+        <overview :products="products"></overview>
+
+        <a href="/checkout" class="button is-primary is-large is-fullwidth">Checkout</a>
       </div>
     </div>
   </div>
@@ -14,11 +16,11 @@
 
 <script>
 import CartList from './List'
-import Checkout from './Checkout'
 import Cart from '@/core/Cart'
+import Overview from './Overview'
 
 export default {
-  components: { CartList, Checkout },
+  components: { CartList, Overview },
 
   data () {
     return {

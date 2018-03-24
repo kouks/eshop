@@ -57,7 +57,7 @@ class AuthController extends Controller
     }
 
     /**
-     * Attemps to register a user with provided credentials.
+     * Attempts to register a user with provided credentials.
      *
      * @param  \Lib\Http\Request  $request
      * @return \Lib\Http\Response
@@ -68,7 +68,23 @@ class AuthController extends Controller
             return redirect('/register');
         }
 
-        User::create($user = [
+        if (User::find(['email' => $request->input('email'), 'shadow' => false])) {
+            session()->flash('messages', ['danger' => 'This email is already in use.']);
+
+            return redirect('/register');
+        }
+
+        if (User::find(['email' => $request->input('email'), 'shadow' => true])) {
+            User::update(['email' => $request->input('email')], [
+                'password' => md5($request->input('password')),
+                'shadow' => false,
+                'api_token' => $token = str_random(60),
+            ]);
+
+            return redirect('/shop')->withCookie(cookie()->bake('api_token', $token, 1440, false));
+        }
+
+       $user = User::create([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
             'password' => md5($request->input('password')),
@@ -79,7 +95,7 @@ class AuthController extends Controller
             'api_token' => str_random(60),
         ]);
 
-        return redirect('/shop')->withCookie(cookie()->bake('api_token', $user['api_token'], 1440, false));
+        return redirect('/shop')->withCookie(cookie()->bake('api_token', $user->api_token, 1440, false));
     }
 
     /**

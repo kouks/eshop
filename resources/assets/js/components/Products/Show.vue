@@ -3,7 +3,7 @@
     <div class="columns">
       <div class="column is-3-tablet">
         <figure class="image is-square">
-          <img :src="`/${product.image}`">
+          <img :src="product.image">
         </figure>
       </div>
 

@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Lib\Http\Request;
+use App\Models\Order;
+use App\Models\Product;
 use Lib\Http\Controller;
 
 class OrderController extends Controller
@@ -14,49 +15,13 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
-    }
+        $orders = Order::all();
+        $products = [];
 
-    /**
-     * Display the specified resource.
-     *
-     * @return \Lib\Http\Response
-     */
-    public function show()
-    {
-        //
-    }
+        foreach (Product::all() as $product) {
+            $products[$product->slug] = $product;
+        }
 
-    /**
-     * Show a form for editing a resource.
-     *
-     * @param  \Lib\Http\Request  $request
-     * @return \Lib\Http\Response
-     */
-    public function edit(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Lib\Http\Request  $request
-     * @return \Lib\Http\Response
-     */
-    public function update(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \Lib\Http\Request  $request
-     * @return \Lib\Http\Response
-     */
-    public function destroy(Request $request)
-    {
-        //
+        return view('admin.orders.index', compact('orders', 'products'));
     }
 }

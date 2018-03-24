@@ -50,11 +50,13 @@ abstract class Model implements Arrayable
      * Performs insertion of data.
      *
      * @param  array  $data
-     * @return \MongoDB\Model\BSONDocument
+     * @return static
      */
     public static function create($data)
     {
-        return static::query()->insertOne($data);
+        static::query()->insertOne($data);
+
+        return static::hydrate($data);
     }
 
     /**
@@ -91,11 +93,11 @@ abstract class Model implements Arrayable
     }
 
     /**
-     * Performs an update query on restriceted elements.
+     * Performs an update query on restricted elements.
      *
      * @param  array  $restrictions
      * @param  array  $data
-     * @return \MongoDB\Model\BSONDocument
+     * @return \MongoDB\UpdateResult
      */
     public static function update($restrictions, $data)
     {
@@ -106,7 +108,7 @@ abstract class Model implements Arrayable
      * Performs a delete query based on provided restrictions.
      *
      * @param  array  $restrictions
-     * @return \MongoDB\Model\BSONDocument
+     * @return \MongoDB\DeleteResult
      */
     public static function delete($restrictions)
     {
@@ -116,7 +118,7 @@ abstract class Model implements Arrayable
     /**
      * Truncates the given collection.
      *
-     * @return \MongoDB\Model\BSONDocument
+     * @return \MongoDB\DeleteResult
      */
     public static function truncate()
     {

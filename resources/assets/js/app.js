@@ -5,8 +5,10 @@ import VueAxios from 'vue-axios'
 import Cart from '@/components/Cart/Index'
 import CartIcon from '@/components/Cart/Icon'
 import Shop from '@/components/Products/Index'
+import Orders from '@/components/Profile/Orders'
 import Profile from '@/components/Profile/Index'
 import Product from '@/components/Products/Show'
+import Checkout from '@/components/Checkout/Index'
 import ProductList from '@/components/Products/List'
 import GlobalSearch from '@/components/GlobalSearch'
 import Dashboard from '@/components/Admin/Dashboard'
@@ -33,12 +35,14 @@ export default new Vue({
   el: '#app',
   components: {
     Shop,
-    Product,
-    ProductList,
     Cart,
-    CartIcon,
+    Orders,
+    Product,
     Profile,
-    GlobalSearch,
-    Dashboard
+    CartIcon,
+    Checkout,
+    Dashboard,
+    ProductList,
+    GlobalSearch
   }
 })

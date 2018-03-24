@@ -15,7 +15,7 @@
     <div class="level-item has-text-centered">
       <div>
         <p class="heading">Open Orders</p>
-        <p class="title">789</p>
+        <p class="title">{{ orderCount.actual }}</p>
       </div>
     </div>
   </nav>
@@ -32,6 +32,10 @@ export default {
       userCount: {
         actual: 0,
         requested: 0
+      },
+      orderCount: {
+        actual: 0,
+        requested: 0
       }
     }
   },
@@ -39,6 +43,7 @@ export default {
   mounted () {
     this.loadProducts()
     this.loadUsers()
+    this.loadOrders()
   },
 
   methods: {
@@ -55,6 +60,14 @@ export default {
         .then(({ data }) => {
           this.userCount.requested = data.count
           this.countTo(this.userCount)
+        })
+    },
+
+    loadOrders () {
+      this.$http.get('/api/orders/count')
+        .then(({ data }) => {
+          this.orderCount.requested = data.count
+          this.countTo(this.orderCount)
         })
     },
 

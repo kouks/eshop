@@ -37,6 +37,8 @@ route()->get('/admin', function () {
     return view('admin.index');
 })->middleware('admin');
 
+route()->get('/admin/customers', 'Admin\\CustomerController@index')->middleware('admin');
+route()->get('/admin/orders', 'Admin\\OrderController@index')->middleware('admin');
 route()->get('/admin/products', 'Admin\\ProductController@index')->middleware('admin');
 route()->get('/admin/products/create', 'Admin\\ProductController@create')->middleware('admin');
 route()->post('/admin/products', 'Admin\\ProductController@store')->middleware('admin');

@@ -39,6 +39,6 @@ class File
 
         $this->file->move($fullPath, $name);
 
-        return $path.$name;
+        return '/'.$path.$name;
     }
 }

@@ -3,3 +3,4 @@
 .env
 /cache/views/*
 /public/uploads/*
+.idea

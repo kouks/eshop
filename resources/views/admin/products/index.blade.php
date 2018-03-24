@@ -2,23 +2,23 @@
 
 @section('content')
 <div class="box">
-<table class="table is-fullwidth is-striped is-hoverable">
-    <thead>
-        <tr>
-            <th>#</th>
-            <th>Name</th>
-            <th>Category</th>
-            <th>Price</th>
-            <th>Stock</th>
-            <th colspan="2">Manage</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach ($products as $index => $product)
-            @include('admin.products._product')
-        @endforeach
-    </tbody>
-</table>
+    <table class="table is-fullwidth is-striped is-hoverable">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Stock</th>
+                <th colspan="2">Manage</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($products as $index => $product)
+                @include('admin.products._product')
+            @endforeach
+        </tbody>
+    </table>
 </div>
 @stop
 
