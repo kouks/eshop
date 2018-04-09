@@ -6,5 +6,8 @@
 <main class="section is-medium">
     <product slug="{{ $slug }}"></product>
 </main>
-@stop
 
+<section class="section is-medium">
+    <suggestions slug="{{ $slug }}"></suggestions>
+</section>
+@stop

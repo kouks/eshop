@@ -5,7 +5,7 @@
         <cart-list :products="products"></cart-list>
       </div>
 
-      <div class="column is-offset-1-tablet is-2-tablet">
+      <div class="column is-offset-1-tablet is-2-tablet" v-show="products.length > 0">
         <overview :products="products"></overview>
 
         <a href="/checkout" class="button is-primary is-large is-fullwidth">Checkout</a>

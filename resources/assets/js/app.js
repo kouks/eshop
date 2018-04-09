@@ -12,6 +12,7 @@ import Checkout from '@/components/Checkout/Index'
 import ProductList from '@/components/Products/List'
 import GlobalSearch from '@/components/GlobalSearch'
 import Dashboard from '@/components/Admin/Dashboard'
+import Suggestions from '@/components/Products/Suggestions'
 
 /**
  * Bulma JS utils.
@@ -43,6 +44,7 @@ export default new Vue({
     Checkout,
     Dashboard,
     ProductList,
+    Suggestions,
     GlobalSearch
   }
 })
