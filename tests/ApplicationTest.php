@@ -22,7 +22,7 @@ class ApplicationTest extends TestCase
     /** @test */
     public function it_properly_parses_a_config_file()
     {
-        $this->assertEquals('h&p&mdash;The online store.', config('app.name.shop'));
+        $this->assertEquals('h&p—The online store.', config('app.name.shop'));
     }
 }
 
