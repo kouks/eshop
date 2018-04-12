@@ -84,7 +84,7 @@ class AuthController extends Controller
             return redirect('/shop')->withCookie(cookie()->bake('api_token', $token, 1440, false));
         }
 
-       $user = User::create([
+        $user = User::create([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
             'password' => md5($request->input('password')),
