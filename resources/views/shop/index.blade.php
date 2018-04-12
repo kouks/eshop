@@ -4,7 +4,7 @@
 @include('partials.tabs', ['active' => false])
 
 <main class="section">
-    <shop />
+    <shop></shop>
 </main>
 @stop
 

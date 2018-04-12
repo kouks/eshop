@@ -1,10 +1,16 @@
-<h1 class="title is-3">Login</h3>
+<h3 class="title is-3">Login</h3>
 <p class="subtitle">Please login to proceed.</p>
 
 <div class="box">
     <form action="/login" method="POST">
         <div class="field">
-            <input class="input is-large" type="email" placeholder="Your Email" name="email" value="{{ old('email') }}">
+            <input
+                class="input is-large"
+                type="email"
+                placeholder="Your Email"
+                name="email"
+                value="{{ old('email') }}"
+            >
         </div>
 
         <div class="field">

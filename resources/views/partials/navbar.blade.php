@@ -9,7 +9,7 @@
                 <span></span>
                 <span></span>
                 <span></span>
-            </button>
+            </span>
         </div>
 
         <div class="navbar-menu" id="menu">
@@ -46,7 +46,7 @@
                     </a>
                 @endif
 
-                <cart-icon />
+                <cart-icon></cart-icon>
             </div>
         </div>
     </div>

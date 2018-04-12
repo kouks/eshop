@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Order;
+use Lib\Http\Request;
 use App\Models\Product;
 use Lib\Http\Controller;
 
@@ -23,5 +24,19 @@ class OrderController extends Controller
         }
 
         return view('admin.orders.index', compact('orders', 'products'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \App\Models\Order  $order
+     * @param  \Lib\Http\Request  $request
+     * @return \Lib\Http\Response
+     */
+    public function update(Order $order, Request $request)
+    {
+        Order::update(['id' => $order->id], ['status' => $request->input('status')]);
+
+        return redirect('/admin/orders');
     }
 }

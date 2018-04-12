@@ -1,4 +1,4 @@
-<h1 class="title is-3">Sign Up</h3>
+<h3 class="title is-3">Sign Up</h3>
 <p class="subtitle">Please sign up to create an account.</p>
 
 <div class="box">

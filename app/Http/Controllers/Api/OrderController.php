@@ -55,7 +55,7 @@ class OrderController extends Controller
         ]);
 
         $order = Order::create([
-            'id' => time(),
+            'id' => (string) time(),
             'placed' => date('j. n. Y'),
             'status' => 'Placed',
             'user' => $user->email,

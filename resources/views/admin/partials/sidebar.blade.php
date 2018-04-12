@@ -28,14 +28,8 @@
         </li>
     </ul>
 
-    <p class="menu-label">
-        Statistics
-    </p>
-
-    <ul class="menu-list">
-        <li><a href="/admin/tracking">Tracking</a></li>
-    </ul>
     <hr>
+
     <ul class="menu-list">
         <li><a href="/">Visit Site</a></li>
     </ul>

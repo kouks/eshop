@@ -5,7 +5,8 @@
   "main": "public/js/app.js",
   "scripts": {
     "watch": "node resources/assets/build/dev.js",
-    "build": "node resources/assets/build/prod.js"
+    "build": "node resources/assets/build/prod.js",
+    "test": "mocha-webpack --webpack-config webpack.config.test.js --recursive resources/assets/tests/**/*.spec.js --require resources/assets/tests/setup"
   },
   "author": "Pavel Koch <kouks.koch@gmail.com>, Hussein Bahdon",
   "license": "MIT",
@@ -14,6 +15,8 @@
     "babel-eslint": "^7.2.3",
     "babel-loader": "^7.1.4",
     "browser-sync": "^2.18.13",
+    "chai": "^4.1.2",
+    "chai-as-promised": "^7.1.1",
     "css-loader": "^0.28.10",
     "eslint": "^3.19.0",
     "eslint-config-standard": "^6.2.1",
@@ -23,8 +26,11 @@
     "eslint-plugin-standard": "^3.0.1",
     "extract-text-webpack-plugin": "^3.0.2",
     "friendly-errors-webpack-plugin": "^1.6.1",
+    "mocha": "^4.1.0",
+    "mocha-webpack": "^1.1.0",
     "node-sass": "^4.7.2",
     "sass-loader": "^6.0.7",
+    "selenium-webdriver": "^4.0.0-alpha.1",
     "uglifyjs-webpack-plugin": "^1.2.2",
     "vue": "^2.5.14",
     "vue-loader": "^13.7.1",

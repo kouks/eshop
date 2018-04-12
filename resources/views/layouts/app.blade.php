@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="has-navbar-fixed-top">
+<html lang="en" class="has-navbar-fixed-top">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,6 +19,6 @@
         @include('partials.footer')
     </div>
 
-    <script type="text/javascript" src="/js/app.js"></script>
+    <script src="/js/app.js"></script>
 </body>
 </html>

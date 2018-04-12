@@ -3,13 +3,13 @@
         <div class="container">
             <div class="tabs is-centered is-boxed is-medium">
                 <ul>
-                    <li class="{{ $active !== 'men' ?: 'is-active '}}">
+                    <li>
                         <a href="/shop?category=men">Men</a>
                     </li>
-                    <li class="{{ $active !== 'women' ?: 'is-active '}}">
+                    <li>
                         <a href="/shop?category=women">Women</a>
                     </li>
-                    <li class="{{ $active !== 'kids' ?: 'is-active '}}">
+                    <li>
                         <a href="/shop?category=kids">Kids</a>
                     </li>
                 </ul>

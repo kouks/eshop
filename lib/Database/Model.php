@@ -196,6 +196,6 @@ abstract class Model implements Arrayable
      */
     public function __get($key)
     {
-        return $this->data[$key];
+        return $this->data[$key] ?? null;
     }
 }

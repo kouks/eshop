@@ -56,7 +56,7 @@ class Pipe
      */
     public function finally(Closure $destination)
     {
-        $action = $this->chain->reduce(function ($carry, $item) {
+        $action = $this->chain->reverse()->reduce(function ($carry, $item) {
             return function ($passable) use ($carry, $item) {
                 return $item->handle($passable, $carry);
             };

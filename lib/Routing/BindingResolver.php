@@ -5,6 +5,7 @@ namespace Lib\Routing;
 use Lib\Http\Request;
 use ReflectionMethod;
 use ReflectionFunction;
+use MongoDB\BSON\ObjectId;
 
 class BindingResolver
 {
@@ -23,7 +24,12 @@ class BindingResolver
         foreach ($reflection->getParameters() as $param) {
             if (strpos((string) $param->getType(), 'App\\Models\\') !== false) {
                 $model = (string) $param->getType();
-                $args[] = $model::find([$model::$key => $request->param($param->getName())]);
+
+                $query = $model::$key === '_id'
+                    ? new ObjectId($request->param($param->getName()))
+                    : $request->param($param->getName());
+
+                $args[] = $model::find([$model::$key => $query]);
 
                 continue;
             }

@@ -2,8 +2,8 @@
 
 return [
     'name' => [
-        'shop' => 'h&p&mdash;The online store.',
-        'admin' => 'h&p&mdash;Admin panel.',
+        'shop' => 'h&p—The online store.',
+        'admin' => 'h&p—Admin panel.',
     ],
 
     'controllers' => '\\App\\Http\\Controllers',
